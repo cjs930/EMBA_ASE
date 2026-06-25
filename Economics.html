@@ -3,400 +3,608 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EMBA 經濟學 (Principle of Economics) 簡易學習網</title>
+    <title>經濟學原理 互動學習指南</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        },
+                        accent: {
+                            500: '#f59e0b',
+                            100: '#fef3c7'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        :root {
-            --primary-color: #1e3a8a; /* 深藍色 */
-            --secondary-color: #3b82f6; /* 亮藍色 */
-            --bg-color: #f3f4f6;
-            --text-main: #1f2937;
-            --text-muted: #6b7280;
-            --sidebar-bg: #111827;
-            --sidebar-hover: #1f2937;
+        /* Embedded CSS for specific container rules and animations */
+        .chart-container { 
+            position: relative; 
+            width: 100%; 
+            max-width: 600px; 
+            margin-left: auto; 
+            margin-right: auto; 
+            height: 300px; 
+            max-height: 400px; 
+        } 
+        @media (min-width: 768px) { 
+            .chart-container { height: 350px; } 
         }
 
-        body {
-            margin: 0;
-            font-family: 'Helvetica Neue', Helvetica, Arial, '微軟正黑體', sans-serif;
-            display: flex;
-            height: 100vh;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            overflow: hidden;
+        .flashcard {
+            perspective: 1000px;
+            cursor: pointer;
         }
-
-        /* 左側導覽列 */
-        .sidebar {
-            width: 300px;
-            background-color: var(--sidebar-bg);
-            color: #ffffff;
+        .flashcard-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .flashcard.flipped .flashcard-inner {
+            transform: rotateY(180deg);
+        }
+        .flashcard-front, .flashcard-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
             display: flex;
             flex-direction: column;
-            box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
-            z-index: 10;
-        }
-
-        .sidebar-header {
-            padding: 24px 20px;
-            background-color: #000000;
-            text-align: center;
-            border-bottom: 1px solid #374151;
-        }
-
-        .sidebar-header h1 {
-            margin: 0;
-            font-size: 1.25rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
-
-        .sidebar-header p {
-            margin: 5px 0 0;
-            font-size: 0.85rem;
-            color: #9ca3af;
-        }
-
-        .chapter-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            overflow-y: auto;
-            flex-grow: 1;
-        }
-
-        .chapter-item {
-            padding: 16px 20px;
-            cursor: pointer;
-            border-bottom: 1px solid #374151;
-            transition: all 0.2s ease-in-out;
-            font-size: 1.05rem;
-            display: flex;
+            justify-content: center;
             align-items: center;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
-
-        .chapter-item:hover {
-            background-color: var(--sidebar-hover);
+        .flashcard-front {
+            background-color: #ffffff;
+            border-top: 4px solid #0ea5e9;
         }
-
-        .chapter-item.active {
-            background-color: var(--primary-color);
-            border-left: 6px solid #60a5fa;
+        .flashcard-back {
+            background-color: #f0f9ff;
+            border-top: 4px solid #f59e0b;
+            transform: rotateY(180deg);
+        }
+        
+        .nav-item.active {
+            background-color: #e0f2fe;
+            color: #0c4a6e;
+            border-right: 4px solid #0ea5e9;
             font-weight: bold;
         }
 
-        .sidebar-footer {
-            padding: 15px;
-            text-align: center;
-            font-size: 0.8rem;
-            color: #9ca3af;
-            background-color: #000000;
+        .section-content {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        .section-content.active {
+            display: block;
         }
 
-        /* 右側內容區 */
-        .main-content {
-            flex-grow: 1;
-            padding: 40px 60px;
-            overflow-y: auto;
-            background-color: var(--bg-color);
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
-        .content-card {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 40px 50px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
-            max-width: 900px;
-            margin: 0 auto;
-            line-height: 1.7;
-        }
-
-        .content-header {
-            border-bottom: 3px solid var(--primary-color);
-            padding-bottom: 15px;
-            margin-bottom: 30px;
-        }
-
-        .content-header h2 {
-            margin: 0;
-            color: var(--primary-color);
-            font-size: 2rem;
-        }
-
-        .section-title {
-            color: var(--secondary-color);
-            font-size: 1.3rem;
-            margin-top: 35px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-
-        .section-title::before {
+        
+        /* Timeline styling */
+        .timeline-item::before {
             content: '';
-            display: inline-block;
-            width: 8px;
-            height: 24px;
-            background-color: var(--secondary-color);
-            margin-right: 10px;
-            border-radius: 4px;
-        }
-
-        ul.concept-list {
-            padding-left: 20px;
-        }
-
-        ul.concept-list li {
-            margin-bottom: 12px;
-        }
-
-        ul.concept-list li strong {
-            color: var(--text-main);
-        }
-
-        /* 範例區塊樣式 */
-        .example-box {
-            background-color: #eff6ff;
-            border: 1px solid #bfdbfe;
-            border-left: 6px solid var(--secondary-color);
-            border-radius: 6px;
-            padding: 20px 25px;
-            margin-top: 30px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-        }
-
-        .example-title {
-            font-weight: bold;
-            color: var(--primary-color);
-            font-size: 1.15rem;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-        }
-
-        .example-title span {
-            margin-right: 8px;
-            font-size: 1.3rem;
-        }
-
-        .example-text {
-            margin: 0;
-            color: #374151;
-        }
-
-        .highlight {
-            background-color: #fef08a;
-            padding: 2px 4px;
-            border-radius: 3px;
-            font-weight: bold;
-        }
-
-        /* 響應式設計 */
-        @media (max-width: 768px) {
-            body {
-                flex-direction: column;
-            }
-            .sidebar {
-                width: 100%;
-                height: auto;
-                max-height: 250px;
-            }
-            .main-content {
-                padding: 20px;
-            }
-            .content-card {
-                padding: 20px 25px;
-            }
+            position: absolute;
+            left: -5px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #0ea5e9;
         }
     </style>
 </head>
-<body>
+<body class="bg-gray-50 text-slate-800 font-sans antialiased h-screen flex overflow-hidden">
 
-    <!-- 左側導覽列 -->
-    <div class="sidebar">
-        <div class="sidebar-header">
-            <h1>經濟學核心概念</h1>
-            <p>Principle of Economics</p>
-        </div>
-        <ul class="chapter-list" id="chapterList">
-            <!-- 透過 JS 動態生成章節清單 -->
-        </ul>
-        <div class="sidebar-footer">
-            授課教師：洪東敏 老師<br>
-            EMBA_115 專屬學習網
-        </div>
-    </div>
+    <!-- REQUIRED PLACEHOLDERS -->
+    <!-- Chosen Palette: Ocean & Sand (Brand Blues & Accent Amber on Light Gray) -->
+    <!-- Application Structure Plan: A dashboard-style layout with a persistent left sidebar for easy navigation. The content is broken into four thematic sections: 1. Course Intro (Context & Grading), 2. Core Microeconomics (Concepts & Prices), 3. Demand & Market Dynamics (Interactive charts & Case studies), 4. Glossary & Reflection (Searchable terms). This structure transforms a linear document into a modular learning tool, prioritizing user control, active recall (flashcards), and dynamic visualization. -->
+    <!-- Visualization & Content Choices: 
+         - Grading -> Inform -> Pie Chart (Chart.js) -> Hover tooltips -> Clear breakdown of syllabus weights.
+         - Micro Concepts -> Organize -> CSS Grid Cards -> Clickable Flashcards -> Active learning of definitions -> HTML/CSS (No SVG).
+         - Demand Shifts -> Change/Relationships -> Line Chart (Chart.js) -> Interactive buttons shift demand curve -> Visually demonstrates abstract concept -> Chart.js line graph updating via JS.
+         - Case Study (Shipping) -> Organize/Change -> Vertical Timeline -> Read sequential events -> Structured HTML/Tailwind.
+         - Glossary -> Organize -> Searchable List -> Text input filters list -> Quick reference -> Vanilla JS filtering.
+         CONFIRMING: No SVG or Mermaid used. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 
-    <!-- 右側內容區 -->
-    <div class="main-content">
-        <div class="content-card" id="contentArea">
-            <!-- 透過 JS 動態生成內容 -->
-            <div style="text-align: center; color: #6b7280; padding: 50px 0;">
-                載入中...請稍候。
-            </div>
+    <!-- Sidebar Navigation -->
+    <nav class="w-64 bg-white shadow-lg z-10 flex flex-col h-full flex-shrink-0">
+        <div class="p-6 bg-brand-900 text-white">
+            <h1 class="text-2xl font-bold tracking-wider">經濟學原理</h1>
+            <p class="text-sm text-brand-100 mt-1">EMBA 課程學習指南</p>
+            <p class="text-xs text-brand-100 mt-2">👨‍🏫 洪東敏 老師</p>
         </div>
-    </div>
+        <div class="flex-1 overflow-y-auto py-4">
+            <ul class="space-y-1">
+                <li>
+                    <button onclick="navigate('intro')" id="nav-intro" class="nav-item active w-full text-left px-6 py-3 text-slate-600 hover:bg-gray-50 transition-colors">
+                        📊 1. 課程綱要與評量
+                    </button>
+                </li>
+                <li>
+                    <button onclick="navigate('core')" id="nav-core" class="nav-item w-full text-left px-6 py-3 text-slate-600 hover:bg-gray-50 transition-colors">
+                        ⚖️ 2. 個體經濟核心
+                    </button>
+                </li>
+                <li>
+                    <button onclick="navigate('demand')" id="nav-demand" class="nav-item w-full text-left px-6 py-3 text-slate-600 hover:bg-gray-50 transition-colors">
+                        📈 3. 需求與市場實務
+                    </button>
+                </li>
+                <li>
+                    <button onclick="navigate('glossary')" id="nav-glossary" class="nav-item w-full text-left px-6 py-3 text-slate-600 hover:bg-gray-50 transition-colors">
+                        📖 4. 專有名詞與申論
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <div class="p-4 border-t text-xs text-center text-slate-400">
+            互動式學習網頁 SPA
+        </div>
+    </nav>
 
+    <!-- Main Content Area -->
+    <main class="flex-1 h-full overflow-y-auto bg-gray-50 p-8">
+        <div class="max-w-5xl mx-auto">
+
+            <!-- Section 1: Intro -->
+            <section id="sec-intro" class="section-content active">
+                <header class="mb-8 border-b pb-4">
+                    <h2 class="text-3xl font-bold text-brand-900">課程綱要與評量架構</h2>
+                    <p class="text-slate-500 mt-2">了解本課程的宗旨、涵蓋範疇以及成績評量方式。本區塊幫助您掌握學習方向與配分比重。</p>
+                </header>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <h3 class="text-xl font-bold text-brand-700 mb-4">🎯 課程宗旨與範疇</h3>
+                        <p class="mb-4 text-slate-600">本課程提供經濟學理論基礎，作為管理課程的經濟理論根基。涵蓋兩大領域：</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <span class="mr-2">🔹</span>
+                                <div><strong>個體經濟學 (Microeconomics)：</strong><br><span class="text-sm text-slate-500">探討市場供需、消費者與廠商行為。</span></div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="mr-2">🔸</span>
+                                <div><strong>總體經濟學 (Macroeconomics)：</strong><br><span class="text-sm text-slate-500">探討國民所得、經濟成長、通膨、貨幣與財政政策。</span></div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center justify-center">
+                        <h3 class="text-xl font-bold text-brand-700 mb-4 w-full text-left">📝 評量方式比例</h3>
+                        <div class="chart-container w-full h-[250px]">
+                            <canvas id="gradingChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-brand-50 p-6 rounded-xl border border-brand-100 mb-8">
+                    <h3 class="text-lg font-bold text-brand-900 mb-4">💡 互動複習卡 (Chapter 1)</h3>
+                    <p class="text-sm text-slate-600 mb-4">點擊下方卡片翻面查看解答，測試您的理解！</p>
+                    <div class="flashcard h-40 w-full max-w-md mx-auto" onclick="this.classList.toggle('flipped')">
+                        <div class="flashcard-inner">
+                            <div class="flashcard-front">
+                                <div class="text-3xl mb-2">❓</div>
+                                <h4 class="font-bold text-slate-800">學習經濟學對 EMBA 學生在管理決策上有何幫助？</h4>
+                                <p class="text-xs text-brand-500 mt-4">(點擊翻牌)</p>
+                            </div>
+                            <div class="flashcard-back">
+                                <div class="text-3xl mb-2">💡</div>
+                                <p class="text-slate-800 text-sm">學習經濟學能鞏固基礎，熟悉分析工具，進而擴展經濟應用視野，發展出更精準的經濟與管理決策能力。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Core Concepts -->
+            <section id="sec-core" class="section-content">
+                <header class="mb-8 border-b pb-4">
+                    <h2 class="text-3xl font-bold text-brand-900">個體經濟學核心主題</h2>
+                    <p class="text-slate-500 mt-2">探索資源配置的限制、市場機制的運作，以及如何正確衡量價格。本區塊著重於個體經濟學的基本分析工具。</p>
+                </header>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                    <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-blue-400 hover:shadow-md transition-shadow">
+                        <div class="text-2xl mb-3">🚧</div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-2">限制與取捨</h3>
+                        <p class="text-sm text-slate-600">在各種限制下配置稀少資源：</p>
+                        <ul class="text-sm text-slate-600 mt-2 list-disc pl-4 space-y-1">
+                            <li><strong>消費者：</strong>預算限制</li>
+                            <li><strong>勞工：</strong>時間限制</li>
+                            <li><strong>廠商：</strong>生產能力與財務限制</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-indigo-400 hover:shadow-md transition-shadow">
+                        <div class="text-2xl mb-3">🤝</div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-2">市場與價格機制</h3>
+                        <p class="text-sm text-slate-600">買方與賣方的互動決定價格。包含地理與產品性質界限。</p>
+                        <ul class="text-sm text-slate-600 mt-2 list-disc pl-4 space-y-1">
+                            <li><strong>完全競爭市場：</strong>農產品 (無定價力)</li>
+                            <li><strong>非競爭市場：</strong>卡特爾 OPEC (可影響價格)</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-teal-400 hover:shadow-md transition-shadow">
+                        <div class="text-2xl mb-3">💲</div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-2">價格的衡量</h3>
+                        <p class="text-sm text-slate-600">不能只看標價，需考量通膨：</p>
+                        <ul class="text-sm text-slate-600 mt-2 list-disc pl-4 space-y-1">
+                            <li><strong>名目價格：</strong>絕對金額</li>
+                            <li><strong>實質價格：</strong>相對於總體物價調整後</li>
+                            <li><strong>CPI：</strong>消費者物價指數</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-brand-50 p-6 rounded-xl border border-brand-100 mb-8">
+                    <h3 class="text-lg font-bold text-brand-900 mb-4">💡 互動複習卡 (Chapter 2)</h3>
+                    <div class="flashcard h-40 w-full max-w-md mx-auto" onclick="this.classList.toggle('flipped')">
+                        <div class="flashcard-inner">
+                            <div class="flashcard-front">
+                                <div class="text-3xl mb-2">🏷️</div>
+                                <h4 class="font-bold text-slate-800">名目價格與實質價格的主要差異為何？</h4>
+                                <p class="text-xs text-brand-500 mt-4">(點擊翻牌)</p>
+                            </div>
+                            <div class="flashcard-back">
+                                <div class="text-3xl mb-2">💡</div>
+                                <p class="text-slate-800 text-sm">名目價格是當下商品購買時的絕對貨幣金額；實質價格則是扣除通膨因素、相對於總體物價水準調整後的價格，能反映真實購買力。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Demand & Markets -->
+            <section id="sec-demand" class="section-content">
+                <header class="mb-8 border-b pb-4">
+                    <h2 class="text-3xl font-bold text-brand-900">需求分析與市場實務</h2>
+                    <p class="text-slate-500 mt-2">探討影響需求曲線移動的各種外生變數，並透過全球海運市場的真實案例，了解供需衝擊對產業的影響。</p>
+                </header>
+
+                <!-- Interactive Chart Area -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 mb-8">
+                    <h3 class="text-xl font-bold text-brand-700 mb-2">影響需求曲線移動的因素 (互動模擬)</h3>
+                    <p class="text-sm text-slate-600 mb-6">點擊下方按鈕，觀察「價格以外的因素」改變時，如何導致整條需求曲線發生位移 (Shift)。</p>
+                    
+                    <div class="flex flex-col lg:flex-row gap-6">
+                        <div class="flex-1">
+                            <div class="space-y-3">
+                                <button onclick="shiftDemand('right', '所得增加時，消費者購買力提升，對「正常財」的需求曲線向右移動。')" class="w-full text-left px-4 py-3 bg-gray-50 hover:bg-blue-50 border border-gray-200 rounded-lg transition-colors flex items-center">
+                                    <span class="text-xl mr-3">💰</span>
+                                    <div>
+                                        <div class="font-bold text-sm text-slate-800">所得增加 (針對正常財)</div>
+                                        <div class="text-xs text-slate-500">需求向右移</div>
+                                    </div>
+                                </button>
+                                <button onclick="shiftDemand('right', '替代品(如咖啡)漲價，消費者會轉向購買本商品(如茶)，需求曲線向右移動。')" class="w-full text-left px-4 py-3 bg-gray-50 hover:bg-blue-50 border border-gray-200 rounded-lg transition-colors flex items-center">
+                                    <span class="text-xl mr-3">🔄</span>
+                                    <div>
+                                        <div class="font-bold text-sm text-slate-800">替代品價格上漲</div>
+                                        <div class="text-xs text-slate-500">需求向右移</div>
+                                    </div>
+                                </button>
+                                <button onclick="shiftDemand('left', '互補品(如汽車)漲價，連帶導致本商品(如汽油)買氣下降，需求曲線向左移動。')" class="w-full text-left px-4 py-3 bg-gray-50 hover:bg-red-50 border border-gray-200 rounded-lg transition-colors flex items-center">
+                                    <span class="text-xl mr-3">⛽</span>
+                                    <div>
+                                        <div class="font-bold text-sm text-slate-800">互補品價格上漲</div>
+                                        <div class="text-xs text-slate-500">需求向左移</div>
+                                    </div>
+                                </button>
+                                <button onclick="shiftDemand('reset', '恢復初始供需均衡狀態。')" class="w-full text-center px-4 py-2 mt-4 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold rounded-lg transition-colors">
+                                    重置圖表
+                                </button>
+                            </div>
+                            <div id="chart-explanation" class="mt-4 p-4 bg-accent-100 text-accent-700 text-sm rounded-lg border border-accent-200 font-medium">
+                                點擊上方因素，觀察右側需求曲線變化。
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="chart-container">
+                                <canvas id="demandSupplyChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study Timeline -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 mb-8">
+                    <h3 class="text-xl font-bold text-brand-700 mb-6">🚢 產業實例：全球海運市場分析</h3>
+                    <div class="relative border-l-2 border-brand-200 ml-3 pl-6 space-y-6">
+                        <div class="timeline-item relative">
+                            <h4 class="font-bold text-slate-800">2020-2021 年：需求爆發</h4>
+                            <p class="text-sm text-slate-600 mt-1">貨櫃航運市場因疫情改變消費習慣，物資需求爆發導致運價狂飆 (需求大幅右移)。</p>
+                        </div>
+                        <div class="timeline-item relative">
+                            <h4 class="font-bold text-slate-800">2022-2023 年：景氣回落</h4>
+                            <p class="text-sm text-slate-600 mt-1">景氣觸頂回落，廠商（如馬士基）面臨獲利告急，並採取調價護價策略 (需求左移、供給調整)。</p>
+                        </div>
+                        <div class="timeline-item relative">
+                            <h4 class="font-bold text-slate-800">2023-2024 年：紅海危機</h4>
+                            <p class="text-sm text-slate-600 mt-1">葉門叛軍干擾蘇伊士運河，商船繞道好望角，造成航運成本與時間大幅增加 (供給側負面衝擊)。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-brand-50 p-6 rounded-xl border border-brand-100">
+                    <h3 class="text-lg font-bold text-brand-900 mb-4">💡 互動複習卡 (Chapter 3)</h3>
+                    <div class="flashcard h-40 w-full max-w-md mx-auto" onclick="this.classList.toggle('flipped')">
+                        <div class="flashcard-inner">
+                            <div class="flashcard-front">
+                                <div class="text-3xl mb-2">➡️</div>
+                                <h4 class="font-bold text-slate-800">所得增加時，正常財的需求曲線會如何變化？</h4>
+                                <p class="text-xs text-brand-500 mt-4">(點擊翻牌)</p>
+                            </div>
+                            <div class="flashcard-back">
+                                <div class="text-3xl mb-2">💡</div>
+                                <p class="text-slate-800 text-sm">所得增加，消費者的購買力提升，在任何價格下都願意買更多，因此正常財的需求曲線會「向右移動」。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Glossary & Essays -->
+            <section id="sec-glossary" class="section-content">
+                <header class="mb-8 border-b pb-4">
+                    <h2 class="text-3xl font-bold text-brand-900">專有名詞與申論思考</h2>
+                    <p class="text-slate-500 mt-2">快速查詢課程核心術語，並提供申論題引導您進行深度的管理實務思考。</p>
+                </header>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                    <!-- Searchable Glossary -->
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col">
+                        <h3 class="text-xl font-bold text-brand-700 mb-4">📖 核心術語彙編</h3>
+                        <input type="text" id="glossarySearch" placeholder="🔍 搜尋名詞... (例如: 替代品)" class="w-full px-4 py-2 border rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                        <div class="flex-1 overflow-y-auto max-h-96 pr-2 space-y-3" id="glossaryList">
+                            <!-- JS will populate this -->
+                        </div>
+                    </div>
+
+                    <!-- Essay Questions -->
+                    <div class="bg-slate-800 text-white p-6 rounded-xl shadow-sm border border-slate-700">
+                        <h3 class="text-xl font-bold text-accent-500 mb-4">✍️ 申論思考 (Essay Questions)</h3>
+                        <p class="text-sm text-slate-300 mb-6 border-b border-slate-600 pb-4">供課後深入思考與討論，無標準答案，旨在訓練決策邏輯。</p>
+                        <ul class="space-y-4 text-sm text-slate-200">
+                            <li class="flex items-start">
+                                <span class="text-accent-500 mr-2">Q1.</span>
+                                <div>從「取捨」角度分析，製造業面臨勞動力成本上漲時，如何決定是否將生產線自動化？</div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-accent-500 mr-2">Q2.</span>
+                                <div>分析「紅海危機」如何透過供給側與需求側互動，影響終端消費品價格？</div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-accent-500 mr-2">Q3.</span>
+                                <div>政府定義「市場範圍」時，其決策對企業併購案與反壟斷法有何重要性？</div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-accent-500 mr-2">Q4.</span>
+                                <div>結合「所得」與「預期」，在不景氣預期下，房地產需求曲線會如何變化？</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-brand-50 p-6 rounded-xl border border-brand-100">
+                    <h3 class="text-lg font-bold text-brand-900 mb-4">💡 互動複習卡 (Chapter 4)</h3>
+                    <div class="flashcard h-40 w-full max-w-md mx-auto" onclick="this.classList.toggle('flipped')">
+                        <div class="flashcard-inner">
+                            <div class="flashcard-front">
+                                <div class="text-3xl mb-2">🔄</div>
+                                <h4 class="font-bold text-slate-800">何謂「替代品」？其價格上漲如何影響另一財貨？</h4>
+                                <p class="text-xs text-brand-500 mt-4">(點擊翻牌)</p>
+                            </div>
+                            <div class="flashcard-back">
+                                <div class="text-3xl mb-2">💡</div>
+                                <p class="text-slate-800 text-sm">替代品是指功用相似可互相替換的產品。當其漲價，消費者會轉向購買另一商品，使另一商品的需求增加（向右移）。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+        
+        <footer class="mt-12 text-center text-slate-400 text-sm pb-8">
+            &copy; 經濟學 Principle of Economics - 互動學習摘要
+        </footer>
+    </main>
+
+    <!-- JavaScript Logic -->
     <script>
-        // 經濟學課程內容資料庫 (融合講義與上課錄音重點)
-        const courseData = [
-            {
-                id: "intro",
-                title: "第一章：市場供需與價格機能",
-                content: `
-                    <div class="content-header">
-                        <h2>第一章：市場供需與價格機能</h2>
-                    </div>
-                    <p>經濟學探討的是在資源有限的情況下，人類如何進行選擇與分配。而市場（Market）就是買方（需求）與賣方（供給）互動並決定價格與數量的機制。</p>
-                    
-                    <h3 class="section-title">核心重點整理</h3>
-                    <ul class="concept-list">
-                        <li><strong>需求 (Demand)：</strong>消費者在各種可能價格下，願意且能夠購買的數量。價格越低，需求量通常越高（負斜率）。</li>
-                        <li><strong>供給 (Supply)：</strong>生產者在各種可能價格下，願意且能夠提供的數量。價格越高，供給量通常越高（正斜率）。</li>
-                        <li><strong>市場均衡 (Equilibrium)：</strong>當供給量等於需求量時，會形成一個均衡價格與均衡數量。如果價格偏離均衡點，市場機能（一隻看不見的手）會自動調整它。</li>
-                        <li><strong>曲線的移動：</strong>價格改變只會造成「線上點的移動」；如果是其他因素（如所得增加、科技進步、戰爭爆發）改變，整條供給或需求曲線就會「左右移動」。</li>
-                    </ul>
+        // --- Navigation Logic ---
+        function navigate(sectionId) {
+            // Update active state in sidebar
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            document.getElementById(`nav-${sectionId}`).classList.add('active');
 
-                    <div class="example-box">
-                        <div class="example-title"><span>🚢</span> 易懂範例：航海王大浪來襲</div>
-                        <p class="example-text">
-                            還記得 2020-2021 年長榮、萬海的「航海王」狂潮嗎？<br><br>
-                            當時因為疫情導致塞港，加上全球物資需求暴增，這導致了<strong>需求曲線大幅向右移動</strong>（大家都在搶貨櫃）。同一時間，船隻被卡在港口，導致<strong>供給曲線向左移動</strong>（能用的貨櫃變少）。<br><br>
-                            在「需求暴增、供給減少」的雙重夾擊下，市場的均衡價格自然一飛衝天，造就了航運股驚人的獲利與股價。這就是最經典的市場供需法則應用。
-                        </p>
-                    </div>
-                `
-            },
-            {
-                id: "price",
-                title: "第二章：名目價格 vs 實質價格",
-                content: `
-                    <div class="content-header">
-                        <h2>第二章：名目價格 vs 實質價格</h2>
-                    </div>
-                    <p>我們在做經濟決策與比較跨年度的價格時，不能只看表面的數字。因為「通貨膨脹」會吃掉貨幣的購買力，我們必須了解名目與實質價格的差異。</p>
-                    
-                    <h3 class="section-title">核心重點整理</h3>
-                    <ul class="concept-list">
-                        <li><strong>名目價格 (Nominal Price)：</strong>就是你眼睛看到的標籤價格（未經通貨膨脹調整）。</li>
-                        <li><strong>實質價格 (Real Price)：</strong>扣除掉通貨膨脹因素後，真正具有「購買力」的價格。</li>
-                        <li><strong>消費者物價指數 (CPI)：</strong>用來衡量一般家庭購買消費性商品及服務的價格水準變動。</li>
-                        <li><strong>換算公式：</strong> <br>實質價格 = (基期 CPI ÷ 當期 CPI) × 當期名目價格</li>
-                    </ul>
+            // Show corresponding section
+            document.querySelectorAll('.section-content').forEach(el => el.classList.remove('active'));
+            document.getElementById(`sec-${sectionId}`).classList.add('active');
 
-                    <div class="example-box">
-                        <div class="example-title"><span>🥚</span> 易懂範例：雞蛋到底有沒有變貴？</div>
-                        <p class="example-text">
-                            在上課的計算題中，我們比較了 1970 年與 2016 年的雞蛋價格。<br><br>
-                            假設 1970 年一盒雞蛋標價 (名目價格) 是 $0.61 美元，到了 2016 年標價變成 $2.47 美元。表面上看，雞蛋變貴了 4 倍！<br><br>
-                            但是，如果我們利用 CPI 指數把通膨因素剔除，換算成 1970 年的物價水準來比較，2016 年的雞蛋<span class="highlight">「實質價格」其實反而下降了！</span>這代表農民賣雞蛋換取其他商品的能力變弱了。因此，企業在看營收與成本時，一定要看「實質價格」才不會被表象誤導。
-                        </p>
-                    </div>
-                `
-            },
-            {
-                id: "consumer",
-                title: "第三章：理性的消費者行為",
-                content: `
-                    <div class="content-header">
-                        <h2>第三章：理性的消費者行為</h2>
-                    </div>
-                    <p>經濟學假設人是「理性的」，每一個決策都在追求自身利益（效用）的最大化。消費者如何在有限的預算內獲得最大的滿足？</p>
-                    
-                    <h3 class="section-title">核心重點整理</h3>
-                    <ul class="concept-list">
-                        <li><strong>所得有限：</strong>消費者面臨的第一個限制就是預算線（Budget Line），你只能買得起這條線以內的東西。</li>
-                        <li><strong>無異曲線 (Indifference Curve)：</strong>曲線上每一點代表兩種商品的不同組合，但帶給消費者的「滿足程度（效用）」都完全一樣。</li>
-                        <li><strong>最佳決策點：</strong>當預算線與最高的一條無異曲線「相切」的那一點，就是消費者在有限金錢下，能獲得最大快樂的購買組合。</li>
-                    </ul>
+            // Scroll to top
+            document.querySelector('main').scrollTop = 0;
+        }
 
-                    <div class="example-box">
-                        <div class="example-title"><span>☕</span> 易懂範例：喝咖啡還是看電影？</div>
-                        <p class="example-text">
-                            假設你每個月的娛樂預算只有 3,000 元（<strong>這就是預算線</strong>）。看一場電影要 300 元，喝一杯高級咖啡要 150 元。<br><br>
-                            你可以選擇看 10 場電影（0杯咖啡），或是喝 20 杯咖啡（0場電影）。但多數人不會這麼極端。<br><br>
-                            根據你的偏好（<strong>無異曲線</strong>），你可能會覺得「看 6 場電影 + 喝 8 杯咖啡」讓你最滿足。只要這個組合的花費剛好是 3,000 元（在預算線上），這就是身為理性消費者的你所做出的「效用最大化」完美決策。
-                        </p>
-                    </div>
-                `
-            },
-            {
-                id: "cost",
-                title: "第四章：廠商決策與成本分析",
-                content: `
-                    <div class="content-header">
-                        <h2>第四章：廠商決策與成本分析</h2>
-                    </div>
-                    <p>廠商生產的目標是利潤極大化或成本極小化。而在經濟學中，我們對「成本」的定義與傳統會計學有些不同。</p>
-                    
-                    <h3 class="section-title">核心重點整理</h3>
-                    <ul class="concept-list">
-                        <li><strong>機會成本 (Opportunity Cost)：</strong>做某個決策時，你所放棄的其他選項中「價值最高」的那一個。經濟學的成本一定要包含機會成本。</li>
-                        <li><strong>沉入成本 (Sunk Cost)：</strong>已經花下去、且「無法再回收」的支出。<strong>理性的決策者在評估未來行動時，必須完全忽略沉入成本！</strong></li>
-                        <li><strong>等產量線與等成本線：</strong>類似消費者的無異曲線與預算線。廠商會尋找等產量線與等成本線相切的點，也就是用「最低成本」生產出「目標產量」的完美機器與人工比例組合。</li>
-                    </ul>
-
-                    <div class="example-box">
-                        <div class="example-title"><span>📉</span> 易懂範例：股票套牢與沉入成本</div>
-                        <p class="example-text">
-                            上課時老師提到股票投資（例如華邦電的例子）：<br><br>
-                            <strong>【沉入成本】</strong>假設你以 100 元買進某檔股票，現在跌到 50 元。那虧損的 50 元已經是「沉入成本」。很多不理性的人會想「我要等他漲回 100 元解套才賣」，這就犯了決策錯誤。<br><br>
-                            <strong>【機會成本】</strong>理性的做法是：問自己「如果我現在手上有 50 元現金，我會不會買這檔股票？」如果不買，就該立刻停損把錢拿去投資別的更有潛力的標的。因為你死抱著爛股票的代價，就是錯失投資好股票賺錢的「機會成本」。
-                        </p>
-                    </div>
-                `
-            }
+        // --- Data Storage for Glossary ---
+        const glossaryTerms = [
+            { term: "個體經濟學", def: "研究個人、家庭及廠商等個別經濟單位如何進行決策與互動。" },
+            { term: "總體經濟學", def: "研究整體經濟現象，如國民所得、失業率、通膨及經濟成長。" },
+            { term: "預算限制", def: "消費者受限於所得，僅能購買有限數量的財貨組合。" },
+            { term: "完全競爭市場", def: "市場中有大量買賣者，產品同質性高，單一參與者無法控制價格。" },
+            { term: "非競爭市場", def: "個別廠商或組織（如卡特爾）具有操縱市場價格能力的市場結構。" },
+            { term: "名目價格", def: "商品在特定時間點購買時的絕對貨幣金額。" },
+            { term: "實質價格", def: "扣除通膨因素、相對於總體物價水準調整後的價格，反映真實購買力。" },
+            { term: "消費者物價指數 (CPI)", def: "衡量家庭購買商品與服務之平均價格變動的指標。" },
+            { term: "核心 CPI", def: "從CPI中扣除波動較大的食物與能源後的數字，反映長期物價趨勢。" },
+            { term: "替代品", def: "功用相似可互相替換的產品；一者漲價會增加另一者的需求。" },
+            { term: "互補品", def: "必須搭配使用的產品；一者漲價會減少另一者的需求。" },
+            { term: "正常財", def: "消費者所得增加時，需求量隨之增加的財貨。" },
+            { term: "劣等財", def: "消費者所得增加時，需求量反而減少的財貨。" }
         ];
 
-        // 綁定 DOM 元素
-        const chapterList = document.getElementById('chapterList');
-        const contentArea = document.getElementById('contentArea');
-
-        // 初始化網頁
-        function init() {
-            renderSidebar();
-            // 預設載入第一個章節
-            if(courseData.length > 0) {
-                loadContent(courseData[0].id);
+        // --- Initialize Glossary ---
+        function renderGlossary(filter = "") {
+            const listContainer = document.getElementById('glossaryList');
+            listContainer.innerHTML = "";
+            const filtered = glossaryTerms.filter(t => t.term.includes(filter) || t.def.includes(filter));
+            
+            if (filtered.length === 0) {
+                listContainer.innerHTML = "<p class='text-sm text-slate-400'>找不到相關名詞。</p>";
+                return;
             }
-        }
 
-        // 渲染左側選單
-        function renderSidebar() {
-            courseData.forEach(chapter => {
-                const li = document.createElement('li');
-                li.className = 'chapter-item';
-                li.id = `nav-${chapter.id}`;
-                li.innerHTML = chapter.title;
-                li.onclick = () => loadContent(chapter.id);
-                chapterList.appendChild(li);
+            filtered.forEach(item => {
+                const div = document.createElement('div');
+                div.className = "p-3 bg-gray-50 border border-gray-100 rounded text-sm";
+                div.innerHTML = `<strong class="text-brand-700 block mb-1">${item.term}</strong><span class="text-slate-600">${item.def}</span>`;
+                listContainer.appendChild(div);
             });
         }
 
-        // 載入右側內容
-        function loadContent(chapterId) {
-            // 更新選單 Active 狀態
-            document.querySelectorAll('.chapter-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            document.getElementById(`nav-${chapterId}`).classList.add('active');
+        document.getElementById('glossarySearch').addEventListener('input', (e) => {
+            renderGlossary(e.target.value);
+        });
 
-            // 尋找章節資料並更新內容區塊
-            const chapter = courseData.find(c => c.id === chapterId);
-            if(chapter) {
-                // 簡單的淡入動畫效果
-                contentArea.style.opacity = 0;
-                setTimeout(() => {
-                    contentArea.innerHTML = chapter.content;
-                    contentArea.style.transition = 'opacity 0.4s';
-                    contentArea.style.opacity = 1;
-                    // 將右側滾動條回到最上方
-                    document.querySelector('.main-content').scrollTop = 0;
-                }, 150);
-            }
+        // --- Charts Initialization ---
+        let gradingChartObj = null;
+        let demandChartObj = null;
+
+        function initCharts() {
+            // 1. Grading Pie Chart
+            const ctxGrading = document.getElementById('gradingChart').getContext('2d');
+            gradingChartObj = new Chart(ctxGrading, {
+                type: 'doughnut',
+                data: {
+                    labels: ['出缺席', '課堂參與/討論', '測驗(一) 個體', '測驗(二) 總體'],
+                    datasets: [{
+                        data: [20, 20, 30, 30],
+                        backgroundColor: ['#38bdf8', '#818cf8', '#f472b6', '#fcd34d'],
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'right', labels: { font: { size: 12 } } },
+                        tooltip: {
+                            callbacks: { label: function(context) { return ' ' + context.label + ': ' + context.raw + '%'; } }
+                        }
+                    }
+                }
+            });
+
+            // 2. Interactive Demand & Supply Chart
+            const ctxDemand = document.getElementById('demandSupplyChart').getContext('2d');
+            
+            // Base Data
+            const xValues = [0, 2, 4, 6, 8, 10];
+            const supplyData = [0, 2, 4, 6, 8, 10]; // Upward sloping
+            const baseDemandData = [10, 8, 6, 4, 2, 0]; // Downward sloping
+            
+            demandChartObj = new Chart(ctxDemand, {
+                type: 'line',
+                data: {
+                    labels: xValues,
+                    datasets: [
+                        {
+                            label: '供給 (Supply)',
+                            data: supplyData,
+                            borderColor: '#f59e0b',
+                            backgroundColor: '#f59e0b',
+                            borderWidth: 3,
+                            fill: false,
+                            tension: 0
+                        },
+                        {
+                            label: '需求 (Demand 1)',
+                            data: baseDemandData,
+                            borderColor: '#0ea5e9',
+                            backgroundColor: '#0ea5e9',
+                            borderWidth: 3,
+                            fill: false,
+                            tension: 0
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: { duration: 800, easing: 'easeOutQuart' },
+                    scales: {
+                        x: { title: { display: true, text: '數量 (Quantity)', font: { weight: 'bold' } }, grid: { display: false } },
+                        y: { title: { display: true, text: '價格 (Price)', font: { weight: 'bold' } }, min: 0, max: 12 }
+                    },
+                    plugins: {
+                        tooltip: { enabled: false } // Simplify visualization
+                    }
+                }
+            });
         }
 
-        // 執行初始化
-        window.onload = init;
+        // --- Demand Chart Interaction Logic ---
+        function shiftDemand(direction, explanation) {
+            if (!demandChartObj) return;
+
+            const baseDemandData = [10, 8, 6, 4, 2, 0];
+            let newDemandData = [];
+
+            if (direction === 'right') {
+                newDemandData = [12, 10, 8, 6, 4, 2]; // Shifted up/right
+                demandChartObj.data.datasets[1].label = "需求增加 (Demand 2)";
+                demandChartObj.data.datasets[1].borderColor = "#10b981"; // Green
+                demandChartObj.data.datasets[1].backgroundColor = "#10b981";
+            } else if (direction === 'left') {
+                newDemandData = [8, 6, 4, 2, 0, -2]; // Shifted down/left
+                demandChartObj.data.datasets[1].label = "需求減少 (Demand 2)";
+                demandChartObj.data.datasets[1].borderColor = "#ef4444"; // Red
+                demandChartObj.data.datasets[1].backgroundColor = "#ef4444";
+            } else {
+                newDemandData = baseDemandData;
+                demandChartObj.data.datasets[1].label = "需求 (Demand 1)";
+                demandChartObj.data.datasets[1].borderColor = "#0ea5e9"; // Default blue
+                demandChartObj.data.datasets[1].backgroundColor = "#0ea5e9";
+            }
+
+            demandChartObj.data.datasets[1].data = newDemandData;
+            demandChartObj.update();
+
+            // Update explanation text
+            document.getElementById('chart-explanation').innerHTML = explanation;
+        }
+
+        // Run initialization on load
+        window.onload = () => {
+            renderGlossary();
+            initCharts();
+        };
 
     </script>
 </body>
