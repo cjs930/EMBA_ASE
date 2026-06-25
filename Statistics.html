@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMBA 115 統計學 - 第一週課程</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .chapter-content {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        .chapter-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .nav-item {
+            transition: all 0.3s ease;
+        }
+        .nav-item.active {
+            background-color: #1e3a8a;
+            border-left: 4px solid #60a5fa;
+        }
+    </style>
+</head>
+<body class="h-screen flex flex-col md:flex-row overflow-hidden">
+
+    <!-- 左側邊欄 (Sidebar) -->
+    <aside class="w-full md:w-64 bg-blue-900 text-white flex flex-col h-auto md:h-full shadow-xl z-10 flex-shrink-0">
+        <div class="p-6 bg-blue-950">
+            <h1 class="text-2xl font-bold tracking-wider mb-2">EMBA 115</h1>
+            <h2 class="text-sm text-blue-300 font-medium">統計學學習網 / Week 1</h2>
+        </div>
+        <nav class="flex-1 overflow-y-auto py-4">
+            <ul class="space-y-1">
+                <li>
+                    <button onclick="showChapter('ch1', this)" class="nav-item active w-full text-left px-6 py-3 flex items-center hover:bg-blue-800 text-sm md:text-base">
+                        <i data-lucide="book-open" class="w-5 h-5 mr-3 text-blue-300"></i>
+                        1. 統計學是什麼？
+                    </button>
+                </li>
+                <li>
+                    <button onclick="showChapter('ch2', this)" class="nav-item w-full text-left px-6 py-3 flex items-center hover:bg-blue-800 text-sm md:text-base">
+                        <i data-lucide="target" class="w-5 h-5 mr-3 text-blue-300"></i>
+                        2. 母體與抽樣
+                    </button>
+                </li>
+                <li>
+                    <button onclick="showChapter('ch3', this)" class="nav-item w-full text-left px-6 py-3 flex items-center hover:bg-blue-800 text-sm md:text-base">
+                        <i data-lucide="bar-chart-2" class="w-5 h-5 mr-3 text-blue-300"></i>
+                        3. 集中趨勢 (找中心)
+                    </button>
+                </li>
+                <li>
+                    <button onclick="showChapter('ch4', this)" class="nav-item w-full text-left px-6 py-3 flex items-center hover:bg-blue-800 text-sm md:text-base">
+                        <i data-lucide="activity" class="w-5 h-5 mr-3 text-blue-300"></i>
+                        4. 變異與形狀 (看分散)
+                    </button>
+                </li>
+                <li>
+                    <button onclick="showChapter('ch5', this)" class="nav-item w-full text-left px-6 py-3 flex items-center hover:bg-blue-800 text-sm md:text-base">
+                        <i data-lucide="box" class="w-5 h-5 mr-3 text-blue-300"></i>
+                        5. 盒鬚圖解析
+                    </button>
+                </li>
+            </ul>
+        </nav>
+        <div class="p-4 bg-blue-950 text-xs text-blue-400 text-center">
+            授課教師：葉瑞徽 老師<br>
+            NTUST EMBA Program
+        </div>
+    </aside>
+
+    <!-- 右側內容區 (Main Content) -->
+    <main class="flex-1 h-full overflow-y-auto p-6 md:p-12 bg-gray-50 relative">
+        
+        <!-- Chapter 1 -->
+        <div id="ch1" class="chapter-content active max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-200 pb-2">1. 統計學是什麼？起源與目的</h2>
+            
+            <div class="bg-white rounded-xl shadow-sm p-6 mb-8 border border-gray-100">
+                <h3 class="text-xl font-semibold text-blue-800 mb-4">統計學的兩大起源</h3>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    統計學 (Statistics) 並非現代憑空發明，它在18世紀建立在兩個基礎之上：
+                </p>
+                <ul class="list-disc pl-6 space-y-2 text-gray-700">
+                    <li><strong>機率遊戲 (Games of Chance)：</strong> 源自賭博算牌。為了在不確定中算出「贏的機率」，發展成後來的<span class="font-semibold text-blue-600">機率論與推論統計</span>。</li>
+                    <li><strong>政治科學 (Political Science)：</strong> 源自歐洲國家為了戰爭，對人口、糧食、武器進行普查。將龐大資料整理成圖表，發展成後來的<span class="font-semibold text-blue-600">敘述統計</span>。</li>
+                </ul>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm p-6 border-l-4 border-yellow-400">
+                <h3 class="text-xl font-semibold text-gray-800 mb-3"><i data-lucide="lightbulb" class="inline w-5 h-5 mr-2 text-yellow-500"></i>觀念釐清：統計學 vs. 統計量</h3>
+                <p class="text-gray-700 leading-relaxed">
+                    <strong>Statistics (加 s)：</strong> 指的是「統計學」這門科學（收集、組織、分析、解釋資訊）。<br>
+                    <strong>Statistic (不加 s)：</strong> 指的是「統計量」，也就是我們從一堆樣本資料中算出來的一個數值。
+                </p>
+                <div class="mt-4 bg-yellow-50 p-4 rounded-lg">
+                    <p class="font-semibold text-yellow-800">💡 易懂範例：</p>
+                    <p class="text-sm text-yellow-900 mt-1">「降雨機率 50%」、「統一超商的銷售預測」、「產品的市場佔有率」，這些從資料中計算出來幫助我們做決策的數字，就是「統計量」。學統計的目的就是為了：<strong>描述現況、預測未來、控制變異</strong>。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chapter 2 -->
+        <div id="ch2" class="chapter-content max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-200 pb-2">2. 母體與抽樣 (Population & Sample)</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="bg-blue-50 rounded-xl p-6 border border-blue-100">
+                    <h3 class="text-xl font-semibold text-blue-800 mb-2">母體 (Population)</h3>
+                    <p class="text-gray-700">研究對象的「全部」。母體所擁有的真實特徵數值稱為<strong>「參數 (Parameter)」</strong>，這通常是個未知數。</p>
+                </div>
+                <div class="bg-green-50 rounded-xl p-6 border border-green-100">
+                    <h3 class="text-xl font-semibold text-green-800 mb-2">樣本 (Sample)</h3>
+                    <p class="text-gray-700">從母體中抽出來「部分」資料。從樣本算出來的數值稱為<strong>「統計量 (Statistic)」</strong>，用來推估母體的參數。</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">統計學的核心邏輯：為什麼要抽樣？</h3>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    統計學的根本邏輯是<strong>「藉由樣本瞭解母體」 (Inference 推論)</strong>。我們很少去普查母體，通常是因為以下原因：
+                </p>
+                
+                <div class="space-y-4">
+                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                        <h4 class="font-semibold text-blue-700 flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2"></i> 1. 破壞性實驗 (Destructive Testing)</h4>
+                        <p class="text-sm text-gray-600 mt-1"><strong>💡 易懂範例：</strong> 媽媽煮了一大鍋湯想知道鹹淡，她只需要「喝一口（樣本）」就知道整鍋湯（母體）的味道。她不可能把整鍋湯喝完才說「嗯，這鍋湯鹹度剛好」，這就是破壞性實驗不能普查的原因。</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                        <h4 class="font-semibold text-blue-700 flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2"></i> 2. 費用與資源考量 (Expense & Limited Resources)</h4>
+                        <p class="text-sm text-gray-600 mt-1"><strong>💡 易懂範例：</strong> 選舉時想知道某候選人的支持度，去查問全台灣2300萬人（普查）要花費幾億元與幾個月的時間。但抽出 1068 份有效問卷（抽樣），只需幾十萬，卻能把誤差控制在 3% 以內。</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                        <h4 class="font-semibold text-blue-700 flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2"></i> 3. 母體太大 (Population is too large)</h4>
+                        <p class="text-sm text-gray-600 mt-1"><strong>💡 易懂範例：</strong> 檢驗這座森林裡所有樹木的蟲害比例，母體幾乎是無限大的，只能依賴隨機抽樣。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chapter 3 -->
+        <div id="ch3" class="chapter-content max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-200 pb-2">3. 敘述統計：測量集中趨勢 (Central Tendency)</h2>
+            
+            <p class="text-gray-700 mb-6">當我們拿到一堆雜亂的數據時，第一步通常是想知道「這些資料的中心點在哪裡？」以下是三個最常用的指標：</p>
+
+            <div class="space-y-6">
+                <div class="bg-white rounded-xl shadow-sm p-6 border-l-4 border-blue-500">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">平均數 (Mean)</h3>
+                    <p class="text-gray-600 mb-3">所有數值的總和除以資料個數。最常用，但也<strong>最容易被極端值影響</strong>。</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm p-6 border-l-4 border-green-500">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">中位數 (Median)</h3>
+                    <p class="text-gray-600 mb-3">將所有資料「由小排到大」後，正中間的那一個數字。如果資料是偶數個，則是中間兩個數字的平均。<strong>不受極端值影響</strong>。</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm p-6 border-l-4 border-purple-500">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">眾數 (Mode)</h3>
+                    <p class="text-gray-600 mb-3">資料中出現次數最多的那個數字。常用於分類型資料（例如：班上最多人開的車子品牌）。</p>
+                </div>
+            </div>
+
+            <div class="mt-8 bg-orange-50 rounded-xl p-6 border border-orange-200">
+                <h3 class="text-lg font-semibold text-orange-800 mb-2 flex items-center">
+                    <i data-lucide="alert-triangle" class="w-5 h-5 mr-2"></i> 為什麼不能只看「平均數」？（郭台銘效應）
+                </h3>
+                <p class="text-gray-700 leading-relaxed text-sm">
+                    <strong>💡 易懂範例：</strong> 假設我們班上 10 位同學，大家的月薪都在 5 萬到 8 萬之間，班上的「平均薪資」大約是 6.5 萬。<br><br>
+                    今天，首富郭台銘（假設月薪10億）走進了我們教室，跟我們合併計算。<br>
+                    這時，全班的<strong>「平均數」</strong>可能會瞬間暴增到好幾千萬。如果你看平均數，會以為全班都是千萬富翁，這叫做被極端值（Outlier）拉偏了！<br><br>
+                    但如果你看<strong>「中位數」</strong>（把 11 個人薪水由低排到高，看第 6 個人的薪水），中位數可能還是 6.5 萬或 7 萬。這就是為什麼在看政府公佈的「國民所得」或「房價」時，看中位數會比看平均數來得更貼近老百姓的真實感受！
+                </p>
+            </div>
+        </div>
+
+        <!-- Chapter 4 -->
+        <div id="ch4" class="chapter-content max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-200 pb-2">4. 敘述統計：測量變異與形狀 (Variation)</h2>
+            
+            <p class="text-gray-700 mb-6">找到中心點還不夠，我們還必須知道資料是「很集中」還是「很分散」。這在管理學上叫做「品質的穩定度」。</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="bg-white rounded-xl shadow-sm p-6 border-t-4 border-red-400">
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">全距 (Range)</h3>
+                    <p class="text-gray-600 text-sm">公式：最大值 - 最小值。<br>最簡單的算法，但只考慮了頭尾兩個數字，忽略了中間資料的分配狀況。</p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-sm p-6 border-t-4 border-indigo-400">
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">四分位距 (IQR)</h3>
+                    <p class="text-gray-600 text-sm">公式：Q3 (第75百分位) - Q1 (第25百分位)。<br>包含了中間 50% 的資料範圍，能有效排除極端值的干擾。</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm p-6 mb-8">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">變異數 (Variance) 與 標準差 (Standard Deviation)</h3>
+                <p class="text-gray-700 mb-4">這是統計學中最重要衡量分散程度的指標。它計算了「每一個資料點，距離平均數有多遠」。</p>
+                <ul class="list-disc pl-6 space-y-2 text-sm text-gray-600 mb-4">
+                    <li><strong>變異數 ($s^2$ / $\sigma^2$)：</strong> 因為距離有正有負（相加會抵銷），所以我們把距離「平方」後再平均。</li>
+                    <li><strong>標準差 ($s$ / $\sigma$)：</strong> 因為變異數被平方了（單位變了），所以我們把它「開根號」還原。<strong>標準差越小，代表資料越集中、越穩定。</strong></li>
+                </ul>
+            </div>
+
+            <div class="bg-teal-50 rounded-xl p-6 border border-teal-200">
+                <h3 class="text-lg font-semibold text-teal-800 mb-2 flex items-center">
+                    <i data-lucide="flag" class="w-5 h-5 mr-2"></i> 管理學上的意義：高爾夫球的穩定性
+                </h3>
+                <p class="text-gray-700 leading-relaxed text-sm">
+                    <strong>💡 易懂範例：</strong> 假設我們有兩位高爾夫球員要挑選一位去比賽：<br>
+                    • <strong>球員 A：</strong> 過去五場成績是 71, 72, 70, 72, 70。平均 71 桿。<br>
+                    • <strong>球員 B：</strong> 過去五場成績是 60, 85, 65, 90, 55。平均也是 71 桿。<br><br>
+                    如果只看「平均數」，兩人實力一樣。但如果你算「標準差」，球員 B 的標準差極大（變異很大），他有時候打得像神，有時候打得像災難。球員 A 的標準差很小，表現極度穩定（降到最低的變異）。在企業品管或投資理財中，我們通常偏好<strong>「變異/標準差小」</strong>的選項，因為這代表「風險低、可預期性高」。
+                </p>
+            </div>
+        </div>
+
+        <!-- Chapter 5 -->
+        <div id="ch5" class="chapter-content max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-200 pb-2">5. 一目了然的「盒鬚圖」(Box Plot)</h2>
+            
+            <p class="text-gray-700 mb-6">老師在上課中特別提到了盒鬚圖（Box Plot）。它就像是股票市場中的「K線圖」倒過來放。只要用「5個數字」，就能畫出一張圖，讓我們秒懂資料的中心、分散狀況與極端值。</p>
+
+            <div class="flex flex-col md:flex-row gap-8 items-center bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+                
+                <!-- 示意圖區塊 (CSS繪製) -->
+                <div class="w-full md:w-1/2 flex justify-center py-8">
+                    <div class="relative w-full max-w-[300px] h-32 flex items-center">
+                        <!-- Left Whisker -->
+                        <div class="absolute left-0 w-[20%] h-0.5 bg-gray-600"></div>
+                        <div class="absolute left-0 w-0.5 h-6 bg-gray-600 -translate-y-1/2 top-1/2"></div>
+                        <!-- Min label -->
+                        <div class="absolute left-0 -top-6 text-xs text-gray-500 -translate-x-1/2">最小值</div>
+                        
+                        <!-- Box -->
+                        <div class="absolute left-[20%] w-[50%] h-16 bg-blue-100 border-2 border-blue-600 rounded-sm -translate-y-1/2 top-1/2 flex justify-between">
+                            <!-- Box labels -->
+                            <div class="absolute -left-2 -top-8 text-xs text-blue-600">Q1 (25%)</div>
+                            <div class="absolute -right-2 -top-8 text-xs text-blue-600">Q3 (75%)</div>
+                        </div>
+                        
+                        <!-- Median Line inside box (Q2) -->
+                        <div class="absolute left-[45%] w-0.5 h-16 bg-red-500 -translate-y-1/2 top-1/2"></div>
+                        <div class="absolute left-[45%] -bottom-6 text-xs text-red-500 -translate-x-1/2 font-bold">中位數 Q2</div>
+
+                        <!-- Right Whisker -->
+                        <div class="absolute left-[70%] w-[30%] h-0.5 bg-gray-600"></div>
+                        <div class="absolute right-0 w-0.5 h-6 bg-gray-600 -translate-y-1/2 top-1/2"></div>
+                        <!-- Max label -->
+                        <div class="absolute right-0 -top-6 text-xs text-gray-500 translate-x-1/2">最大值</div>
+                    </div>
+                </div>
+
+                <!-- 文字說明區塊 -->
+                <div class="w-full md:w-1/2">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">建構盒鬚圖的 5 個數字：</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center"><span class="w-8 h-8 rounded-full bg-gray-200 text-gray-700 flex items-center justify-center font-bold mr-3 text-sm">1</span> <strong>最小值 (Min)：</strong> 資料中最小的數字（排除極端值）。</li>
+                        <li class="flex items-center"><span class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold mr-3 text-sm">2</span> <strong>Q1 (第一四分位數)：</strong> 排行在 25% 位置的數字。</li>
+                        <li class="flex items-center"><span class="w-8 h-8 rounded-full bg-red-100 text-red-700 flex items-center justify-center font-bold mr-3 text-sm">3</span> <strong>Q2 (中位數)：</strong> 排行在 50% 位置的數字，資料的中心。</li>
+                        <li class="flex items-center"><span class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold mr-3 text-sm">4</span> <strong>Q3 (第三四分位數)：</strong> 排行在 75% 位置的數字。</li>
+                        <li class="flex items-center"><span class="w-8 h-8 rounded-full bg-gray-200 text-gray-700 flex items-center justify-center font-bold mr-3 text-sm">5</span> <strong>最大值 (Max)：</strong> 資料中最大的數字。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-6 bg-blue-50 p-6 rounded-xl border border-blue-100 text-sm text-gray-700 leading-relaxed">
+                <strong>💡 為什麼要用盒鬚圖？</strong><br>
+                因為中間那個「盒子 (Box)」包含了 Q1 到 Q3，代表了這群資料中 <strong>中間 50% 的核心群體</strong>。如果盒子很窄，代表大家的程度都很接近；如果紅色的中位數偏向盒子的一邊，我們就可以一眼看出資料的「偏態（Skew Shape）」，這在分析員工績效、產品良率時非常直觀好用！
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // 初始化 Lucide 圖標
+        lucide.createIcons();
+
+        // 切換章節功能
+        function showChapter(chapterId, btnElement) {
+            // 隱藏所有章節內容
+            document.querySelectorAll('.chapter-content').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // 移除所有按鈕的 active 狀態
+            document.querySelectorAll('.nav-item').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // 顯示目標章節內容
+            document.getElementById(chapterId).classList.add('active');
+            
+            // 將點擊的按鈕設為 active
+            btnElement.classList.add('active');
+
+            // 在手機版上點擊後自動回到頂部
+            document.querySelector('main').scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
