@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMBA 經濟學 (Principle of Economics) 簡易學習網</title>
+    <style>
+        :root {
+            --primary-color: #1e3a8a; /* 深藍色 */
+            --secondary-color: #3b82f6; /* 亮藍色 */
+            --bg-color: #f3f4f6;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+            --sidebar-bg: #111827;
+            --sidebar-hover: #1f2937;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Helvetica Neue', Helvetica, Arial, '微軟正黑體', sans-serif;
+            display: flex;
+            height: 100vh;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow: hidden;
+        }
+
+        /* 左側導覽列 */
+        .sidebar {
+            width: 300px;
+            background-color: var(--sidebar-bg);
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+
+        .sidebar-header {
+            padding: 24px 20px;
+            background-color: #000000;
+            text-align: center;
+            border-bottom: 1px solid #374151;
+        }
+
+        .sidebar-header h1 {
+            margin: 0;
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .sidebar-header p {
+            margin: 5px 0 0;
+            font-size: 0.85rem;
+            color: #9ca3af;
+        }
+
+        .chapter-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .chapter-item {
+            padding: 16px 20px;
+            cursor: pointer;
+            border-bottom: 1px solid #374151;
+            transition: all 0.2s ease-in-out;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .chapter-item:hover {
+            background-color: var(--sidebar-hover);
+        }
+
+        .chapter-item.active {
+            background-color: var(--primary-color);
+            border-left: 6px solid #60a5fa;
+            font-weight: bold;
+        }
+
+        .sidebar-footer {
+            padding: 15px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #9ca3af;
+            background-color: #000000;
+        }
+
+        /* 右側內容區 */
+        .main-content {
+            flex-grow: 1;
+            padding: 40px 60px;
+            overflow-y: auto;
+            background-color: var(--bg-color);
+        }
+
+        .content-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 40px 50px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .content-header {
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        .content-header h2 {
+            margin: 0;
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+
+        .section-title {
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 24px;
+            background-color: var(--secondary-color);
+            margin-right: 10px;
+            border-radius: 4px;
+        }
+
+        ul.concept-list {
+            padding-left: 20px;
+        }
+
+        ul.concept-list li {
+            margin-bottom: 12px;
+        }
+
+        ul.concept-list li strong {
+            color: var(--text-main);
+        }
+
+        /* 範例區塊樣式 */
+        .example-box {
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-left: 6px solid var(--secondary-color);
+            border-radius: 6px;
+            padding: 20px 25px;
+            margin-top: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .example-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.15rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .example-title span {
+            margin-right: 8px;
+            font-size: 1.3rem;
+        }
+
+        .example-text {
+            margin: 0;
+            color: #374151;
+        }
+
+        .highlight {
+            background-color: #fef08a;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                max-height: 250px;
+            }
+            .main-content {
+                padding: 20px;
+            }
+            .content-card {
+                padding: 20px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 左側導覽列 -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h1>經濟學核心概念</h1>
+            <p>Principle of Economics</p>
+        </div>
+        <ul class="chapter-list" id="chapterList">
+            <!-- 透過 JS 動態生成章節清單 -->
+        </ul>
+        <div class="sidebar-footer">
+            授課教師：洪東敏 老師<br>
+            EMBA_115 專屬學習網
+        </div>
+    </div>
+
+    <!-- 右側內容區 -->
+    <div class="main-content">
+        <div class="content-card" id="contentArea">
+            <!-- 透過 JS 動態生成內容 -->
+            <div style="text-align: center; color: #6b7280; padding: 50px 0;">
+                載入中...請稍候。
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 經濟學課程內容資料庫 (融合講義與上課錄音重點)
+        const courseData = [
+            {
+                id: "intro",
+                title: "第一章：市場供需與價格機能",
+                content: `
+                    <div class="content-header">
+                        <h2>第一章：市場供需與價格機能</h2>
+                    </div>
+                    <p>經濟學探討的是在資源有限的情況下，人類如何進行選擇與分配。而市場（Market）就是買方（需求）與賣方（供給）互動並決定價格與數量的機制。</p>
+                    
+                    <h3 class="section-title">核心重點整理</h3>
+                    <ul class="concept-list">
+                        <li><strong>需求 (Demand)：</strong>消費者在各種可能價格下，願意且能夠購買的數量。價格越低，需求量通常越高（負斜率）。</li>
+                        <li><strong>供給 (Supply)：</strong>生產者在各種可能價格下，願意且能夠提供的數量。價格越高，供給量通常越高（正斜率）。</li>
+                        <li><strong>市場均衡 (Equilibrium)：</strong>當供給量等於需求量時，會形成一個均衡價格與均衡數量。如果價格偏離均衡點，市場機能（一隻看不見的手）會自動調整它。</li>
+                        <li><strong>曲線的移動：</strong>價格改變只會造成「線上點的移動」；如果是其他因素（如所得增加、科技進步、戰爭爆發）改變，整條供給或需求曲線就會「左右移動」。</li>
+                    </ul>
+
+                    <div class="example-box">
+                        <div class="example-title"><span>🚢</span> 易懂範例：航海王大浪來襲</div>
+                        <p class="example-text">
+                            還記得 2020-2021 年長榮、萬海的「航海王」狂潮嗎？<br><br>
+                            當時因為疫情導致塞港，加上全球物資需求暴增，這導致了<strong>需求曲線大幅向右移動</strong>（大家都在搶貨櫃）。同一時間，船隻被卡在港口，導致<strong>供給曲線向左移動</strong>（能用的貨櫃變少）。<br><br>
+                            在「需求暴增、供給減少」的雙重夾擊下，市場的均衡價格自然一飛衝天，造就了航運股驚人的獲利與股價。這就是最經典的市場供需法則應用。
+                        </p>
+                    </div>
+                `
+            },
+            {
+                id: "price",
+                title: "第二章：名目價格 vs 實質價格",
+                content: `
+                    <div class="content-header">
+                        <h2>第二章：名目價格 vs 實質價格</h2>
+                    </div>
+                    <p>我們在做經濟決策與比較跨年度的價格時，不能只看表面的數字。因為「通貨膨脹」會吃掉貨幣的購買力，我們必須了解名目與實質價格的差異。</p>
+                    
+                    <h3 class="section-title">核心重點整理</h3>
+                    <ul class="concept-list">
+                        <li><strong>名目價格 (Nominal Price)：</strong>就是你眼睛看到的標籤價格（未經通貨膨脹調整）。</li>
+                        <li><strong>實質價格 (Real Price)：</strong>扣除掉通貨膨脹因素後，真正具有「購買力」的價格。</li>
+                        <li><strong>消費者物價指數 (CPI)：</strong>用來衡量一般家庭購買消費性商品及服務的價格水準變動。</li>
+                        <li><strong>換算公式：</strong> <br>實質價格 = (基期 CPI ÷ 當期 CPI) × 當期名目價格</li>
+                    </ul>
+
+                    <div class="example-box">
+                        <div class="example-title"><span>🥚</span> 易懂範例：雞蛋到底有沒有變貴？</div>
+                        <p class="example-text">
+                            在上課的計算題中，我們比較了 1970 年與 2016 年的雞蛋價格。<br><br>
+                            假設 1970 年一盒雞蛋標價 (名目價格) 是 $0.61 美元，到了 2016 年標價變成 $2.47 美元。表面上看，雞蛋變貴了 4 倍！<br><br>
+                            但是，如果我們利用 CPI 指數把通膨因素剔除，換算成 1970 年的物價水準來比較，2016 年的雞蛋<span class="highlight">「實質價格」其實反而下降了！</span>這代表農民賣雞蛋換取其他商品的能力變弱了。因此，企業在看營收與成本時，一定要看「實質價格」才不會被表象誤導。
+                        </p>
+                    </div>
+                `
+            },
+            {
+                id: "consumer",
+                title: "第三章：理性的消費者行為",
+                content: `
+                    <div class="content-header">
+                        <h2>第三章：理性的消費者行為</h2>
+                    </div>
+                    <p>經濟學假設人是「理性的」，每一個決策都在追求自身利益（效用）的最大化。消費者如何在有限的預算內獲得最大的滿足？</p>
+                    
+                    <h3 class="section-title">核心重點整理</h3>
+                    <ul class="concept-list">
+                        <li><strong>所得有限：</strong>消費者面臨的第一個限制就是預算線（Budget Line），你只能買得起這條線以內的東西。</li>
+                        <li><strong>無異曲線 (Indifference Curve)：</strong>曲線上每一點代表兩種商品的不同組合，但帶給消費者的「滿足程度（效用）」都完全一樣。</li>
+                        <li><strong>最佳決策點：</strong>當預算線與最高的一條無異曲線「相切」的那一點，就是消費者在有限金錢下，能獲得最大快樂的購買組合。</li>
+                    </ul>
+
+                    <div class="example-box">
+                        <div class="example-title"><span>☕</span> 易懂範例：喝咖啡還是看電影？</div>
+                        <p class="example-text">
+                            假設你每個月的娛樂預算只有 3,000 元（<strong>這就是預算線</strong>）。看一場電影要 300 元，喝一杯高級咖啡要 150 元。<br><br>
+                            你可以選擇看 10 場電影（0杯咖啡），或是喝 20 杯咖啡（0場電影）。但多數人不會這麼極端。<br><br>
+                            根據你的偏好（<strong>無異曲線</strong>），你可能會覺得「看 6 場電影 + 喝 8 杯咖啡」讓你最滿足。只要這個組合的花費剛好是 3,000 元（在預算線上），這就是身為理性消費者的你所做出的「效用最大化」完美決策。
+                        </p>
+                    </div>
+                `
+            },
+            {
+                id: "cost",
+                title: "第四章：廠商決策與成本分析",
+                content: `
+                    <div class="content-header">
+                        <h2>第四章：廠商決策與成本分析</h2>
+                    </div>
+                    <p>廠商生產的目標是利潤極大化或成本極小化。而在經濟學中，我們對「成本」的定義與傳統會計學有些不同。</p>
+                    
+                    <h3 class="section-title">核心重點整理</h3>
+                    <ul class="concept-list">
+                        <li><strong>機會成本 (Opportunity Cost)：</strong>做某個決策時，你所放棄的其他選項中「價值最高」的那一個。經濟學的成本一定要包含機會成本。</li>
+                        <li><strong>沉入成本 (Sunk Cost)：</strong>已經花下去、且「無法再回收」的支出。<strong>理性的決策者在評估未來行動時，必須完全忽略沉入成本！</strong></li>
+                        <li><strong>等產量線與等成本線：</strong>類似消費者的無異曲線與預算線。廠商會尋找等產量線與等成本線相切的點，也就是用「最低成本」生產出「目標產量」的完美機器與人工比例組合。</li>
+                    </ul>
+
+                    <div class="example-box">
+                        <div class="example-title"><span>📉</span> 易懂範例：股票套牢與沉入成本</div>
+                        <p class="example-text">
+                            上課時老師提到股票投資（例如華邦電的例子）：<br><br>
+                            <strong>【沉入成本】</strong>假設你以 100 元買進某檔股票，現在跌到 50 元。那虧損的 50 元已經是「沉入成本」。很多不理性的人會想「我要等他漲回 100 元解套才賣」，這就犯了決策錯誤。<br><br>
+                            <strong>【機會成本】</strong>理性的做法是：問自己「如果我現在手上有 50 元現金，我會不會買這檔股票？」如果不買，就該立刻停損把錢拿去投資別的更有潛力的標的。因為你死抱著爛股票的代價，就是錯失投資好股票賺錢的「機會成本」。
+                        </p>
+                    </div>
+                `
+            }
+        ];
+
+        // 綁定 DOM 元素
+        const chapterList = document.getElementById('chapterList');
+        const contentArea = document.getElementById('contentArea');
+
+        // 初始化網頁
+        function init() {
+            renderSidebar();
+            // 預設載入第一個章節
+            if(courseData.length > 0) {
+                loadContent(courseData[0].id);
+            }
+        }
+
+        // 渲染左側選單
+        function renderSidebar() {
+            courseData.forEach(chapter => {
+                const li = document.createElement('li');
+                li.className = 'chapter-item';
+                li.id = `nav-${chapter.id}`;
+                li.innerHTML = chapter.title;
+                li.onclick = () => loadContent(chapter.id);
+                chapterList.appendChild(li);
+            });
+        }
+
+        // 載入右側內容
+        function loadContent(chapterId) {
+            // 更新選單 Active 狀態
+            document.querySelectorAll('.chapter-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.getElementById(`nav-${chapterId}`).classList.add('active');
+
+            // 尋找章節資料並更新內容區塊
+            const chapter = courseData.find(c => c.id === chapterId);
+            if(chapter) {
+                // 簡單的淡入動畫效果
+                contentArea.style.opacity = 0;
+                setTimeout(() => {
+                    contentArea.innerHTML = chapter.content;
+                    contentArea.style.transition = 'opacity 0.4s';
+                    contentArea.style.opacity = 1;
+                    // 將右側滾動條回到最上方
+                    document.querySelector('.main-content').scrollTop = 0;
+                }, 150);
+            }
+        }
+
+        // 執行初始化
+        window.onload = init;
+
+    </script>
+</body>
+</html>
