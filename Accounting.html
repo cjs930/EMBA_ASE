@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMBA_115 會計學學習網</title>
+    <!-- 引入 Tailwind CSS 進行快速排版 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入 FontAwesome 圖示 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 引入 Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+        /* 自定義捲軸樣式 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+        .slide-badge {
+            @apply inline-flex items-center gap-1 bg-slate-800 text-white px-2 py-1 rounded text-xs font-mono font-bold tracking-wider mb-2 shadow-sm;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 h-screen flex overflow-hidden text-slate-800">
+
+    <!-- 左側導覽列 (Sidebar) -->
+    <aside class="w-64 bg-slate-900 text-white flex flex-col h-full shadow-xl z-10 flex-shrink-0">
+        <div class="p-6 border-b border-slate-700">
+            <h1 class="text-2xl font-bold tracking-wider flex items-center gap-2">
+                <i class="fa-solid fa-chart-line text-blue-400"></i>
+                EMBA_115
+            </h1>
+            <p class="text-slate-400 text-sm mt-1">會計學課程學習網</p>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto py-4">
+            <ul class="space-y-1">
+                <li>
+                    <button id="btn-intro" onclick="showChapter('intro')" class="nav-btn w-full text-left px-6 py-3 transition-colors bg-slate-800 border-l-4 border-blue-400 flex items-center gap-3">
+                        <i class="fa-solid fa-book-open w-5 text-center"></i>
+                        <span>課程介紹與規定</span>
+                    </button>
+                </li>
+                <li>
+                    <button id="btn-ch1" onclick="showChapter('ch1')" class="nav-btn w-full text-left px-6 py-3 transition-colors hover:bg-slate-800 border-l-4 border-transparent flex items-center gap-3">
+                        <i class="fa-solid fa-scale-balanced w-5 text-center"></i>
+                        <span>Ch1. 會計恆等式及財報</span>
+                    </button>
+                </li>
+                <li>
+                    <button id="btn-ch2" onclick="showChapter('ch2')" class="nav-btn w-full text-left px-6 py-3 transition-colors hover:bg-slate-800 border-l-4 border-transparent flex items-center gap-3">
+                        <i class="fa-solid fa-book-journal-whills w-5 text-center"></i>
+                        <span>Ch2. 借貸法則與過帳</span>
+                    </button>
+                </li>
+                <li>
+                    <button id="btn-ch3" onclick="showChapter('ch3')" class="nav-btn w-full text-left px-6 py-3 transition-colors hover:bg-slate-800 border-l-4 border-transparent flex items-center gap-3">
+                        <i class="fa-solid fa-file-invoice-dollar w-5 text-center"></i>
+                        <span>Ch3. 調整、結帳與編表</span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="p-4 border-t border-slate-700 text-xs text-slate-500 text-center">
+            &copy; 2026 EMBA Accounting
+        </div>
+    </aside>
+
+    <!-- 右側內容區 (Main Content) -->
+    <main class="flex-1 h-full overflow-y-auto bg-slate-50 p-8 md:p-12 relative">
+        
+        <!-- 課程介紹 -->
+        <section id="intro" class="chapter-content max-w-4xl mx-auto animation-fade-in">
+            <header class="mb-8 border-b pb-4">
+                <span class="text-blue-600 font-semibold tracking-wider text-sm uppercase">Course Introduction</span>
+                <h2 class="text-3xl font-bold mt-2 text-slate-800">課程介紹與評分規定</h2>
+            </header>
+            
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-6">
+                <h3 class="text-xl font-bold mb-4 flex items-center gap-2"><i class="fa-solid fa-circle-info text-blue-500"></i> 關於本課程 (所謂的「負六」)</h3>
+                <p class="text-slate-600 leading-relaxed mb-4">
+                    本課程為 EMBA 的基礎先修課程之一（會計、經濟、統計，俗稱「負六」課程）。雖然是不計入畢業學分的零學分概念，但卻是<strong>必修條件</strong>，必須修畢才能滿足畢業門檻。
+                </p>
+                <div class="bg-blue-50 text-blue-800 p-4 rounded-lg border border-blue-100">
+                    <i class="fa-solid fa-quote-left mr-2"></i>
+                    會計學一般被評為枯燥，但老師致力於讓這門課變得「生動有趣」，請給彼此一點時間觀察！
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-6">
+                <h3 class="text-lg font-bold mb-3 border-b pb-2">💯 評分標準</h3>
+                <ul class="space-y-3 text-slate-600">
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-check text-green-500 mt-1"></i>
+                        <div><strong>出席率 (20%)：</strong>未出席將失去參與分數。缺席兩次大約影響 3 分。</div>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-check text-green-500 mt-1"></i>
+                        <div><strong>心得報告：</strong>A4 單面，包含「學習心得」與「對本課程的建議事項」。</div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Chapter 1 -->
+        <section id="ch1" class="chapter-content max-w-4xl mx-auto hidden">
+            <header class="mb-8 border-b pb-4">
+                <span class="text-blue-600 font-semibold tracking-wider text-sm uppercase">Chapter 1</span>
+                <h2 class="text-3xl font-bold mt-2 text-slate-800">會計恆等式及財務報表</h2>
+            </header>
+
+            <!-- PPT P.3 重點 -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-6">
+                <div class="slide-badge"><i class="fa-solid fa-desktop"></i> PPT P.3</div>
+                <h3 class="text-xl font-bold mb-4 text-indigo-900 border-l-4 border-indigo-500 pl-3">會計恆等式與三大要素定義</h3>
+                
+                <div class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white rounded-lg p-6 mb-4 text-center">
+                    <div class="text-3xl md:text-5xl font-bold tracking-widest font-mono">
+                        A = L + E
+                    </div>
+                </div>
+                
+                <ul class="space-y-3 text-slate-700 text-sm">
+                    <li><strong class="text-blue-700">資產 (Asset, A)：</strong>企業因過去交易產生的經濟資源，預期將產生現金流入 (如現金、設備)。</li>
+                    <li><strong class="text-blue-700">負債 (Liability, L)：</strong>現時義務 (包含法定義務及推定義務)，清償將造成資源流出 (如欠款)。</li>
+                    <li><strong class="text-blue-700">權益 (Equity, E)：</strong>資產減去負債後的餘額。</li>
+                </ul>
+            </div>
+
+            <!-- PPT P.4-P5 重點 -->
+            <div class="bg-indigo-50 rounded-xl border border-indigo-100 p-6 mb-6">
+                <div class="slide-badge"><i class="fa-solid fa-desktop"></i> PPT P.4 - P.5</div>
+                <h3 class="text-xl font-bold text-indigo-900 mb-2 border-l-4 border-indigo-500 pl-3">交易記錄與平衡機制</h3>
+                <p class="text-sm text-slate-600 mb-4"><strong>平衡機制原則：</strong>(1) 等號兩邊金額加減後淨額必相等 (2) 等號兩邊正負符號必一致。</p>
+                
+                <div class="space-y-4">
+                    <div class="bg-white p-4 rounded shadow-sm border border-indigo-50">
+                        <div class="font-bold text-slate-800 mb-1">範例一：三人合資 100 萬設立動畫公司 (1/2)</div>
+                        <p class="text-sm text-slate-600 mb-2">說明：公司多了一筆存款（資產增加），這筆錢是股東投入的（權益/股本增加）。</p>
+                        <div class="text-indigo-800 font-mono text-sm bg-indigo-100/50 p-3 rounded flex items-center justify-between">
+                            <span>資產 (+100萬現金) = 負債 (0) + 權益 (+100萬股本)</span>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded shadow-sm border border-indigo-50">
+                        <div class="font-bold text-slate-800 mb-1">範例二：花 10 萬現金買電腦設備 (1/4)</div>
+                        <p class="text-sm text-slate-600 mb-2">說明：獲取設備（資產增加），但付出存款（資產減少），總資產淨額不變，等式依然平衡。</p>
+                        <div class="text-indigo-800 font-mono text-sm bg-indigo-100/50 p-3 rounded flex items-center justify-between">
+                            <span>資產 (+10萬設備, -10萬現金) = 負債 (0) + 權益 (0)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 課堂補充重點 (股本 vs 保留盈餘) -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-6">
+                <div class="slide-badge bg-orange-600"><i class="fa-solid fa-microphone"></i> 課堂重要補充</div>
+                <h3 class="text-xl font-bold mb-3 text-slate-800 border-l-4 border-orange-500 pl-3">權益的兩大組成：股本 vs 保留盈餘</h3>
+                <p class="text-slate-600 text-sm mb-3">
+                    <strong>股本 (Capital Stock)：</strong>股東原始投入的資本。若發放「股票股利」，只是將保留盈餘轉入股本，總權益金額不變。
+                </p>
+                <p class="text-slate-600 text-sm">
+                    <strong>保留盈餘 (Retained Earnings)：</strong>公司賺得且已繳過營所稅後保留下來的錢。只要聽到發放「股利」(不論現金或股票)，保留盈餘一定會減少！
+                </p>
+            </div>
+        </section>
+
+        <!-- Chapter 2 -->
+        <section id="ch2" class="chapter-content max-w-4xl mx-auto hidden">
+            <header class="mb-8 border-b pb-4">
+                <span class="text-blue-600 font-semibold tracking-wider text-sm uppercase">Chapter 2</span>
+                <h2 class="text-3xl font-bold mt-2 text-slate-800">借貸法則、分錄與過帳</h2>
+            </header>
+
+            <!-- PPT P.3 重點 -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-6">
+                <div class="slide-badge"><i class="fa-solid fa-desktop"></i> PPT P.3</div>
+                <h3 class="text-xl font-bold mb-3 text-blue-900 border-l-4 border-blue-500 pl-3">會計科目的五大類別</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-700">
+                    <div class="bg-slate-50 p-3 rounded border"><strong>1. 資產類：</strong>現金、應收帳款、設備</div>
+                    <div class="bg-slate-50 p-3 rounded border"><strong>2. 負債類：</strong>應付帳款</div>
+                    <div class="bg-slate-50 p-3 rounded border"><strong>3. 權益類：</strong>股本、保留盈餘</div>
+                    <div class="bg-slate-50 p-3 rounded border"><strong>4. 收入類：</strong>動畫設計收入</div>
+                    <div class="bg-slate-50 p-3 rounded border sm:col-span-2"><strong>5. 費用類：</strong>租金費用、薪資費用</div>
+                </div>
+            </div>
+
+            <!-- PPT P.5-P6 重點 -->
+            <div class="bg-blue-50 rounded-xl border border-blue-100 p-6 mb-6">
+                <div class="slide-badge"><i class="fa-solid fa-desktop"></i> PPT P.5</div>
+                <h3 class="text-xl font-bold mb-3 text-blue-900 border-l-4 border-blue-500 pl-3">借貸法則 (Rules of Debit and Credit)</h3>
+                <p class="text-sm text-slate-700 mb-4">
+                    會計不只用 + / - 號來記錄，更專業的做法是利用 T 字帳的「借方(左)」與「貸方(右)」來表達增減。
+                </p>
+                <div class="bg-white p-4 rounded border border-blue-200 font-mono text-sm shadow-inner mb-4">
+                    <div class="font-bold text-slate-800 mb-2 border-b pb-1">口訣與法則：</div>
+                    <div class="text-blue-700">● 資產、費用的增加記在 <strong class="text-red-500">借方 (Debit)</strong></div>
+                    <div class="text-blue-700">● 負債、權益、收入的增加記在 <strong class="text-green-600">貸方 (Credit)</strong></div>
+                </div>
+                
+                <h4 class="font-bold text-sm text-slate-800 mb-2"><i class="fa-solid fa-pen-to-square"></i> 分錄實戰範例：支付租金</h4>
+                <div class="bg-white p-3 rounded shadow-sm text-sm">
+                    <p class="mb-2 text-slate-600">情境：支付當月租金 $30,000 (費用增加 借方，現金減少 貸方)。</p>
+                    <div class="flex justify-between mb-1">
+                        <span class="font-bold">借：租金費用</span>
+                        <span class="text-blue-600 font-bold">30,000</span>
+                    </div>
+                    <div class="flex justify-between pl-8">
+                        <span class="font-bold">貸：現金</span>
+                        <span class="text-blue-600 font-bold">30,000</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PPT P.7-P11 重點 -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+                <div class="slide-badge"><i class="fa-solid fa-desktop"></i> PPT P.7 - P.11</div>
+                <h3 class="text-xl font-bold mb-4 text-slate-800 border-l-4 border-slate-500 pl-3">會計循環：從日記簿到分類帳</h3>
+                
+                <div class="flex flex-col md:flex-row items-center justify-center gap-4 text-center">
+                    <div class="bg-slate-50 border p-4 rounded-lg w-full md:w-1/2">
+                        <div class="font-bold text-blue-800 mb-1">1. 日記簿 (Journal)</div>
+                        <div class="text-xs text-slate-600 text-left">
+                            <ul class="list-disc pl-4 mt-1 space-y-1">
+                                <li>按發生時間順序記錄分錄。</li>
+                                <li>先記月，再記日。</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-right text-slate-300 hidden md:block"></i>
+                    <i class="fa-solid fa-arrow-down text-slate-300 block md:hidden"></i>
+                    <div class="bg-slate-50 border p-4 rounded-lg w-full md:w-1/2">
+                        <div class="font-bold text-blue-800 mb-1">2. 總分類帳 (Ledger)</div>
+                        <div class="text-xs text-slate-600 text-left">
+                            <ul class="list-disc pl-4 mt-1 space-y-1">
+                                <li>將日記簿的數字抄錄(過帳)至此。</li>
+                                <li>形成各科目的 T 字帳，結算出「借方餘額」或「貸方餘額」。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 3 -->
+        <section id="ch3" class="chapter-content max-w-4xl mx-auto hidden">
+            <header class="mb-8 border-b pb-4">
+                <span class="text-blue-600 font-semibold tracking-wider text-sm uppercase">Chapter 3</span>
+                <h2 class="text-3xl font-bold mt-2 text-slate-800">調整、結帳與編表</h2>
+            </header>
+
+            <!-- PPT P.3 重點 -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-6">
+                <div class="slide-badge"><i class="fa-solid fa-desktop"></i> PPT P.3</div>
+                <h3 class="text-xl font-bold mb-3 border-l-4 border-teal-500 pl-3 text-slate-800">會計期間假設與應計基礎</h3>
+                <p class="text-sm text-slate-600 mb-3">
+                    <strong>會計期間假設：</strong>為了及時提供財報，將企業持續經營的活動「劃分段落」(如曆年制 1/1~12/31)，定期計算損益。
+                </p>
+                <div class="bg-teal-50 p-4 rounded border border-teal-100 text-sm">
+                    <div class="font-bold text-teal-800 mb-1">現金基礎 vs 應計基礎 (Accrual Basis)</div>
+                    <p class="text-slate-700">企業收支的時點，常與實際現金收付的時點不一致。IFRS 規定財報編製應採<strong>應計基礎（權責發生制）</strong>，也就是「發生了才算數」，不以現金收付為唯一標準！這也是期末需要做「調整分錄」的主因。</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <!-- PPT P.27 重點 -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+                    <div class="slide-badge"><i class="fa-solid fa-desktop"></i> PPT P.27</div>
+                    <h4 class="font-bold text-lg mb-3 flex items-center gap-2 text-indigo-600">
+                        <i class="fa-solid fa-clock-rotate-left"></i> 遞延項目：預付費用
+                    </h4>
+                    <p class="text-sm text-slate-600 mb-3">
+                        先付了現金（資產增加），後續隨時間消耗轉為費用。
+                    </p>
+                    <div class="bg-slate-50 p-3 rounded border text-sm">
+                        <strong class="text-slate-800">範例：10/1 預付一年保險費 $12,000。</strong><br>
+                        過了一個月 (10/31)，消耗了 1 個月的價值 ($1,000)。<br>
+                        <div class="font-mono mt-2 bg-white border p-2 rounded">
+                            <div>借：保險費用 1,000</div>
+                            <div class="pl-4">貸：預付保險費 1,000</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 應計項目 (對應講義與語音) -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+                    <div class="slide-badge bg-orange-600"><i class="fa-solid fa-microphone"></i> 課堂白話文</div>
+                    <h4 class="font-bold text-lg mb-3 flex items-center gap-2 text-orange-600">
+                        <i class="fa-solid fa-money-bill-transfer"></i> 應計項目 (Accrued)
+                    </h4>
+                    <p class="text-sm text-slate-600 mb-3">
+                        費用已經發生，但尚未付現（現金流量後發生）。
+                    </p>
+                    <div class="bg-orange-50 p-3 rounded border border-orange-100 text-sm">
+                        <strong class="text-slate-800">範例：未付的辦公室租金。</strong><br>
+                        假設辦公室租了 10 個月，約定年底才付清 $12 萬。雖然還沒付錢，但 10 個月的「使用權已消耗」，年底必須做調整分錄認列這筆費用，這正是應計基礎的精神！
+                    </div>
+                </div>
+            </div>
+
+            <!-- PPT P.28 重點 -->
+            <div class="bg-slate-800 text-white rounded-xl shadow-sm border border-slate-700 p-6">
+                <div class="slide-badge bg-blue-500"><i class="fa-solid fa-desktop"></i> PPT P.28</div>
+                <h4 class="font-bold text-xl mb-3 border-l-4 border-blue-400 pl-3">折舊 (Depreciation) 調整與帳面值</h4>
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div class="flex-1 text-sm text-slate-300">
+                        <p class="mb-2"><strong class="text-white">情境：</strong>買入設備 $1,200,000，耐用 120 個月，每月折舊 $10,000。</p>
+                        <div class="bg-slate-900 p-3 rounded font-mono mb-3 border border-slate-600">
+                            <div class="flex justify-between text-green-400">
+                                <span>借：折舊費用</span>
+                                <span>10,000</span>
+                            </div>
+                            <div class="flex justify-between pl-4 text-teal-300">
+                                <span>貸：累計折舊－網路設備</span>
+                                <span>10,000</span>
+                            </div>
+                        </div>
+                        <p class="text-xs italic"><i class="fa-solid fa-triangle-exclamation text-yellow-500"></i> 注意：不直接扣減設備原值，而是貸記「累計折舊」。</p>
+                    </div>
+                    <div class="flex-1 bg-slate-700 p-4 rounded flex items-center justify-center flex-col text-center border border-slate-600">
+                        <div class="text-sm text-slate-300 mb-2">資產負債表呈現公式：</div>
+                        <div class="font-mono font-bold text-blue-200 bg-slate-900 px-4 py-2 rounded-lg w-full">
+                            設備原價<br>
+                            <span class="text-slate-400">- 累計折舊</span><br>
+                            <hr class="border-slate-600 my-1">
+                            = 帳面值 (Book Value)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // 切換章節顯示的邏輯
+        function showChapter(chapterId) {
+            // 隱藏所有內容區塊
+            const contents = document.querySelectorAll('.chapter-content');
+            contents.forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            // 重置所有按鈕樣式
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-slate-800', 'border-l-4', 'border-blue-400');
+                btn.classList.add('hover:bg-slate-800', 'border-transparent');
+            });
+
+            // 顯示選擇的區塊
+            const targetContent = document.getElementById(chapterId);
+            if (targetContent) {
+                targetContent.classList.remove('hidden');
+                // 添加簡單的淡入動畫
+                targetContent.animate([
+                    { opacity: 0, transform: 'translateY(10px)' },
+                    { opacity: 1, transform: 'translateY(0)' }
+                ], {
+                    duration: 300,
+                    easing: 'ease-out'
+                });
+            }
+
+            // 標記按鈕為啟用狀態
+            const targetBtn = document.getElementById('btn-' + chapterId);
+            if (targetBtn) {
+                targetBtn.classList.remove('hover:bg-slate-800', 'border-transparent');
+                targetBtn.classList.add('bg-slate-800', 'border-l-4', 'border-blue-400');
+            }
+        }
+    </script>
+</body>
+</html>
