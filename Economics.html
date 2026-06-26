@@ -81,6 +81,7 @@
             background-color: #f0f9ff;
             border-top: 4px solid #f59e0b;
             transform: rotateY(180deg);
+            overflow-y: auto;
         }
         
         .nav-item.active {
@@ -120,14 +121,12 @@
 
     <!-- REQUIRED PLACEHOLDERS -->
     <!-- Chosen Palette: Ocean & Sand (Brand Blues & Accent Amber on Light Gray) -->
-    <!-- Application Structure Plan: A dashboard-style layout with a persistent left sidebar for easy navigation. The content is broken into four thematic sections: 1. Course Intro (Context & Grading), 2. Core Microeconomics (Concepts & Prices), 3. Demand & Market Dynamics (Interactive charts & Case studies), 4. Glossary & Reflection (Searchable terms). This structure transforms a linear document into a modular learning tool, prioritizing user control, active recall (flashcards), and dynamic visualization. -->
+    <!-- Application Structure Plan: A 5-section dashboard-style layout with a persistent left sidebar. Content spans 1. Course Intro, 2. Core Microeconomics, 3. Demand Dynamics, 4. Short-Answer Quiz (NEW: accordion-based interactive Q&A), and 5. Glossary & Essays (NEW: glossary items now include styled practical examples, essay questions updated). This optimizes navigation and active recall for the EMBA cohort. -->
     <!-- Visualization & Content Choices: 
-         - Grading -> Inform -> Pie Chart (Chart.js) -> Hover tooltips -> Clear breakdown of syllabus weights.
-         - Micro Concepts -> Organize -> CSS Grid Cards -> Clickable Flashcards -> Active learning of definitions -> HTML/CSS (No SVG).
-         - Demand Shifts -> Change/Relationships -> Line Chart (Chart.js) -> Interactive buttons shift demand curve -> Visually demonstrates abstract concept -> Chart.js line graph updating via JS.
-         - Case Study (Shipping) -> Organize/Change -> Vertical Timeline -> Read sequential events -> Structured HTML/Tailwind.
-         - Glossary -> Organize -> Searchable List -> Text input filters list -> Quick reference -> Vanilla JS filtering.
-         CONFIRMING: No SVG or Mermaid used. -->
+         - Short-Answer Quiz -> Engage/Test -> HTML Accordion with vanilla JS toggle -> Provides immediate feedback via user interaction.
+         - Glossary -> Organize/Inform -> Searchable list with highlighted example boxes -> Facilitates quick referencing of abstract concepts with concrete business cases.
+         - Essays -> Inform -> Numbered styled list -> Uncluttered reading experience for complex questions.
+         CONFIRMING: No SVG or Mermaid used. Used Unicode icons instead. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 
     <!-- Sidebar Navigation -->
@@ -155,8 +154,13 @@
                     </button>
                 </li>
                 <li>
+                    <button onclick="navigate('quiz')" id="nav-quiz" class="nav-item w-full text-left px-6 py-3 text-slate-600 hover:bg-gray-50 transition-colors">
+                        📝 4. 短答練習測驗
+                    </button>
+                </li>
+                <li>
                     <button onclick="navigate('glossary')" id="nav-glossary" class="nav-item w-full text-left px-6 py-3 text-slate-600 hover:bg-gray-50 transition-colors">
-                        📖 4. 專有名詞與申論
+                        📖 5. 專有名詞與申論
                     </button>
                 </li>
             </ul>
@@ -180,15 +184,15 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
                     <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
                         <h3 class="text-xl font-bold text-brand-700 mb-4">🎯 課程宗旨與範疇</h3>
-                        <p class="mb-4 text-slate-600">本課程提供經濟學理論基礎，作為管理課程的經濟理論根基。涵蓋兩大領域：</p>
+                        <p class="mb-4 text-slate-600">本課程旨在提供學生對經濟學理論及概念的認識，作為未來修習管理課程的經濟理論基礎。涵蓋兩大領域：</p>
                         <ul class="space-y-3">
                             <li class="flex items-start">
                                 <span class="mr-2">🔹</span>
-                                <div><strong>個體經濟學 (Microeconomics)：</strong><br><span class="text-sm text-slate-500">探討市場供需、消費者與廠商行為。</span></div>
+                                <div><strong>個體經濟學 (Microeconomics)：</strong><br><span class="text-sm text-slate-500">探討市場供需、消費者行為、廠商行為及經濟活動分析。</span></div>
                             </li>
                             <li class="flex items-start">
                                 <span class="mr-2">🔸</span>
-                                <div><strong>總體經濟學 (Macroeconomics)：</strong><br><span class="text-sm text-slate-500">探討國民所得、經濟成長、通膨、貨幣與財政政策。</span></div>
+                                <div><strong>總體經濟學 (Macroeconomics)：</strong><br><span class="text-sm text-slate-500">探討國民所得、經濟成長、通膨、失業、貨幣與財政政策。</span></div>
                             </li>
                         </ul>
                     </div>
@@ -213,7 +217,7 @@
                             </div>
                             <div class="flashcard-back">
                                 <div class="text-3xl mb-2">💡</div>
-                                <p class="text-slate-800 text-sm">學習經濟學能鞏固基礎，熟悉分析工具，進而擴展經濟應用視野，發展出更精準的經濟與管理決策能力。</p>
+                                <p class="text-slate-800 text-sm">學習經濟學能鞏固基礎知識，讓管理人員熟悉經濟活動的分析理論與工具，進而擴展應用視野，發展出更科學且具前瞻性的經濟與管理決策能力。</p>
                             </div>
                         </div>
                     </div>
@@ -234,7 +238,7 @@
                         <p class="text-sm text-slate-600">在各種限制下配置稀少資源：</p>
                         <ul class="text-sm text-slate-600 mt-2 list-disc pl-4 space-y-1">
                             <li><strong>消費者：</strong>預算限制</li>
-                            <li><strong>勞工：</strong>時間限制</li>
+                            <li><strong>勞工：</strong>時間限制 (工作與休閒)</li>
                             <li><strong>廠商：</strong>生產能力與財務限制</li>
                         </ul>
                     </div>
@@ -244,7 +248,7 @@
                         <h3 class="text-lg font-bold text-slate-800 mb-2">市場與價格機制</h3>
                         <p class="text-sm text-slate-600">買方與賣方的互動決定價格。包含地理與產品性質界限。</p>
                         <ul class="text-sm text-slate-600 mt-2 list-disc pl-4 space-y-1">
-                            <li><strong>完全競爭市場：</strong>農產品 (無定價力)</li>
+                            <li><strong>完全競爭市場：</strong>買賣雙方眾多 (無定價力)</li>
                             <li><strong>非競爭市場：</strong>卡特爾 OPEC (可影響價格)</li>
                         </ul>
                     </div>
@@ -272,7 +276,7 @@
                             </div>
                             <div class="flashcard-back">
                                 <div class="text-3xl mb-2">💡</div>
-                                <p class="text-slate-800 text-sm">名目價格是當下商品購買時的絕對貨幣金額；實質價格則是扣除通膨因素、相對於總體物價水準調整後的價格，能反映真實購買力。</p>
+                                <p class="text-slate-800 text-sm">名目價格是商品在特定時間點的絕對貨幣金額；實質價格則是扣除通膨因素、相對於總體物價水準調整後的價格，能更精準地反映真實的購買力。</p>
                             </div>
                         </div>
                     </div>
@@ -345,85 +349,301 @@
                         </div>
                         <div class="timeline-item relative">
                             <h4 class="font-bold text-slate-800">2023-2024 年：紅海危機</h4>
-                            <p class="text-sm text-slate-600 mt-1">葉門叛軍干擾蘇伊士運河，商船繞道好望角，造成航運成本與時間大幅增加 (供給側負面衝擊)。</p>
+                            <p class="text-sm text-slate-600 mt-1">葉門叛軍干擾蘇伊士運河，商船繞道好望角，增加航程距離與時間，推升燃油與營運成本 (供給側負面衝擊)。</p>
                         </div>
                     </div>
                 </div>
+            </section>
 
-                <div class="bg-brand-50 p-6 rounded-xl border border-brand-100">
-                    <h3 class="text-lg font-bold text-brand-900 mb-4">💡 互動複習卡 (Chapter 3)</h3>
-                    <div class="flashcard h-40 w-full max-w-md mx-auto" onclick="this.classList.toggle('flipped')">
-                        <div class="flashcard-inner">
-                            <div class="flashcard-front">
-                                <div class="text-3xl mb-2">➡️</div>
-                                <h4 class="font-bold text-slate-800">所得增加時，正常財的需求曲線會如何變化？</h4>
-                                <p class="text-xs text-brand-500 mt-4">(點擊翻牌)</p>
+            <!-- Section 4: Quiz (NEW) -->
+            <section id="sec-quiz" class="section-content">
+                <header class="mb-8 border-b pb-4">
+                    <h2 class="text-3xl font-bold text-brand-900">短答練習測驗 (Short-Answer Quiz)</h2>
+                    <p class="text-slate-500 mt-2">請針對下列問題進行思考，並點擊卡片展開查看簡短的解答解析與易懂的圖文範例。</p>
+                </header>
+
+                <div class="space-y-4" id="quiz-container">
+                    <!-- Q1 -->
+                    <div class="border border-gray-200 rounded-lg bg-white overflow-hidden shadow-sm">
+                        <button class="w-full px-6 py-4 text-left font-bold text-slate-800 bg-gray-50 hover:bg-brand-50 flex justify-between items-center transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('.arrow').classList.toggle('rotate-180');">
+                            <span>Q1. 根據課程大綱，學習經濟學對 EMBA 學生在未來的管理決策上有何具體幫助？</span>
+                            <span class="arrow transition-transform duration-300 text-brand-500">▼</span>
+                        </button>
+                        <div class="hidden px-6 py-4 text-slate-600 border-t border-gray-100 bg-white">
+                            <div class="flex items-start">
+                                <div class="text-3xl mr-4 p-2 bg-blue-50 rounded-lg shrink-0" title="前瞻視野與決策">📈</div>
+                                <div class="flex-1">
+                                    <p class="leading-relaxed mt-1"><span class="font-bold text-brand-600 mr-2">解答：</span>學習經濟學能鞏固基礎知識，讓管理人員熟悉經濟活動的分析理論與工具，進而擴展應用視野，發展出更科學且具前瞻性的經濟與管理決策能力。</p>
+                                    <div class="mt-4 bg-blue-50 border-l-4 border-brand-500 p-4 rounded-r-lg">
+                                        <h4 class="font-bold text-brand-700 mb-2 flex items-center"><span class="mr-2">💡</span> 簡易懂範例</h4>
+                                        <p class="text-sm text-slate-700 mb-4">身為公司主管，當面臨是否要花 100 萬導入新系統時，你可以運用經濟學的「機會成本」來評估這筆錢如果投資在其他專案是否更賺，做出更精準的決策。</p>
+                                        <div class="bg-gray-200 border border-gray-300 border-dashed rounded flex items-center justify-center h-40 text-gray-600 text-sm font-medium">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="flashcard-back">
-                                <div class="text-3xl mb-2">💡</div>
-                                <p class="text-slate-800 text-sm">所得增加，消費者的購買力提升，在任何價格下都願意買更多，因此正常財的需求曲線會「向右移動」。</p>
+                        </div>
+                    </div>
+                    <!-- Q2 -->
+                    <div class="border border-gray-200 rounded-lg bg-white overflow-hidden shadow-sm">
+                        <button class="w-full px-6 py-4 text-left font-bold text-slate-800 bg-gray-50 hover:bg-brand-50 flex justify-between items-center transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('.arrow').classList.toggle('rotate-180');">
+                            <span>Q2. 請解釋「名目價格」與「實質價格」的主要差異。</span>
+                            <span class="arrow transition-transform duration-300 text-brand-500">▼</span>
+                        </button>
+                        <div class="hidden px-6 py-4 text-slate-600 border-t border-gray-100 bg-white">
+                            <div class="flex items-start">
+                                <div class="text-3xl mr-4 p-2 bg-blue-50 rounded-lg shrink-0" title="真實購買力">🛍️</div>
+                                <div class="flex-1">
+                                    <p class="leading-relaxed mt-1"><span class="font-bold text-brand-600 mr-2">解答：</span>名目價格是商品在特定時間點的絕對貨幣金額；實質價格則是扣除通膨因素、相對於總體物價水準調整後的價格，能更精準地反映真實的購買力。</p>
+                                    <div class="mt-4 bg-blue-50 border-l-4 border-brand-500 p-4 rounded-r-lg">
+                                        <h4 class="font-bold text-brand-700 mb-2 flex items-center"><span class="mr-2">💡</span> 簡易懂範例</h4>
+                                        <p class="text-sm text-slate-700 mb-4">1970年一顆雞蛋賣 1 元，現在賣 5 元（名目價格變貴）。但如果考慮這 50 年來大家薪水跟整體物價的漲幅（通膨），現在的 5 元可能比當年的 1 元還容易負擔，這才是反映真實購買力的實質價格。</p>
+                                        <div class="bg-gray-200 border border-gray-300 border-dashed rounded flex items-center justify-center h-40 text-gray-600 text-sm font-medium">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Q3 -->
+                    <div class="border border-gray-200 rounded-lg bg-white overflow-hidden shadow-sm">
+                        <button class="w-full px-6 py-4 text-left font-bold text-slate-800 bg-gray-50 hover:bg-brand-50 flex justify-between items-center transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('.arrow').classList.toggle('rotate-180');">
+                            <span>Q3. 在個體經濟學中，所謂的「限制」通常包含哪三大類？</span>
+                            <span class="arrow transition-transform duration-300 text-brand-500">▼</span>
+                        </button>
+                        <div class="hidden px-6 py-4 text-slate-600 border-t border-gray-100 bg-white">
+                            <div class="flex items-start">
+                                <div class="text-3xl mr-4 p-2 bg-blue-50 rounded-lg shrink-0" title="各種限制">🚧</div>
+                                <div class="flex-1">
+                                    <p class="leading-relaxed mt-1"><span class="font-bold text-brand-600 mr-2">解答：</span>「限制」主要包含消費者的「預算限制」、勞工或個人的「時間限制」（工作與休閒的取捨），以及廠商面臨的「生產能力限制」或財務資源限制。</p>
+                                    <div class="mt-4 bg-blue-50 border-l-4 border-brand-500 p-4 rounded-r-lg">
+                                        <h4 class="font-bold text-brand-700 mb-2 flex items-center"><span class="mr-2">💡</span> 簡易懂範例</h4>
+                                        <p class="text-sm text-slate-700 mb-4">假設你想出國旅遊，你面臨「存款只有 5 萬元」（預算限制）、「只有 3 天連假」（時間限制），而旅行社「機位已經客滿」（廠商生產能力限制），這三種限制共同決定了你最後的行程。</p>
+                                        <div class="bg-gray-200 border border-gray-300 border-dashed rounded flex items-center justify-center h-40 text-gray-600 text-sm font-medium">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Q4 -->
+                    <div class="border border-gray-200 rounded-lg bg-white overflow-hidden shadow-sm">
+                        <button class="w-full px-6 py-4 text-left font-bold text-slate-800 bg-gray-50 hover:bg-brand-50 flex justify-between items-center transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('.arrow').classList.toggle('rotate-180');">
+                            <span>Q4. 何謂「市場範圍」？請舉例說明其界限。</span>
+                            <span class="arrow transition-transform duration-300 text-brand-500">▼</span>
+                        </button>
+                        <div class="hidden px-6 py-4 text-slate-600 border-t border-gray-100 bg-white">
+                            <div class="flex items-start">
+                                <div class="text-3xl mr-4 p-2 bg-blue-50 rounded-lg shrink-0" title="地理與產品界線">🗺️</div>
+                                <div class="flex-1">
+                                    <p class="leading-relaxed mt-1"><span class="font-bold text-brand-600 mr-2">解答：</span>市場範圍是指市場的界限，包括地理上的界限（如區域房地產市場）與產品性質上的界限（如單眼相機與小型數位相機市場的區隔）。</p>
+                                    <div class="mt-4 bg-blue-50 border-l-4 border-brand-500 p-4 rounded-r-lg">
+                                        <h4 class="font-bold text-brand-700 mb-2 flex items-center"><span class="mr-2">💡</span> 簡易懂範例</h4>
+                                        <p class="text-sm text-slate-700 mb-4">如果你想開一家「手搖飲店」，你的市場地理範圍可能只侷限在「這條街或這個商圈」；而產品範圍則在「茶飲與果汁」之間，通常不會把旁邊的「高級法式餐廳」視為直接競爭對手。</p>
+                                        <div class="bg-gray-200 border border-gray-300 border-dashed rounded flex items-center justify-center h-40 text-gray-600 text-sm font-medium">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Q5 -->
+                    <div class="border border-gray-200 rounded-lg bg-white overflow-hidden shadow-sm">
+                        <button class="w-full px-6 py-4 text-left font-bold text-slate-800 bg-gray-50 hover:bg-brand-50 flex justify-between items-center transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('.arrow').classList.toggle('rotate-180');">
+                            <span>Q5. 請描述消費者行為分析的三個主要步驟。</span>
+                            <span class="arrow transition-transform duration-300 text-brand-500">▼</span>
+                        </button>
+                        <div class="hidden px-6 py-4 text-slate-600 border-t border-gray-100 bg-white">
+                            <div class="flex items-start">
+                                <div class="text-3xl mr-4 p-2 bg-blue-50 rounded-lg shrink-0" title="消費決策過程">🛒</div>
+                                <div class="flex-1">
+                                    <p class="leading-relaxed mt-1"><span class="font-bold text-brand-600 mr-2">解答：</span>消費者行為分析依序為：(1) 確定消費者偏好；(2) 考量預算限制；(3) 在現有預算下做出效用最大化的消費者選擇。</p>
+                                    <div class="mt-4 bg-blue-50 border-l-4 border-brand-500 p-4 rounded-r-lg">
+                                        <h4 class="font-bold text-brand-700 mb-2 flex items-center"><span class="mr-2">💡</span> 簡易懂範例</h4>
+                                        <p class="text-sm text-slate-700 mb-4">買手機時，你先確認自己喜歡拍照（確認偏好），接著看戶頭只有 2 萬元（考慮預算限制），最後在預算內挑選一台拍照功能最強的手機（做出效用最大化的選擇）。</p>
+                                        <div class="bg-gray-200 border border-gray-300 border-dashed rounded flex items-center justify-center h-40 text-gray-600 text-sm font-medium">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Q6 -->
+                    <div class="border border-gray-200 rounded-lg bg-white overflow-hidden shadow-sm">
+                        <button class="w-full px-6 py-4 text-left font-bold text-slate-800 bg-gray-50 hover:bg-brand-50 flex justify-between items-center transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('.arrow').classList.toggle('rotate-180');">
+                            <span>Q6. 請解釋「邊際替代率 (MRS)」的含義。</span>
+                            <span class="arrow transition-transform duration-300 text-brand-500">▼</span>
+                        </button>
+                        <div class="hidden px-6 py-4 text-slate-600 border-t border-gray-100 bg-white">
+                            <div class="flex items-start">
+                                <div class="text-3xl mr-4 p-2 bg-blue-50 rounded-lg shrink-0" title="權衡與取捨">⚖️</div>
+                                <div class="flex-1">
+                                    <p class="leading-relaxed mt-1"><span class="font-bold text-brand-600 mr-2">解答：</span>邊際替代率是指消費者為了獲得額外一單位的某種財貨，所願意放棄另一種財貨的數量。它代表了無異曲線的斜率，反映出消費者內心的取捨意願。</p>
+                                    <div class="mt-4 bg-blue-50 border-l-4 border-brand-500 p-4 rounded-r-lg">
+                                        <h4 class="font-bold text-brand-700 mb-2 flex items-center"><span class="mr-2">💡</span> 簡易懂範例</h4>
+                                        <p class="text-sm text-slate-700 mb-4">假設你很餓但口不渴，為了解除飢餓，你願意放棄手上「3 瓶礦泉水」來換取「1 個漢堡」，這個「3換1」的強烈意願就是邊際替代率。</p>
+                                        <div class="bg-gray-200 border border-gray-300 border-dashed rounded flex items-center justify-center h-40 text-gray-600 text-sm font-medium">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Q7 -->
+                    <div class="border border-gray-200 rounded-lg bg-white overflow-hidden shadow-sm">
+                        <button class="w-full px-6 py-4 text-left font-bold text-slate-800 bg-gray-50 hover:bg-brand-50 flex justify-between items-center transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('.arrow').classList.toggle('rotate-180');">
+                            <span>Q7. 廠商在決定生產決策時，需考慮哪三個基本步驟？</span>
+                            <span class="arrow transition-transform duration-300 text-brand-500">▼</span>
+                        </button>
+                        <div class="hidden px-6 py-4 text-slate-600 border-t border-gray-100 bg-white">
+                            <div class="flex items-start">
+                                <div class="text-3xl mr-4 p-2 bg-blue-50 rounded-lg shrink-0" title="生產組合">⚙️</div>
+                                <div class="flex-1">
+                                    <p class="leading-relaxed mt-1"><span class="font-bold text-brand-600 mr-2">解答：</span>廠商生產決策包含：(1) 評估生產技術（如何將投入轉為產出）；(2) 考慮成本限制（預算與要素價格）；(3) 投入要素選擇（決定各種要素的投入比例）。</p>
+                                    <div class="mt-4 bg-blue-50 border-l-4 border-brand-500 p-4 rounded-r-lg">
+                                        <h4 class="font-bold text-brand-700 mb-2 flex items-center"><span class="mr-2">💡</span> 簡易懂範例</h4>
+                                        <p class="text-sm text-slate-700 mb-4">開麵包店時，老闆要先決定「用機器揉麵還是人工揉麵」（評估生產技術），接著看「買機器的預算跟請員工的薪水」（考慮成本限制），最後決定「買1台機器配2個師傅」（投入要素選擇）。</p>
+                                        <div class="bg-gray-200 border border-gray-300 border-dashed rounded flex items-center justify-center h-40 text-gray-600 text-sm font-medium">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Q8 -->
+                    <div class="border border-gray-200 rounded-lg bg-white overflow-hidden shadow-sm">
+                        <button class="w-full px-6 py-4 text-left font-bold text-slate-800 bg-gray-50 hover:bg-brand-50 flex justify-between items-center transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('.arrow').classList.toggle('rotate-180');">
+                            <span>Q8. 什麼是「邊際報酬遞減法則」？</span>
+                            <span class="arrow transition-transform duration-300 text-brand-500">▼</span>
+                        </button>
+                        <div class="hidden px-6 py-4 text-slate-600 border-t border-gray-100 bg-white">
+                            <div class="flex items-start">
+                                <div class="text-3xl mr-4 p-2 bg-blue-50 rounded-lg shrink-0" title="效益遞減">📉</div>
+                                <div class="flex-1">
+                                    <p class="leading-relaxed mt-1"><span class="font-bold text-brand-600 mr-2">解答：</span>指在其他生產要素固定不變的情況下，隨著某種變動要素（如勞動）的投入增加，該要素所帶來的額外產量（邊際產量）最終會呈現下降趨勢。</p>
+                                    <div class="mt-4 bg-blue-50 border-l-4 border-brand-500 p-4 rounded-r-lg">
+                                        <h4 class="font-bold text-brand-700 mb-2 flex items-center"><span class="mr-2">💡</span> 簡易懂範例</h4>
+                                        <p class="text-sm text-slate-700 mb-4">廚房只有 2 個瓦斯爐（固定資本）。請第 1 個廚師能出 50 道菜，請第 2 個能出 100 道，但如果硬擠進第 5 個廚師，大家會互相撞來撞去，增加的產量反而越來越少。</p>
+                                        <div class="bg-gray-200 border border-gray-300 border-dashed rounded flex items-center justify-center h-40 text-gray-600 text-sm font-medium">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Q9 -->
+                    <div class="border border-gray-200 rounded-lg bg-white overflow-hidden shadow-sm">
+                        <button class="w-full px-6 py-4 text-left font-bold text-slate-800 bg-gray-50 hover:bg-brand-50 flex justify-between items-center transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('.arrow').classList.toggle('rotate-180');">
+                            <span>Q9. 請說明「核心消費者物價指數 (Core CPI)」與一般 CPI 的不同之處。</span>
+                            <span class="arrow transition-transform duration-300 text-brand-500">▼</span>
+                        </button>
+                        <div class="hidden px-6 py-4 text-slate-600 border-t border-gray-100 bg-white">
+                            <div class="flex items-start">
+                                <div class="text-3xl mr-4 p-2 bg-blue-50 rounded-lg shrink-0" title="排除雜音，精準趨勢">🎯</div>
+                                <div class="flex-1">
+                                    <p class="leading-relaxed mt-1"><span class="font-bold text-brand-600 mr-2">解答：</span>核心 CPI 是從消費者物價指數中扣除波動劇烈的「食物」與「能源」價格後的數據。它能排除短期外生衝擊，提供更穩定、反映長期物價趨勢的分析依據。</p>
+                                    <div class="mt-4 bg-blue-50 border-l-4 border-brand-500 p-4 rounded-r-lg">
+                                        <h4 class="font-bold text-brand-700 mb-2 flex items-center"><span class="mr-2">💡</span> 簡易懂範例</h4>
+                                        <p class="text-sm text-slate-700 mb-4">最近因為連續颱風讓高麗菜飆漲，帶動一般物價指數飆高。但政府在評估長期經濟時，會把這種受天氣影響的「食物」和漲跌起伏大的「能源」扣除，來看真正的核心物價趨勢。</p>
+                                        <div class="bg-gray-200 border border-gray-300 border-dashed rounded flex items-center justify-center h-40 text-gray-600 text-sm font-medium">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Q10 -->
+                    <div class="border border-gray-200 rounded-lg bg-white overflow-hidden shadow-sm">
+                        <button class="w-full px-6 py-4 text-left font-bold text-slate-800 bg-gray-50 hover:bg-brand-50 flex justify-between items-center transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('.arrow').classList.toggle('rotate-180');">
+                            <span>Q10. 「紅海危機」如何從供給側影響全球航運經濟？</span>
+                            <span class="arrow transition-transform duration-300 text-brand-500">▼</span>
+                        </button>
+                        <div class="hidden px-6 py-4 text-slate-600 border-t border-gray-100 bg-white">
+                            <div class="flex items-start">
+                                <div class="text-3xl mr-4 p-2 bg-blue-50 rounded-lg shrink-0" title="航運與供應鏈">🚢</div>
+                                <div class="flex-1">
+                                    <p class="leading-relaxed mt-1"><span class="font-bold text-brand-600 mr-2">解答：</span>紅海危機因葉門叛軍攻擊商船，導致航運公司（如長榮、陽明）被迫繞道好望角。這增加了航程距離與時間，提升了燃油與營運成本，進而縮減了有效供給並推升運價。</p>
+                                    <div class="mt-4 bg-blue-50 border-l-4 border-brand-500 p-4 rounded-r-lg">
+                                        <h4 class="font-bold text-brand-700 mb-2 flex items-center"><span class="mr-2">💡</span> 簡易懂範例</h4>
+                                        <p class="text-sm text-slate-700 mb-4">就像原本從台北到高雄開高速公路只要 3 小時，但因為坍方封閉（蘇伊士運河受阻），貨車只好繞道東部走濱海公路（好望角）。路程變長導致油錢、司機加班費大增，最後反映在運費飆漲上。</p>
+                                        <div class="bg-gray-200 border border-gray-300 border-dashed rounded flex items-center justify-center h-40 text-gray-600 text-sm font-medium">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Section 4: Glossary & Essays -->
+            <!-- Section 5: Glossary & Essays -->
             <section id="sec-glossary" class="section-content">
                 <header class="mb-8 border-b pb-4">
                     <h2 class="text-3xl font-bold text-brand-900">專有名詞與申論思考</h2>
-                    <p class="text-slate-500 mt-2">快速查詢課程核心術語，並提供申論題引導您進行深度的管理實務思考。</p>
+                    <p class="text-slate-500 mt-2">快速查詢課程核心術語及其「實務範例」，並提供申論題引導您進行深度的管理實務思考。</p>
                 </header>
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
                     <!-- Searchable Glossary -->
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col">
-                        <h3 class="text-xl font-bold text-brand-700 mb-4">📖 核心術語彙編</h3>
-                        <input type="text" id="glossarySearch" placeholder="🔍 搜尋名詞... (例如: 替代品)" class="w-full px-4 py-2 border rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-brand-500">
-                        <div class="flex-1 overflow-y-auto max-h-96 pr-2 space-y-3" id="glossaryList">
-                            <!-- JS will populate this -->
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col h-[600px]">
+                        <h3 class="text-xl font-bold text-brand-700 mb-4">📖 核心術語彙編 (含實務範例)</h3>
+                        <input type="text" id="glossarySearch" placeholder="🔍 搜尋名詞... (例如: 替代品)" class="w-full px-4 py-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                        <div class="flex-1 overflow-y-auto pr-2 space-y-4" id="glossaryList">
+                            <!-- JS will populate this with terms, definitions, and examples -->
                         </div>
                     </div>
 
                     <!-- Essay Questions -->
-                    <div class="bg-slate-800 text-white p-6 rounded-xl shadow-sm border border-slate-700">
-                        <h3 class="text-xl font-bold text-accent-500 mb-4">✍️ 申論思考 (Essay Questions)</h3>
-                        <p class="text-sm text-slate-300 mb-6 border-b border-slate-600 pb-4">供課後深入思考與討論，無標準答案，旨在訓練決策邏輯。</p>
-                        <ul class="space-y-4 text-sm text-slate-200">
+                    <div class="bg-slate-800 text-white p-6 rounded-xl shadow-sm border border-slate-700 h-[600px] overflow-y-auto">
+                        <h3 class="text-xl font-bold text-accent-500 mb-4">✍️ 申論題建議 (Essay Questions)</h3>
+                        <p class="text-sm text-slate-300 mb-6 border-b border-slate-600 pb-4">本部分不提供標準答案，供深入思考、討論或撰寫報告參考，旨在訓練決策邏輯。</p>
+                        <ul class="space-y-6 text-sm text-slate-200">
                             <li class="flex items-start">
-                                <span class="text-accent-500 mr-2">Q1.</span>
-                                <div>從「取捨」角度分析，製造業面臨勞動力成本上漲時，如何決定是否將生產線自動化？</div>
+                                <span class="text-accent-500 mr-3 text-lg font-bold">1</span>
+                                <div>
+                                    <strong class="text-white block mb-1 text-base">地緣政治與生產決策：</strong>
+                                    試以台積電（TSMC）赴美設廠為例，分析政治環境（外在因素）如何影響廠商的生產決策，並探討其在「成本限制」與「風險分散」之間的權衡。
+                                </div>
                             </li>
                             <li class="flex items-start">
-                                <span class="text-accent-500 mr-2">Q2.</span>
-                                <div>分析「紅海危機」如何透過供給側與需求側互動，影響終端消費品價格？</div>
+                                <span class="text-accent-500 mr-3 text-lg font-bold">2</span>
+                                <div>
+                                    <strong class="text-white block mb-1 text-base">消費行為與人性偏好：</strong>
+                                    借用課程中「招三暮四」的成語故事，探討消費者在「時間」與「數量」分配上的偏好差異。若總資源不變，為何不同的分配方式會產生不同的效用感？
+                                </div>
                             </li>
                             <li class="flex items-start">
-                                <span class="text-accent-500 mr-2">Q3.</span>
-                                <div>政府定義「市場範圍」時，其決策對企業併購案與反壟斷法有何重要性？</div>
+                                <span class="text-accent-500 mr-3 text-lg font-bold">3</span>
+                                <div>
+                                    <strong class="text-white block mb-1 text-base">供給側衝擊與市場應對：</strong>
+                                    分析 2020 年至 2024 年間全球海運市場的變化。當市場面臨外生衝擊（如塞港、紅海危機）時，廠商（如馬士基 Maersk）如何透過價格機制或調整航線來因應獲利告急？
+                                </div>
                             </li>
                             <li class="flex items-start">
-                                <span class="text-accent-500 mr-2">Q4.</span>
-                                <div>結合「所得」與「預期」，在不景氣預期下，房地產需求曲線會如何變化？</div>
+                                <span class="text-accent-500 mr-3 text-lg font-bold">4</span>
+                                <div>
+                                    <strong class="text-white block mb-1 text-base">技術創新與生產函數：</strong>
+                                    探討人工智慧（AI）技術的導入如何改變企業的生產函數。在資產支出（CapEx）持續增加的情況下，企業應如何判斷技術投入的邊際回報是否已達到轉折點？
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-accent-500 mr-3 text-lg font-bold">5</span>
+                                <div>
+                                    <strong class="text-white block mb-1 text-base">物價指數與薪資管理：</strong>
+                                    說明企業如何利用 CPI 與核心 CPI 的變動，作為內部調整員工薪資、管理營運成本及訂定產品市場售價的參考工具。
+                                </div>
                             </li>
                         </ul>
-                    </div>
-                </div>
-
-                <div class="bg-brand-50 p-6 rounded-xl border border-brand-100">
-                    <h3 class="text-lg font-bold text-brand-900 mb-4">💡 互動複習卡 (Chapter 4)</h3>
-                    <div class="flashcard h-40 w-full max-w-md mx-auto" onclick="this.classList.toggle('flipped')">
-                        <div class="flashcard-inner">
-                            <div class="flashcard-front">
-                                <div class="text-3xl mb-2">🔄</div>
-                                <h4 class="font-bold text-slate-800">何謂「替代品」？其價格上漲如何影響另一財貨？</h4>
-                                <p class="text-xs text-brand-500 mt-4">(點擊翻牌)</p>
-                            </div>
-                            <div class="flashcard-back">
-                                <div class="text-3xl mb-2">💡</div>
-                                <p class="text-slate-800 text-sm">替代品是指功用相似可互相替換的產品。當其漲價，消費者會轉向購買另一商品，使另一商品的需求增加（向右移）。</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
@@ -451,28 +671,28 @@
             document.querySelector('main').scrollTop = 0;
         }
 
-        // --- Data Storage for Glossary ---
+        // --- Data Storage for Glossary (Updated with Examples) ---
         const glossaryTerms = [
-            { term: "個體經濟學", def: "研究個人、家庭及廠商等個別經濟單位如何進行決策與互動。" },
-            { term: "總體經濟學", def: "研究整體經濟現象，如國民所得、失業率、通膨及經濟成長。" },
-            { term: "預算限制", def: "消費者受限於所得，僅能購買有限數量的財貨組合。" },
-            { term: "完全競爭市場", def: "市場中有大量買賣者，產品同質性高，單一參與者無法控制價格。" },
-            { term: "非競爭市場", def: "個別廠商或組織（如卡特爾）具有操縱市場價格能力的市場結構。" },
-            { term: "名目價格", def: "商品在特定時間點購買時的絕對貨幣金額。" },
-            { term: "實質價格", def: "扣除通膨因素、相對於總體物價水準調整後的價格，反映真實購買力。" },
-            { term: "消費者物價指數 (CPI)", def: "衡量家庭購買商品與服務之平均價格變動的指標。" },
-            { term: "核心 CPI", def: "從CPI中扣除波動較大的食物與能源後的數字，反映長期物價趨勢。" },
-            { term: "替代品", def: "功用相似可互相替換的產品；一者漲價會增加另一者的需求。" },
-            { term: "互補品", def: "必須搭配使用的產品；一者漲價會減少另一者的需求。" },
-            { term: "正常財", def: "消費者所得增加時，需求量隨之增加的財貨。" },
-            { term: "劣等財", def: "消費者所得增加時，需求量反而減少的財貨。" }
+            { term: "個體經濟學", def: "研究個人、家庭及廠商等個別經濟單位如何進行決策與互動。", ex: "分析雞蛋價格上漲對一般家庭購買量之影響。" },
+            { term: "總體經濟學", def: "研究整體經濟現象，如國民所得、失業率、通膨及經濟成長政策。", ex: "探討政府調升基本工資對國家整體失業率的影響。" },
+            { term: "無異曲線 (IC)", def: "代表能帶給消費者相同滿足程度（效用）的所有財貨組合點之連線。", ex: "兩張電影票與一頓大餐，對某人來說可能具備相同滿足感。" },
+            { term: "預算限制 (BC)", def: "消費者在所得有限的情況下，所能購買財貨組合的最高限制。", ex: "每月只有 5,000 元零用錢，需分配在餐飲與交通上。" },
+            { term: "替代品 (Substitutes)", def: "功用相似可互相替換的產品；當 A 價格上升，B 的需求隨之增加。", ex: "當咖啡價格大幅調漲時，消費者改喝茶，使茶的需求增加。" },
+            { term: "互補品 (Complements)", def: "必須搭配使用的產品；當 A 價格下降，B 的需求隨之增加。", ex: "汽車大幅降價促銷，進而帶動汽油與維修零件的需求。" },
+            { term: "正常財 (Normal Good)", def: "消費者所得增加時，需求量隨之增加的財貨。", ex: "薪資提高後，消費者從吃路邊攤轉向更多地去餐廳用餐。" },
+            { term: "劣等財 (Inferior Good)", def: "消費者所得增加時，需求量反而減少的財貨。", ex: "所得增加後，消費者減少購買二手的廉價生活用品。" },
+            { term: "等產量線 (Isoquant)", def: "在特定技術下，能產出相同數量的各種生產要素投入組合。", ex: "廠商決定要多僱用兩名員工或多買一台自動化機器。" },
+            { term: "邊際技術替代率 (MRTS)", def: "為了維持產量不變，增加一單位勞動力時，所能減少的資本投入量。", ex: "導入 AI 系統後，企業評估可減少多少初階行政人力。" },
+            { term: "沉入成本 (Sunk Cost)", def: "已經發生且無法收回的支出，不應影響未來的決策判斷。", ex: "股票套牢後，不應因過去買進的高價而拒絕合理的止損。" },
+            { term: "卡特爾 (Cartel)", def: "一群獨立生產者為了控制價格與產量而成立的正式組織。", ex: "石油輸出國組織 (OPEC) 共同決定石油產量以穩定價格。" },
+            { term: "消費者物價指數 (CPI)", def: "衡量一般家庭購買固定籃子商品與勞務之平均價格變動的指標。", ex: "包含食物、衣著、居住、交通等七大類項目的綜合加權指標。" }
         ];
 
         // --- Initialize Glossary ---
         function renderGlossary(filter = "") {
             const listContainer = document.getElementById('glossaryList');
             listContainer.innerHTML = "";
-            const filtered = glossaryTerms.filter(t => t.term.includes(filter) || t.def.includes(filter));
+            const filtered = glossaryTerms.filter(t => t.term.includes(filter) || t.def.includes(filter) || t.ex.includes(filter));
             
             if (filtered.length === 0) {
                 listContainer.innerHTML = "<p class='text-sm text-slate-400'>找不到相關名詞。</p>";
@@ -481,8 +701,14 @@
 
             filtered.forEach(item => {
                 const div = document.createElement('div');
-                div.className = "p-3 bg-gray-50 border border-gray-100 rounded text-sm";
-                div.innerHTML = `<strong class="text-brand-700 block mb-1">${item.term}</strong><span class="text-slate-600">${item.def}</span>`;
+                div.className = "p-4 bg-gray-50 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow";
+                div.innerHTML = `
+                    <strong class="text-brand-700 text-lg block mb-1">${item.term}</strong>
+                    <span class="text-slate-600 block mb-3 text-sm leading-relaxed">${item.def}</span>
+                    <div class="bg-blue-50 border-l-4 border-accent-500 p-2 text-sm text-slate-700 rounded-r">
+                        <span class="font-bold text-accent-700">💡 實務範例：</span>${item.ex}
+                    </div>
+                `;
                 listContainer.appendChild(div);
             });
         }
