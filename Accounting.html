@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EMBA_115 會計學學習網</title>
+    <title>會計學基礎與會計循環：學習指南</title>
     <!-- 引入 Tailwind CSS 進行快速排版 -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- 引入 FontAwesome 圖示 -->
@@ -28,8 +28,19 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #94a3b8; 
         }
-        .slide-badge {
-            @apply inline-flex items-center gap-1 bg-slate-800 text-white px-2 py-1 rounded text-xs font-mono font-bold tracking-wider mb-2 shadow-sm;
+        /* 手風琴動畫過渡效果 */
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details[open] summary ~ * {
+            animation: sweep .3s ease-in-out;
+        }
+        @keyframes sweep {
+            0%    {opacity: 0; transform: translateY(-10px)}
+            100%  {opacity: 1; transform: translateY(0)}
         }
     </style>
 </head>
@@ -38,307 +49,729 @@
     <!-- 左側導覽列 (Sidebar) -->
     <aside class="w-64 bg-slate-900 text-white flex flex-col h-full shadow-xl z-10 flex-shrink-0">
         <div class="p-6 border-b border-slate-700">
-            <h1 class="text-2xl font-bold tracking-wider flex items-center gap-2">
-                <i class="fa-solid fa-chart-line text-blue-400"></i>
-                EMBA_115
+            <h1 class="text-xl font-bold tracking-wider flex items-center gap-2">
+                <i class="fa-solid fa-chart-pie text-blue-400"></i>
+                會計學學習指南
             </h1>
-            <p class="text-slate-400 text-sm mt-1">會計學課程學習網</p>
+            <p class="text-slate-400 text-xs mt-2">基礎循環 ＋ 股權合併</p>
         </div>
 
         <nav class="flex-1 overflow-y-auto py-4">
-            <ul class="space-y-1">
+            <ul class="space-y-1 text-sm">
                 <li>
                     <button id="btn-intro" onclick="showChapter('intro')" class="nav-btn w-full text-left px-6 py-3 transition-colors bg-slate-800 border-l-4 border-blue-400 flex items-center gap-3">
-                        <i class="fa-solid fa-book-open w-5 text-center"></i>
-                        <span>課程介紹與規定</span>
+                        <i class="fa-solid fa-compass w-5 text-center"></i>
+                        <span>學習指南簡介</span>
+                    </button>
+                </li>
+                
+                <div class="px-6 py-2 mt-2 text-xs font-bold text-slate-500 uppercase tracking-wider">第一週：會計基礎</div>
+                <li>
+                    <button id="btn-concepts" onclick="showChapter('concepts')" class="nav-btn w-full text-left px-6 py-3 transition-colors hover:bg-slate-800 border-l-4 border-transparent flex items-center gap-3">
+                        <i class="fa-solid fa-lightbulb w-5 text-center"></i>
+                        <span>W1: 核心概念回顧</span>
                     </button>
                 </li>
                 <li>
-                    <button id="btn-ch1" onclick="showChapter('ch1')" class="nav-btn w-full text-left px-6 py-3 transition-colors hover:bg-slate-800 border-l-4 border-transparent flex items-center gap-3">
-                        <i class="fa-solid fa-scale-balanced w-5 text-center"></i>
-                        <span>Ch1. 會計恆等式及財報</span>
+                    <button id="btn-quiz" onclick="showChapter('quiz')" class="nav-btn w-full text-left px-6 py-3 transition-colors hover:bg-slate-800 border-l-4 border-transparent flex items-center gap-3">
+                        <i class="fa-solid fa-circle-question w-5 text-center"></i>
+                        <span>W1: 互動式簡答測驗</span>
                     </button>
                 </li>
                 <li>
-                    <button id="btn-ch2" onclick="showChapter('ch2')" class="nav-btn w-full text-left px-6 py-3 transition-colors hover:bg-slate-800 border-l-4 border-transparent flex items-center gap-3">
-                        <i class="fa-solid fa-book-journal-whills w-5 text-center"></i>
-                        <span>Ch2. 借貸法則與過帳</span>
+                    <button id="btn-essay" onclick="showChapter('essay')" class="nav-btn w-full text-left px-6 py-3 transition-colors hover:bg-slate-800 border-l-4 border-transparent flex items-center gap-3">
+                        <i class="fa-solid fa-pen-nib w-5 text-center"></i>
+                        <span>W1: 申論思考題</span>
                     </button>
                 </li>
                 <li>
-                    <button id="btn-ch3" onclick="showChapter('ch3')" class="nav-btn w-full text-left px-6 py-3 transition-colors hover:bg-slate-800 border-l-4 border-transparent flex items-center gap-3">
-                        <i class="fa-solid fa-file-invoice-dollar w-5 text-center"></i>
-                        <span>Ch3. 調整、結帳與編表</span>
+                    <button id="btn-glossary" onclick="showChapter('glossary')" class="nav-btn w-full text-left px-6 py-3 transition-colors hover:bg-slate-800 border-l-4 border-transparent flex items-center gap-3">
+                        <i class="fa-solid fa-spell-check w-5 text-center"></i>
+                        <span>W1: 重要名詞定義表</span>
+                    </button>
+                </li>
+
+                <div class="px-6 py-2 mt-4 text-xs font-bold text-slate-500 uppercase tracking-wider">第二週：合併財報</div>
+                <li>
+                    <button id="btn-w2-quiz" onclick="showChapter('w2-quiz')" class="nav-btn w-full text-left px-6 py-3 transition-colors hover:bg-slate-800 border-l-4 border-transparent flex items-center gap-3">
+                        <i class="fa-solid fa-hand-pointer w-5 text-center"></i>
+                        <span>W2: 互動式短答複習</span>
+                    </button>
+                </li>
+                <li>
+                    <button id="btn-w2-essay" onclick="showChapter('w2-essay')" class="nav-btn w-full text-left px-6 py-3 transition-colors hover:bg-slate-800 border-l-4 border-transparent flex items-center gap-3">
+                        <i class="fa-solid fa-comments w-5 text-center"></i>
+                        <span>W2: 申論思考題</span>
+                    </button>
+                </li>
+                <li>
+                    <button id="btn-w2-glossary" onclick="showChapter('w2-glossary')" class="nav-btn w-full text-left px-6 py-3 transition-colors hover:bg-slate-800 border-l-4 border-transparent flex items-center gap-3">
+                        <i class="fa-solid fa-book-bookmark w-5 text-center"></i>
+                        <span>W2: 關鍵術語彙總</span>
                     </button>
                 </li>
             </ul>
         </nav>
 
         <div class="p-4 border-t border-slate-700 text-xs text-slate-500 text-center">
-            &copy; 2026 EMBA Accounting
+            &copy; 2026 Accounting Study Guide
         </div>
     </aside>
 
     <!-- 右側內容區 (Main Content) -->
     <main class="flex-1 h-full overflow-y-auto bg-slate-50 p-8 md:p-12 relative">
         
-        <!-- 課程介紹 -->
+        <!-- 簡介 -->
         <section id="intro" class="chapter-content max-w-4xl mx-auto animation-fade-in">
             <header class="mb-8 border-b pb-4">
-                <span class="text-blue-600 font-semibold tracking-wider text-sm uppercase">Course Introduction</span>
-                <h2 class="text-3xl font-bold mt-2 text-slate-800">課程介紹與評分規定</h2>
+                <span class="text-blue-600 font-semibold tracking-wider text-sm uppercase">Introduction</span>
+                <h2 class="text-3xl font-bold mt-2 text-slate-800">會計學學習指南：涵蓋基礎至合併財報</h2>
             </header>
             
-            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-6">
-                <h3 class="text-xl font-bold mb-4 flex items-center gap-2"><i class="fa-solid fa-circle-info text-blue-500"></i> 關於本課程 (所謂的「負六」)</h3>
-                <p class="text-slate-600 leading-relaxed mb-4">
-                    本課程為 EMBA 的基礎先修課程之一（會計、經濟、統計，俗稱「負六」課程）。雖然是不計入畢業學分的零學分概念，但卻是<strong>必修條件</strong>，必須修畢才能滿足畢業門檻。
-                </p>
-                <div class="bg-blue-50 text-blue-800 p-4 rounded-lg border border-blue-100">
-                    <i class="fa-solid fa-quote-left mr-2"></i>
-                    會計學一般被評為枯燥，但老師致力於讓這門課變得「生動有趣」，請給彼此一點時間觀察！
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-8 mb-6 text-center">
+                <div class="text-blue-500 text-5xl mb-4">
+                    <i class="fa-solid fa-book-open-reader"></i>
                 </div>
-            </div>
-
-            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-6">
-                <h3 class="text-lg font-bold mb-3 border-b pb-2">💯 評分標準</h3>
-                <ul class="space-y-3 text-slate-600">
-                    <li class="flex items-start gap-2">
-                        <i class="fa-solid fa-check text-green-500 mt-1"></i>
-                        <div><strong>出席率 (20%)：</strong>未出席將失去參與分數。缺席兩次大約影響 3 分。</div>
-                    </li>
-                    <li class="flex items-start gap-2">
-                        <i class="fa-solid fa-check text-green-500 mt-1"></i>
-                        <div><strong>心得報告：</strong>A4 單面，包含「學習心得」與「對本課程的建議事項」。</div>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Chapter 1 -->
-        <section id="ch1" class="chapter-content max-w-4xl mx-auto hidden">
-            <header class="mb-8 border-b pb-4">
-                <span class="text-blue-600 font-semibold tracking-wider text-sm uppercase">Chapter 1</span>
-                <h2 class="text-3xl font-bold mt-2 text-slate-800">會計恆等式及財務報表</h2>
-            </header>
-
-            <!-- PPT P.3 重點 -->
-            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-6">
-                <div class="slide-badge"><i class="fa-solid fa-desktop"></i> PPT P.3</div>
-                <h3 class="text-xl font-bold mb-4 text-indigo-900 border-l-4 border-indigo-500 pl-3">會計恆等式與三大要素定義</h3>
-                
-                <div class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white rounded-lg p-6 mb-4 text-center">
-                    <div class="text-3xl md:text-5xl font-bold tracking-widest font-mono">
-                        A = L + E
-                    </div>
-                </div>
-                
-                <ul class="space-y-3 text-slate-700 text-sm">
-                    <li><strong class="text-blue-700">資產 (Asset, A)：</strong>企業因過去交易產生的經濟資源，預期將產生現金流入 (如現金、設備)。</li>
-                    <li><strong class="text-blue-700">負債 (Liability, L)：</strong>現時義務 (包含法定義務及推定義務)，清償將造成資源流出 (如欠款)。</li>
-                    <li><strong class="text-blue-700">權益 (Equity, E)：</strong>資產減去負債後的餘額。</li>
-                </ul>
-            </div>
-
-            <!-- PPT P.4-P5 重點 -->
-            <div class="bg-indigo-50 rounded-xl border border-indigo-100 p-6 mb-6">
-                <div class="slide-badge"><i class="fa-solid fa-desktop"></i> PPT P.4 - P.5</div>
-                <h3 class="text-xl font-bold text-indigo-900 mb-2 border-l-4 border-indigo-500 pl-3">交易記錄與平衡機制</h3>
-                <p class="text-sm text-slate-600 mb-4"><strong>平衡機制原則：</strong>(1) 等號兩邊金額加減後淨額必相等 (2) 等號兩邊正負符號必一致。</p>
-                
-                <div class="space-y-4">
-                    <div class="bg-white p-4 rounded shadow-sm border border-indigo-50">
-                        <div class="font-bold text-slate-800 mb-1">範例一：三人合資 100 萬設立動畫公司 (1/2)</div>
-                        <p class="text-sm text-slate-600 mb-2">說明：公司多了一筆存款（資產增加），這筆錢是股東投入的（權益/股本增加）。</p>
-                        <div class="text-indigo-800 font-mono text-sm bg-indigo-100/50 p-3 rounded flex items-center justify-between">
-                            <span>資產 (+100萬現金) = 負債 (0) + 權益 (+100萬股本)</span>
-                        </div>
-                    </div>
-                    <div class="bg-white p-4 rounded shadow-sm border border-indigo-50">
-                        <div class="font-bold text-slate-800 mb-1">範例二：花 10 萬現金買電腦設備 (1/4)</div>
-                        <p class="text-sm text-slate-600 mb-2">說明：獲取設備（資產增加），但付出存款（資產減少），總資產淨額不變，等式依然平衡。</p>
-                        <div class="text-indigo-800 font-mono text-sm bg-indigo-100/50 p-3 rounded flex items-center justify-between">
-                            <span>資產 (+10萬設備, -10萬現金) = 負債 (0) + 權益 (0)</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 課堂補充重點 (股本 vs 保留盈餘) -->
-            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-6">
-                <div class="slide-badge bg-orange-600"><i class="fa-solid fa-microphone"></i> 課堂重要補充</div>
-                <h3 class="text-xl font-bold mb-3 text-slate-800 border-l-4 border-orange-500 pl-3">權益的兩大組成：股本 vs 保留盈餘</h3>
-                <p class="text-slate-600 text-sm mb-3">
-                    <strong>股本 (Capital Stock)：</strong>股東原始投入的資本。若發放「股票股利」，只是將保留盈餘轉入股本，總權益金額不變。
-                </p>
-                <p class="text-slate-600 text-sm">
-                    <strong>保留盈餘 (Retained Earnings)：</strong>公司賺得且已繳過營所稅後保留下來的錢。只要聽到發放「股利」(不論現金或股票)，保留盈餘一定會減少！
+                <h3 class="text-2xl font-bold mb-4 text-slate-800">歡迎使用本學習指南</h3>
+                <p class="text-slate-600 leading-relaxed max-w-2xl mx-auto">
+                    本學習指南旨在總結會計學的核心概念，從第一週的**會計循環運作與財報關聯**，一路延伸至第二週的**股權投資與母子公司合併程序**。<br><br>
+                    透過雙週的互動式練習題與名詞解釋，協助您深入探討如公允價值法、權益法等進階應用，精準掌握會計作為「商業語言」的邏輯。請利用左側選單開始您的學習之旅！
                 </p>
             </div>
         </section>
 
-        <!-- Chapter 2 -->
-        <section id="ch2" class="chapter-content max-w-4xl mx-auto hidden">
+        <!-- 重點回顧：核心概念 -->
+        <section id="concepts" class="chapter-content max-w-4xl mx-auto hidden">
             <header class="mb-8 border-b pb-4">
-                <span class="text-blue-600 font-semibold tracking-wider text-sm uppercase">Chapter 2</span>
-                <h2 class="text-3xl font-bold mt-2 text-slate-800">借貸法則、分錄與過帳</h2>
+                <span class="text-blue-600 font-semibold tracking-wider text-sm uppercase">Core Concepts</span>
+                <h2 class="text-3xl font-bold mt-2 text-slate-800">知識重點回顧：會計核心概念</h2>
             </header>
 
-            <!-- PPT P.3 重點 -->
-            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-6">
-                <div class="slide-badge"><i class="fa-solid fa-desktop"></i> PPT P.3</div>
-                <h3 class="text-xl font-bold mb-3 text-blue-900 border-l-4 border-blue-500 pl-3">會計科目的五大類別</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-700">
-                    <div class="bg-slate-50 p-3 rounded border"><strong>1. 資產類：</strong>現金、應收帳款、設備</div>
-                    <div class="bg-slate-50 p-3 rounded border"><strong>2. 負債類：</strong>應付帳款</div>
-                    <div class="bg-slate-50 p-3 rounded border"><strong>3. 權益類：</strong>股本、保留盈餘</div>
-                    <div class="bg-slate-50 p-3 rounded border"><strong>4. 收入類：</strong>動畫設計收入</div>
-                    <div class="bg-slate-50 p-3 rounded border sm:col-span-2"><strong>5. 費用類：</strong>租金費用、薪資費用</div>
-                </div>
-            </div>
-
-            <!-- PPT P.5-P6 重點 -->
-            <div class="bg-blue-50 rounded-xl border border-blue-100 p-6 mb-6">
-                <div class="slide-badge"><i class="fa-solid fa-desktop"></i> PPT P.5</div>
-                <h3 class="text-xl font-bold mb-3 text-blue-900 border-l-4 border-blue-500 pl-3">借貸法則 (Rules of Debit and Credit)</h3>
-                <p class="text-sm text-slate-700 mb-4">
-                    會計不只用 + / - 號來記錄，更專業的做法是利用 T 字帳的「借方(左)」與「貸方(右)」來表達增減。
-                </p>
-                <div class="bg-white p-4 rounded border border-blue-200 font-mono text-sm shadow-inner mb-4">
-                    <div class="font-bold text-slate-800 mb-2 border-b pb-1">口訣與法則：</div>
-                    <div class="text-blue-700">● 資產、費用的增加記在 <strong class="text-red-500">借方 (Debit)</strong></div>
-                    <div class="text-blue-700">● 負債、權益、收入的增加記在 <strong class="text-green-600">貸方 (Credit)</strong></div>
-                </div>
-                
-                <h4 class="font-bold text-sm text-slate-800 mb-2"><i class="fa-solid fa-pen-to-square"></i> 分錄實戰範例：支付租金</h4>
-                <div class="bg-white p-3 rounded shadow-sm text-sm">
-                    <p class="mb-2 text-slate-600">情境：支付當月租金 $30,000 (費用增加 借方，現金減少 貸方)。</p>
-                    <div class="flex justify-between mb-1">
-                        <span class="font-bold">借：租金費用</span>
-                        <span class="text-blue-600 font-bold">30,000</span>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <!-- 會計恆等式 -->
+                <div class="bg-gradient-to-br from-blue-600 to-indigo-700 text-white rounded-xl shadow-md p-6 md:col-span-2">
+                    <h3 class="text-xl font-bold mb-4 border-b border-blue-400/50 pb-2"><i class="fa-solid fa-scale-balanced mr-2"></i> 會計恆等式</h3>
+                    <div class="text-center py-4">
+                        <div class="text-3xl md:text-4xl font-mono font-bold tracking-widest mb-2">資產 = 負債 + 權益</div>
+                        <div class="text-blue-100 text-sm">(Assets) = (Liabilities) + (Equity)</div>
                     </div>
-                    <div class="flex justify-between pl-8">
-                        <span class="font-bold">貸：現金</span>
-                        <span class="text-blue-600 font-bold">30,000</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- PPT P.7-P11 重點 -->
-            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-                <div class="slide-badge"><i class="fa-solid fa-desktop"></i> PPT P.7 - P.11</div>
-                <h3 class="text-xl font-bold mb-4 text-slate-800 border-l-4 border-slate-500 pl-3">會計循環：從日記簿到分類帳</h3>
-                
-                <div class="flex flex-col md:flex-row items-center justify-center gap-4 text-center">
-                    <div class="bg-slate-50 border p-4 rounded-lg w-full md:w-1/2">
-                        <div class="font-bold text-blue-800 mb-1">1. 日記簿 (Journal)</div>
-                        <div class="text-xs text-slate-600 text-left">
-                            <ul class="list-disc pl-4 mt-1 space-y-1">
-                                <li>按發生時間順序記錄分錄。</li>
-                                <li>先記月，再記日。</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-arrow-right text-slate-300 hidden md:block"></i>
-                    <i class="fa-solid fa-arrow-down text-slate-300 block md:hidden"></i>
-                    <div class="bg-slate-50 border p-4 rounded-lg w-full md:w-1/2">
-                        <div class="font-bold text-blue-800 mb-1">2. 總分類帳 (Ledger)</div>
-                        <div class="text-xs text-slate-600 text-left">
-                            <ul class="list-disc pl-4 mt-1 space-y-1">
-                                <li>將日記簿的數字抄錄(過帳)至此。</li>
-                                <li>形成各科目的 T 字帳，結算出「借方餘額」或「貸方餘額」。</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Chapter 3 -->
-        <section id="ch3" class="chapter-content max-w-4xl mx-auto hidden">
-            <header class="mb-8 border-b pb-4">
-                <span class="text-blue-600 font-semibold tracking-wider text-sm uppercase">Chapter 3</span>
-                <h2 class="text-3xl font-bold mt-2 text-slate-800">調整、結帳與編表</h2>
-            </header>
-
-            <!-- PPT P.3 重點 -->
-            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-6">
-                <div class="slide-badge"><i class="fa-solid fa-desktop"></i> PPT P.3</div>
-                <h3 class="text-xl font-bold mb-3 border-l-4 border-teal-500 pl-3 text-slate-800">會計期間假設與應計基礎</h3>
-                <p class="text-sm text-slate-600 mb-3">
-                    <strong>會計期間假設：</strong>為了及時提供財報，將企業持續經營的活動「劃分段落」(如曆年制 1/1~12/31)，定期計算損益。
-                </p>
-                <div class="bg-teal-50 p-4 rounded border border-teal-100 text-sm">
-                    <div class="font-bold text-teal-800 mb-1">現金基礎 vs 應計基礎 (Accrual Basis)</div>
-                    <p class="text-slate-700">企業收支的時點，常與實際現金收付的時點不一致。IFRS 規定財報編製應採<strong>應計基礎（權責發生制）</strong>，也就是「發生了才算數」，不以現金收付為唯一標準！這也是期末需要做「調整分錄」的主因。</p>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <!-- PPT P.27 重點 -->
-                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-                    <div class="slide-badge"><i class="fa-solid fa-desktop"></i> PPT P.27</div>
-                    <h4 class="font-bold text-lg mb-3 flex items-center gap-2 text-indigo-600">
-                        <i class="fa-solid fa-clock-rotate-left"></i> 遞延項目：預付費用
-                    </h4>
-                    <p class="text-sm text-slate-600 mb-3">
-                        先付了現金（資產增加），後續隨時間消耗轉為費用。
+                    <p class="text-sm mt-2 bg-black/20 p-3 rounded-lg leading-relaxed">
+                        這是會計的基礎結構。<strong>左方</strong>代表資產（企業的資金運用與經濟資源），<strong>右方</strong>代表資金來源（包含債權人提供的負債，與股東投入的權益）。
                     </p>
-                    <div class="bg-slate-50 p-3 rounded border text-sm">
-                        <strong class="text-slate-800">範例：10/1 預付一年保險費 $12,000。</strong><br>
-                        過了一個月 (10/31)，消耗了 1 個月的價值 ($1,000)。<br>
-                        <div class="font-mono mt-2 bg-white border p-2 rounded">
-                            <div>借：保險費用 1,000</div>
-                            <div class="pl-4">貸：預付保險費 1,000</div>
-                        </div>
-                    </div>
                 </div>
 
-                <!-- 應計項目 (對應講義與語音) -->
+                <!-- 借貸法則 -->
                 <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-                    <div class="slide-badge bg-orange-600"><i class="fa-solid fa-microphone"></i> 課堂白話文</div>
-                    <h4 class="font-bold text-lg mb-3 flex items-center gap-2 text-orange-600">
-                        <i class="fa-solid fa-money-bill-transfer"></i> 應計項目 (Accrued)
-                    </h4>
-                    <p class="text-sm text-slate-600 mb-3">
-                        費用已經發生，但尚未付現（現金流量後發生）。
-                    </p>
-                    <div class="bg-orange-50 p-3 rounded border border-orange-100 text-sm">
-                        <strong class="text-slate-800">範例：未付的辦公室租金。</strong><br>
-                        假設辦公室租了 10 個月，約定年底才付清 $12 萬。雖然還沒付錢，但 10 個月的「使用權已消耗」，年底必須做調整分錄認列這筆費用，這正是應計基礎的精神！
+                    <h3 class="text-lg font-bold text-slate-800 mb-3 border-l-4 border-emerald-500 pl-3">借貸法則 (Debit & Credit)</h3>
+                    <ul class="space-y-4 text-sm text-slate-600 mt-4">
+                        <li class="bg-slate-50 p-3 rounded border">
+                            <strong class="text-emerald-700 text-base">借方 (Debit)：</strong>位於帳戶左邊。<br>
+                            👉 <span class="text-slate-800">資產</span>與<span class="text-slate-800">費用</span>的<strong>增加</strong>記在借方。
+                        </li>
+                        <li class="bg-slate-50 p-3 rounded border">
+                            <strong class="text-rose-600 text-base">貸方 (Credit)：</strong>位於帳戶右邊。<br>
+                            👉 <span class="text-slate-800">負債</span>、<span class="text-slate-800">權益</span>與<span class="text-slate-800">收入</span>的<strong>增加</strong>記在貸方。
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 會計循環 -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+                    <h3 class="text-lg font-bold text-slate-800 mb-3 border-l-4 border-amber-500 pl-3">會計循環 (Accounting Cycle)</h3>
+                    <p class="text-sm text-slate-600 mb-3">企業處理日常交易至產出財報的標準流程：</p>
+                    <ol class="list-decimal pl-5 space-y-1.5 text-sm text-slate-700 font-medium">
+                        <li>交易分析</li>
+                        <li>分錄（記入日記簿）</li>
+                        <li>過帳（轉入總分類帳）</li>
+                        <li>試算（編製試算表）</li>
+                        <li>調整（期末應計/遞延調整）</li>
+                        <li>結帳（虛帳戶歸零）</li>
+                        <li>編製財務報表</li>
+                    </ol>
+                </div>
+
+                <!-- 財務報表關聯 -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 md:col-span-2">
+                    <h3 class="text-lg font-bold text-slate-800 mb-4 border-l-4 border-purple-500 pl-3">財務報表關聯</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="border border-purple-100 bg-purple-50 p-4 rounded-lg">
+                            <div class="font-bold text-purple-800 mb-2"><i class="fa-solid fa-file-invoice mr-1"></i> 損益表</div>
+                            <p class="text-xs text-slate-600">反映<strong>一定期間</strong>的經營績效。<br><code class="bg-white px-1 mt-1 block text-center rounded">收入 - 費用 = 損益</code></p>
+                        </div>
+                        <div class="flex items-center justify-center hidden md:flex text-slate-300"><i class="fa-solid fa-arrow-right-long text-xl"></i></div>
+                        <div class="border border-purple-100 bg-purple-50 p-4 rounded-lg">
+                            <div class="font-bold text-purple-800 mb-2"><i class="fa-solid fa-arrow-trend-up mr-1"></i> 權益變動表</div>
+                            <p class="text-xs text-slate-600">銜接損益表與資產負債表，反映當期盈餘如何轉入<strong>保留盈餘</strong>及發放股利。</p>
+                        </div>
+                        <div class="flex items-center justify-center hidden md:flex text-slate-300"><i class="fa-solid fa-arrow-right-long text-xl"></i></div>
+                        <div class="border border-purple-100 bg-purple-50 p-4 rounded-lg">
+                            <div class="font-bold text-purple-800 mb-2"><i class="fa-solid fa-camera mr-1"></i> 資產負債表</div>
+                            <p class="text-xs text-slate-600">反映<strong>特定時點</strong>（拍照式呈現）的財務狀況，包含資產、負債與期末權益數。</p>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- PPT P.28 重點 -->
-            <div class="bg-slate-800 text-white rounded-xl shadow-sm border border-slate-700 p-6">
-                <div class="slide-badge bg-blue-500"><i class="fa-solid fa-desktop"></i> PPT P.28</div>
-                <h4 class="font-bold text-xl mb-3 border-l-4 border-blue-400 pl-3">折舊 (Depreciation) 調整與帳面值</h4>
-                <div class="flex flex-col md:flex-row gap-6">
-                    <div class="flex-1 text-sm text-slate-300">
-                        <p class="mb-2"><strong class="text-white">情境：</strong>買入設備 $1,200,000，耐用 120 個月，每月折舊 $10,000。</p>
-                        <div class="bg-slate-900 p-3 rounded font-mono mb-3 border border-slate-600">
-                            <div class="flex justify-between text-green-400">
-                                <span>借：折舊費用</span>
-                                <span>10,000</span>
-                            </div>
-                            <div class="flex justify-between pl-4 text-teal-300">
-                                <span>貸：累計折舊－網路設備</span>
-                                <span>10,000</span>
-                            </div>
+        <!-- 簡答題 (互動式) -->
+        <section id="quiz" class="chapter-content max-w-4xl mx-auto hidden">
+            <header class="mb-8 border-b pb-4">
+                <span class="text-blue-600 font-semibold tracking-wider text-sm uppercase">Interactive Quiz</span>
+                <h2 class="text-3xl font-bold mt-2 text-slate-800">簡答題：自我測驗</h2>
+                <p class="text-slate-500 mt-2">點擊題目即可查看詳細解答與核心回饋重點，測試自己的理解程度！</p>
+            </header>
+
+            <div class="space-y-4">
+                <!-- Q1 -->
+                <details class="group bg-white rounded-xl shadow-sm border border-slate-200">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-5 text-slate-800 hover:text-blue-600 transition-colors">
+                        <span class="flex gap-3"><span class="text-blue-500 font-bold">Q1.</span> 何謂資產 (Assets) 的定義？</span>
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-slate-400"></i></span>
+                    </summary>
+                    <div class="p-5 pt-0 text-sm border-t border-slate-100 mt-2">
+                        <div class="text-slate-600 leading-relaxed mb-3">
+                            <strong>完整解答：</strong>根據 IFRS 定義，資產是企業由於過去的交易或其他事項所產生的經濟資源，且具有未來經濟效益。這些項目預期能增加未來的現金流入，或減少未來的現金流出。
                         </div>
-                        <p class="text-xs italic"><i class="fa-solid fa-triangle-exclamation text-yellow-500"></i> 注意：不直接扣減設備原值，而是貸記「累計折舊」。</p>
+                        <div class="bg-blue-50 text-blue-800 p-3 rounded-lg border border-blue-100">
+                            <strong><i class="fa-solid fa-thumbtack mr-1"></i> 核心回饋：</strong>強調過去交易產生、具備未來經濟效益（現金流入/流出減少）。
+                        </div>
                     </div>
-                    <div class="flex-1 bg-slate-700 p-4 rounded flex items-center justify-center flex-col text-center border border-slate-600">
-                        <div class="text-sm text-slate-300 mb-2">資產負債表呈現公式：</div>
-                        <div class="font-mono font-bold text-blue-200 bg-slate-900 px-4 py-2 rounded-lg w-full">
-                            設備原價<br>
-                            <span class="text-slate-400">- 累計折舊</span><br>
-                            <hr class="border-slate-600 my-1">
-                            = 帳面值 (Book Value)
+                </details>
+
+                <!-- Q2 -->
+                <details class="group bg-white rounded-xl shadow-sm border border-slate-200">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-5 text-slate-800 hover:text-blue-600 transition-colors">
+                        <span class="flex gap-3"><span class="text-blue-500 font-bold">Q2.</span> 負債中的「現實義務」包含哪兩種形式？</span>
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-slate-400"></i></span>
+                    </summary>
+                    <div class="p-5 pt-0 text-sm border-t border-slate-100 mt-2">
+                        <div class="text-slate-600 leading-relaxed mb-3">
+                            <strong>完整解答：</strong>現實義務包含「法定義務」與「推定義務」。法定義務源於法律契約（如進貨欠款）；推定義務則是基於企業過去的營業風格或承諾（如 Costco 的滿意保證），使消費者產生合理預期。
                         </div>
+                        <div class="bg-blue-50 text-blue-800 p-3 rounded-lg border border-blue-100">
+                            <strong><i class="fa-solid fa-thumbtack mr-1"></i> 核心回饋：</strong>包含法定義務（契約）與推定義務（商業慣例與社會預期）。
+                        </div>
+                    </div>
+                </details>
+
+                <!-- Q3 -->
+                <details class="group bg-white rounded-xl shadow-sm border border-slate-200">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-5 text-slate-800 hover:text-blue-600 transition-colors">
+                        <span class="flex gap-3"><span class="text-blue-500 font-bold">Q3.</span> 為什麼會計恆等式必須維持平衡？</span>
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-slate-400"></i></span>
+                    </summary>
+                    <div class="p-5 pt-0 text-sm border-t border-slate-100 mt-2">
+                        <div class="text-slate-600 leading-relaxed mb-3">
+                            <strong>完整解答：</strong>會計恆等式反映了「資金來源」與「資金運用」的平衡。每一筆交易都會對資產、負債或權益產生雙重影響，確保等號左側與右側的金額增減後始終相等。
+                        </div>
+                        <div class="bg-blue-50 text-blue-800 p-3 rounded-lg border border-blue-100">
+                            <strong><i class="fa-solid fa-thumbtack mr-1"></i> 核心回饋：</strong>反映資金來源等於資金運用，雙重影響維持借貸平衡。
+                        </div>
+                    </div>
+                </details>
+
+                <!-- Q4 -->
+                <details class="group bg-white rounded-xl shadow-sm border border-slate-200">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-5 text-slate-800 hover:text-blue-600 transition-colors">
+                        <span class="flex gap-3"><span class="text-blue-500 font-bold">Q4.</span> 損益表與資產負債表在時間概念上有何不同？</span>
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-slate-400"></i></span>
+                    </summary>
+                    <div class="p-5 pt-0 text-sm border-t border-slate-100 mt-2">
+                        <div class="text-slate-600 leading-relaxed mb-3">
+                            <strong>完整解答：</strong>損益表是一個「期間」的概念，匯總一段時間內（如一年或一個月）的收入與費用；資產負債表則是「時點」的概念，如同拍照般呈現特定日期（如 12 月 31 日）的財務狀態。
+                        </div>
+                        <div class="bg-blue-50 text-blue-800 p-3 rounded-lg border border-blue-100">
+                            <strong><i class="fa-solid fa-thumbtack mr-1"></i> 核心回饋：</strong>時間概念：損益表是「流量」（一段時間）；資產負債表是「存量」（特定時點）。
+                        </div>
+                    </div>
+                </details>
+
+                <!-- Q5 -->
+                <details class="group bg-white rounded-xl shadow-sm border border-slate-200">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-5 text-slate-800 hover:text-blue-600 transition-colors">
+                        <span class="flex gap-3"><span class="text-blue-500 font-bold">Q5.</span> 「股本」與「資本公積」的主要區別為何？</span>
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-slate-400"></i></span>
+                    </summary>
+                    <div class="p-5 pt-0 text-sm border-t border-slate-100 mt-2">
+                        <div class="text-slate-600 leading-relaxed mb-3">
+                            <strong>完整解答：</strong>股本通常按股票面額（如每股 10 元）記錄，代表法定資本；資本公積（如股本溢價）則是發行價格超過面額的部分，代表股東額外投入的資本。
+                        </div>
+                        <div class="bg-blue-50 text-blue-800 p-3 rounded-lg border border-blue-100">
+                            <strong><i class="fa-solid fa-thumbtack mr-1"></i> 核心回饋：</strong>股本是面額，資本公積是溢價或其他額外投入。
+                        </div>
+                    </div>
+                </details>
+
+                <!-- Q6 -->
+                <details class="group bg-white rounded-xl shadow-sm border border-slate-200">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-5 text-slate-800 hover:text-blue-600 transition-colors">
+                        <span class="flex gap-3"><span class="text-blue-500 font-bold">Q6.</span> 收入認列的兩大條件為何？</span>
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-slate-400"></i></span>
+                    </summary>
+                    <div class="p-5 pt-0 text-sm border-t border-slate-100 mt-2">
+                        <div class="text-slate-600 leading-relaxed mb-3">
+                            <strong>完整解答：</strong>收入認列需同時滿足「已實現（或可實現）」與「已賺得」。這意味著商品或勞務已交付、所有權轉移，且企業已獲得現金或對現金的請求權。
+                        </div>
+                        <div class="bg-blue-50 text-blue-800 p-3 rounded-lg border border-blue-100">
+                            <strong><i class="fa-solid fa-thumbtack mr-1"></i> 核心回饋：</strong>核心在於「已實現」與「已賺得」（義務履行）。
+                        </div>
+                    </div>
+                </details>
+
+                <!-- Q7 -->
+                <details class="group bg-white rounded-xl shadow-sm border border-slate-200">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-5 text-slate-800 hover:text-blue-600 transition-colors">
+                        <span class="flex gap-3"><span class="text-blue-500 font-bold">Q7.</span> 為什麼折舊 (Depreciation) 被稱為「非現金費用」？</span>
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-slate-400"></i></span>
+                    </summary>
+                    <div class="p-5 pt-0 text-sm border-t border-slate-100 mt-2">
+                        <div class="text-slate-600 leading-relaxed mb-3">
+                            <strong>完整解答：</strong>折舊是將資產成本在其耐用年限內分攤的過程，反映資產價值的消耗。雖然它會在損益表中列為費用並減少淨利，但並不涉及當期的實際現金流出。
+                        </div>
+                        <div class="bg-blue-50 text-blue-800 p-3 rounded-lg border border-blue-100">
+                            <strong><i class="fa-solid fa-thumbtack mr-1"></i> 核心回饋：</strong>折舊性質：成本分攤機制，影響損益但不涉及現金交易。
+                        </div>
+                    </div>
+                </details>
+
+                <!-- Q8 -->
+                <details class="group bg-white rounded-xl shadow-sm border border-slate-200">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-5 text-slate-800 hover:text-blue-600 transition-colors">
+                        <span class="flex gap-3"><span class="text-blue-500 font-bold">Q8.</span> 何謂「試算表 (Trial Balance)」的功能？</span>
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-slate-400"></i></span>
+                    </summary>
+                    <div class="p-5 pt-0 text-sm border-t border-slate-100 mt-2">
+                        <div class="text-slate-600 leading-relaxed mb-3">
+                            <strong>完整解答：</strong>試算表是在期末編製報表前，將總分類帳各帳戶的餘額抄錄匯總，用以檢查借貸雙方總額是否平衡。若不平衡則代表過帳或計算有誤，但平衡並不保證內容絕對正確。
+                        </div>
+                        <div class="bg-blue-50 text-blue-800 p-3 rounded-lg border border-blue-100">
+                            <strong><i class="fa-solid fa-thumbtack mr-1"></i> 核心回饋：</strong>驗證借貸相等，是過渡性的內部檢查工具。
+                        </div>
+                    </div>
+                </details>
+
+                <!-- Q9 -->
+                <details class="group bg-white rounded-xl shadow-sm border border-slate-200">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-5 text-slate-800 hover:text-blue-600 transition-colors">
+                        <span class="flex gap-3"><span class="text-blue-500 font-bold">Q9.</span> 預收收入 (Unearned Revenue) 為什麼被分類為負債？</span>
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-slate-400"></i></span>
+                    </summary>
+                    <div class="p-5 pt-0 text-sm border-t border-slate-100 mt-2">
+                        <div class="text-slate-600 leading-relaxed mb-3">
+                            <strong>完整解答：</strong>因為企業雖然已經收到現金，但尚未履行相關的勞務或交付商品。這代表企業欠客戶一項義務，直到服務完成後才能將其轉為收入。
+                        </div>
+                        <div class="bg-blue-50 text-blue-800 p-3 rounded-lg border border-blue-100">
+                            <strong><i class="fa-solid fa-thumbtack mr-1"></i> 核心回饋：</strong>代表履約義務，在義務解除前屬於欠客戶的負債。
+                        </div>
+                    </div>
+                </details>
+
+                <!-- Q10 -->
+                <details class="group bg-white rounded-xl shadow-sm border border-slate-200">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-5 text-slate-800 hover:text-blue-600 transition-colors">
+                        <span class="flex gap-3"><span class="text-blue-500 font-bold">Q10.</span> 發行「股票股利」對公司財務狀況有何影響？</span>
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-slate-400"></i></span>
+                    </summary>
+                    <div class="p-5 pt-0 text-sm border-t border-slate-100 mt-2">
+                        <div class="text-slate-600 leading-relaxed mb-3">
+                            <strong>完整解答：</strong>發行股票股利並不會改變公司的資產總額或權益總計，僅屬於權益內部的重分類。它會導致保留盈餘減少，並將該金額轉入股本。
+                        </div>
+                        <div class="bg-blue-50 text-blue-800 p-3 rounded-lg border border-blue-100">
+                            <strong><i class="fa-solid fa-thumbtack mr-1"></i> 核心回饋：</strong>資產不變、權益總額不變，僅係內部科目轉移（保留盈餘轉股本）。
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- 申論練習題 -->
+        <section id="essay" class="chapter-content max-w-4xl mx-auto hidden">
+            <header class="mb-8 border-b pb-4">
+                <span class="text-blue-600 font-semibold tracking-wider text-sm uppercase">Essay Practice</span>
+                <h2 class="text-3xl font-bold mt-2 text-slate-800">申論練習題（思考與探討）</h2>
+                <p class="text-slate-500 mt-2">本區不提供標準答案，旨在引導讀者進行深度的邏輯思考與實務情境分析。</p>
+            </header>
+
+            <div class="space-y-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-indigo-500 flex gap-4">
+                    <div class="text-indigo-200 text-3xl font-bold mt-1">1</div>
+                    <div>
+                        <h4 class="text-lg font-bold text-slate-800 mb-2">論會計恆等式的結構邏輯</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">請說明為何資產放在左邊，而負債與權益放在右邊？這種安排與「借貸法則」的定義如何結合，以維持會計資訊的嚴謹性？</p>
                     </div>
                 </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-indigo-500 flex gap-4">
+                    <div class="text-indigo-200 text-3xl font-bold mt-1">2</div>
+                    <div>
+                        <h4 class="text-lg font-bold text-slate-800 mb-2">財務報表的「勾稽關係」</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">請詳述損益表、權益變動表與資產負債表三者之間如何互相傳遞數據？如果損益表的淨利計算錯誤，將如何連鎖影響到其他報表？</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-indigo-500 flex gap-4">
+                    <div class="text-indigo-200 text-3xl font-bold mt-1">3</div>
+                    <div>
+                        <h4 class="text-lg font-bold text-slate-800 mb-2">折舊政策與企業稅務</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">雖然折舊不涉及現金流出，但為何企業選擇不同的折舊方法（如直線法）會影響其稅後現金流？請從「稅盾 (Tax Shield)」的角度進行分析。</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-indigo-500 flex gap-4">
+                    <div class="text-indigo-200 text-3xl font-bold mt-1">4</div>
+                    <div>
+                        <h4 class="text-lg font-bold text-slate-800 mb-2">收入認列的實務挑戰</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">在營造業（完工比例法）或預售服務（預收收入）中，收入認列往往與現金收付時間不同步。請探討這種「權責發生制」如何比「現金收付制」更能精準反映企業的經營績效？</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-indigo-500 flex gap-4">
+                    <div class="text-indigo-200 text-3xl font-bold mt-1">5</div>
+                    <div>
+                        <h4 class="text-lg font-bold text-slate-800 mb-2">資本公積與保留盈餘的用途</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">請比較資本公積與保留盈餘在資金來源與法令用途上的差異。特別是在彌補虧損或轉增資（發行股票股利）時，兩者的運用邏輯有何不同？</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 重要名詞字典 -->
+        <section id="glossary" class="chapter-content max-w-4xl mx-auto hidden">
+            <header class="mb-8 border-b pb-4">
+                <span class="text-blue-600 font-semibold tracking-wider text-sm uppercase">Glossary</span>
+                <h2 class="text-3xl font-bold mt-2 text-slate-800">重要名詞定義表</h2>
+            </header>
+
+            <div class="overflow-x-auto bg-white rounded-xl shadow-sm border border-slate-200">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-100 text-slate-700 text-sm border-b border-slate-200">
+                            <th class="p-4 font-bold w-1/3">名詞</th>
+                            <th class="p-4 font-bold">定義</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm text-slate-600 divide-y divide-slate-100">
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 font-semibold text-slate-800">會計恆等式</td>
+                            <td class="p-4 leading-relaxed">資產 = 負債 + 權益。反映企業財務狀況的基本平衡關係。</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 font-semibold text-slate-800">借方 (Debit)</td>
+                            <td class="p-4 leading-relaxed">帳戶的左方。在資產與費用科目中代表增加；在負債、權益與收入科目中代表減少。</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 font-semibold text-slate-800">貸方 (Credit)</td>
+                            <td class="p-4 leading-relaxed">帳戶的右方。在負債、權益與收入科目中代表增加；在資產與費用科目中代表減少。</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 font-semibold text-slate-800">流動資產</td>
+                            <td class="p-4 leading-relaxed">預計在一年或一個營業週期內變現、出售或消耗的資產，如現金、應收帳款、存貨。</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 font-semibold text-slate-800">推定義務</td>
+                            <td class="p-4 leading-relaxed">基於企業過去行為、公告政策或承諾，使第三方產生合理預期企業將履行責任的義務。</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 font-semibold text-slate-800">資本公積</td>
+                            <td class="p-4 leading-relaxed">股東投入資本超過股票面額的部分，或與資本交易所產生的溢價。</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 font-semibold text-slate-800">保留盈餘</td>
+                            <td class="p-4 leading-relaxed">企業歷年經營所賺得之利潤，扣除分配給股東的股利後，留在企業內部的累積數。</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 font-semibold text-slate-800">分錄 (Journal Entry)</td>
+                            <td class="p-4 leading-relaxed">將每筆交易按發生日期順序，標明借貸科目與金額，記錄於日記簿的行為。</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 font-semibold text-slate-800">過帳 (Posting)</td>
+                            <td class="p-4 leading-relaxed">將日記簿中的分錄金額，依會計科目轉載至總分類帳中各別帳戶的過程。</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 font-semibold text-slate-800">折舊 (Depreciation)</td>
+                            <td class="p-4 leading-relaxed">將長期資產（如機器設備）的原始成本，在其預計耐用年限內有系統地分攤為費用的程序。</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 font-semibold text-slate-800">累計折舊 (Accumulated Depreciation)</td>
+                            <td class="p-4 leading-relaxed">資產自購入至目前為止已提列折舊的總和，是資產的評價帳戶（抵銷項）。</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 font-semibold text-slate-800">帳面價值 (Book Value)</td>
+                            <td class="p-4 leading-relaxed">資產原始成本減去累計折舊後的餘額。</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 font-semibold text-slate-800">預收收入 (Unearned Revenue)</td>
+                            <td class="p-4 leading-relaxed">企業先收錢但尚未提供服務或商品，在性質上屬於負債科目。</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 font-semibold text-slate-800">銷貨成本 (COGS)</td>
+                            <td class="p-4 leading-relaxed">企業銷售商品所產生的直接成本，通常由存貨科目轉入。</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4 font-semibold text-slate-800">本期淨利 (Net Income)</td>
+                            <td class="p-4 leading-relaxed">企業在一定期間內，所有收入減去所有費用及所得稅後的最終成果。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ================= 第二週內容開始 ================= -->
+
+        <!-- W2: 互動式短答複習 -->
+        <section id="w2-quiz" class="chapter-content max-w-4xl mx-auto hidden">
+            <header class="mb-8 border-b pb-4">
+                <span class="text-blue-600 font-semibold tracking-wider text-sm uppercase">Week 2: Interactive Quiz</span>
+                <h2 class="text-3xl font-bold mt-2 text-slate-800">第二週 短答複習題：自我測驗</h2>
+                <p class="text-slate-500 mt-2">先在心中思考答案，點擊題目即可核對詳細解答！</p>
+            </header>
+
+            <div class="space-y-4">
+                <!-- W2 Q1 -->
+                <details class="group bg-white rounded-xl shadow-sm border border-slate-200">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-5 text-slate-800 hover:text-blue-600 transition-colors">
+                        <span class="flex gap-3"><span class="text-blue-500 font-bold">Q1.</span> 會計循環中的「認定、衡量、溝通」分別代表什麼意義？</span>
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-slate-400"></i></span>
+                    </summary>
+                    <div class="p-5 pt-0 text-sm border-t border-slate-100 mt-2">
+                        <div class="text-slate-600 leading-relaxed mt-3">
+                            <strong>解答：</strong>「認定」是確認交易是否發生並找到正確會計科目（借貸方）；「衡量」是決定交易影響財務報表的金額大小；「溝通」則是透過財務報表的形式，將資訊傳達給使用者。
+                        </div>
+                    </div>
+                </details>
+
+                <!-- W2 Q2 -->
+                <details class="group bg-white rounded-xl shadow-sm border border-slate-200">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-5 text-slate-800 hover:text-blue-600 transition-colors">
+                        <span class="flex gap-3"><span class="text-blue-500 font-bold">Q2.</span> 何謂「約當現金」？其定義標準為何？</span>
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-slate-400"></i></span>
+                    </summary>
+                    <div class="p-5 pt-0 text-sm border-t border-slate-100 mt-2">
+                        <div class="text-slate-600 leading-relaxed mt-3">
+                            <strong>解答：</strong>指公司閒置資金的短期運用，通常是到期日在 90 天（三個月）以內的短期投資，如商業本票或銀行承兌匯票；因到期日短且利率變動風險小，功能與現金極為接近。
+                        </div>
+                    </div>
+                </details>
+
+                <!-- W2 Q3 -->
+                <details class="group bg-white rounded-xl shadow-sm border border-slate-200">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-5 text-slate-800 hover:text-blue-600 transition-colors">
+                        <span class="flex gap-3"><span class="text-blue-500 font-bold">Q3.</span> 請說明「應計項目」與「遞延項目」在調整分錄中的主要差異。</span>
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-slate-400"></i></span>
+                    </summary>
+                    <div class="p-5 pt-0 text-sm border-t border-slate-100 mt-2">
+                        <div class="text-slate-600 leading-relaxed mt-3">
+                            <strong>解答：</strong>「應計項目」指收入已賺得或費用已發生但尚未收付現金，需在期末入帳（如應收利息）；「遞延項目」指現金已收付但尚未符合收入或費用認列原則，需先掛為資產或負債，待時耗用或實現（如預付租金、預收收入）。
+                        </div>
+                    </div>
+                </details>
+
+                <!-- W2 Q4 -->
+                <details class="group bg-white rounded-xl shadow-sm border border-slate-200">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-5 text-slate-800 hover:text-blue-600 transition-colors">
+                        <span class="flex gap-3"><span class="text-blue-500 font-bold">Q4.</span> 結帳分錄（Closing Entries）的主要目的為何？哪些科目需要歸零？</span>
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-slate-400"></i></span>
+                    </summary>
+                    <div class="p-5 pt-0 text-sm border-t border-slate-100 mt-2">
+                        <div class="text-slate-600 leading-relaxed mt-3">
+                            <strong>解答：</strong>結帳是為了計算當期損益，將虛帳戶（收益類、費用類）歸零，並將結果轉入「本期損益」科目，最終匯總至「保留盈餘」；實帳戶（資產、負債、權益）則不需結帳，餘額轉入下期。
+                        </div>
+                    </div>
+                </details>
+
+                <!-- W2 Q5 -->
+                <details class="group bg-white rounded-xl shadow-sm border border-slate-200">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-5 text-slate-800 hover:text-blue-600 transition-colors">
+                        <span class="flex gap-3"><span class="text-blue-500 font-bold">Q5.</span> 在股權投資中，持股比例如何決定會計處理方法的選擇？</span>
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-slate-400"></i></span>
+                    </summary>
+                    <div class="p-5 pt-0 text-sm border-t border-slate-100 mt-2">
+                        <div class="text-slate-600 leading-relaxed mt-3">
+                            <strong>解答：</strong>持股 20% 以下通常視為無重大影響力，採公允價值法；20% 至 50% 視為具重大影響力，採權益法；超過 50%（或具控制力）則需採權益法並編製合併財務報表。
+                        </div>
+                    </div>
+                </details>
+
+                <!-- W2 Q6 -->
+                <details class="group bg-white rounded-xl shadow-sm border border-slate-200">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-5 text-slate-800 hover:text-blue-600 transition-colors">
+                        <span class="flex gap-3"><span class="text-blue-500 font-bold">Q6.</span> 「透過損益按公允價值衡量之金融資產 (FVPL)」與「透過其他綜合損益 (FVOCI)」對本期損益的影響有何不同？</span>
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-slate-400"></i></span>
+                    </summary>
+                    <div class="p-5 pt-0 text-sm border-t border-slate-100 mt-2">
+                        <div class="text-slate-600 leading-relaxed mt-3">
+                            <strong>解答：</strong>FVPL 的公允價值變動會直接反映在本期損益，影響每股盈餘 (EPS)；FVOCI 的變動則認列於「其他綜合損益 (OCI)」，不影響 EPS，且處分損益通常不得重分類至損益表。
+                        </div>
+                    </div>
+                </details>
+
+                <!-- W2 Q7 -->
+                <details class="group bg-white rounded-xl shadow-sm border border-slate-200">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-5 text-slate-800 hover:text-blue-600 transition-colors">
+                        <span class="flex gap-3"><span class="text-blue-500 font-bold">Q7.</span> 在權益法下，被投資公司發放現金股利時，投資公司應如何進行會計處理？</span>
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-slate-400"></i></span>
+                    </summary>
+                    <div class="p-5 pt-0 text-sm border-t border-slate-100 mt-2">
+                        <div class="text-slate-600 leading-relaxed mt-3">
+                            <strong>解答：</strong>權益法視股利為「投資成本的收回」而非收入。投資公司收到現金股利時，應借記「現金」，並貸記「採權益法之投資」，使該投資科目金額隨被投資公司淨資產減少而調降。
+                        </div>
+                    </div>
+                </details>
+
+                <!-- W2 Q8 -->
+                <details class="group bg-white rounded-xl shadow-sm border border-slate-200">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-5 text-slate-800 hover:text-blue-600 transition-colors">
+                        <span class="flex gap-3"><span class="text-blue-500 font-bold">Q8.</span> 編製合併財務報表的主要原因為何？</span>
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-slate-400"></i></span>
+                    </summary>
+                    <div class="p-5 pt-0 text-sm border-t border-slate-100 mt-2">
+                        <div class="text-slate-600 leading-relaxed mt-3">
+                            <strong>解答：</strong>企業集團常透過不同法律個體運作，單一主體的報表無法呈現整體經濟實質；使用者需透過合併報表才能完整評估整個集團的財務狀況、績效與現金流量。
+                        </div>
+                    </div>
+                </details>
+
+                <!-- W2 Q9 -->
+                <details class="group bg-white rounded-xl shadow-sm border border-slate-200">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-5 text-slate-800 hover:text-blue-600 transition-colors">
+                        <span class="flex gap-3"><span class="text-blue-500 font-bold">Q9.</span> 在合併報表中，何時會出現「非控制權益 (NCI)」？其性質為何？</span>
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-slate-400"></i></span>
+                    </summary>
+                    <div class="p-5 pt-0 text-sm border-t border-slate-100 mt-2">
+                        <div class="text-slate-600 leading-relaxed mt-3">
+                            <strong>解答：</strong>當母公司持股未達 100% 但仍具控制力時，合併報表會採「百分之百合併」，多併入的部分（少數股東持有的份額）即列為「非控制權益」，屬權益類科目。
+                        </div>
+                    </div>
+                </details>
+
+                <!-- W2 Q10 -->
+                <details class="group bg-white rounded-xl shadow-sm border border-slate-200">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-5 text-slate-800 hover:text-blue-600 transition-colors">
+                        <span class="flex gap-3"><span class="text-blue-500 font-bold">Q10.</span> 合併報表中的「商譽 (Goodwill)」是如何產生的？</span>
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-slate-400"></i></span>
+                    </summary>
+                    <div class="p-5 pt-0 text-sm border-t border-slate-100 mt-2">
+                        <div class="text-slate-600 leading-relaxed mt-3">
+                            <strong>解答：</strong>當投資公司取得被投資公司控制權時，若「投資成本」高於所取得被投資公司「可辨認淨資產之公允價值」，該溢價部分即認列為「商譽」，代表無法辨認的無形經濟效益。
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- W2: 申論思考題 -->
+        <section id="w2-essay" class="chapter-content max-w-4xl mx-auto hidden">
+            <header class="mb-8 border-b pb-4">
+                <span class="text-blue-600 font-semibold tracking-wider text-sm uppercase">Week 2: Essay Practice</span>
+                <h2 class="text-3xl font-bold mt-2 text-slate-800">第二週 申論思考題</h2>
+                <p class="text-slate-500 mt-2">挑戰自我：這些題目沒有標準答案，請試著運用觀念進行邏輯推演。</p>
+            </header>
+
+            <div class="space-y-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-teal-500 flex gap-4">
+                    <div class="text-teal-200 text-3xl font-bold mt-1">1</div>
+                    <div>
+                        <h4 class="text-lg font-bold text-slate-800 mb-2">權益法的單行合併特性</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">試討論「權益法」被稱為「單行合併 (One-line Consolidation)」的原因，並說明其在資產負債表與損益表中的聯動機制。</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-teal-500 flex gap-4">
+                    <div class="text-teal-200 text-3xl font-bold mt-1">2</div>
+                    <div>
+                        <h4 class="text-lg font-bold text-slate-800 mb-2">FVOCI 與盈餘管理空間</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">分析 FVOCI（不可重分類）會計選擇對企業「盈餘管理」空間的影響。為什麼國際會計準則要關閉處分損益重分類至本期損益的門戶？</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-teal-500 flex gap-4">
+                    <div class="text-teal-200 text-3xl font-bold mt-1">3</div>
+                    <div>
+                        <h4 class="text-lg font-bold text-slate-800 mb-2">合併報表的沖銷邏輯</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">在編製合併資產負債表時，為什麼必須將母公司的「投資」科目與子公司的「權益」科目進行沖銷？若不沖銷會對報表資訊造成什麼誤導？</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-teal-500 flex gap-4">
+                    <div class="text-teal-200 text-3xl font-bold mt-1">4</div>
+                    <div>
+                        <h4 class="text-lg font-bold text-slate-800 mb-2">現金基礎 vs 應計基礎比較</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">比較現金基礎 (Cash Basis) 與應計基礎 (Accrual Basis) 會計對財務報表公允表達的影響，特別是在處理長期資產折舊與預付費用調整時的差異。</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-teal-500 flex gap-4">
+                    <div class="text-teal-200 text-3xl font-bold mt-1">5</div>
+                    <div>
+                        <h4 class="text-lg font-bold text-slate-800 mb-2">控制力的實質判定</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">說明控制力的判定標準。為什麼有時候持股比例未達 50%（如貫德建設與根基營造的案例），仍需編製合併財務報表？這反映了會計學中哪一項重要原則？</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- W2: 關鍵術語彙總 -->
+        <section id="w2-glossary" class="chapter-content max-w-4xl mx-auto hidden">
+            <header class="mb-8 border-b pb-4">
+                <span class="text-blue-600 font-semibold tracking-wider text-sm uppercase">Week 2: Glossary</span>
+                <h2 class="text-3xl font-bold mt-2 text-slate-800">第二週 關鍵術語彙總表</h2>
+            </header>
+
+            <div class="overflow-x-auto bg-white rounded-xl shadow-sm border border-slate-200">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-100 text-slate-700 text-sm border-b border-slate-200">
+                            <th class="p-4 font-bold w-1/3">名詞 (中 / 英)</th>
+                            <th class="p-4 font-bold">定義與說明</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm text-slate-600 divide-y divide-slate-100">
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4"><strong class="text-slate-800">虛帳戶</strong><br><span class="text-xs text-slate-500">Temporary Accounts</span></td>
+                            <td class="p-4 leading-relaxed">包含收益與費用科目，其任務為階段性，在會計年度結束結帳後需歸零。</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4"><strong class="text-slate-800">實帳戶</strong><br><span class="text-xs text-slate-500">Real Accounts</span></td>
+                            <td class="p-4 leading-relaxed">包含資產、負債與權益科目，其餘額會結轉至下一期（Carry Over）。</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4"><strong class="text-slate-800">應計基礎</strong><br><span class="text-xs text-slate-500">Accrual Basis</span></td>
+                            <td class="p-4 leading-relaxed">會計認列原則，強調在收入賺得或費用發生時入帳，而非現金收付時。</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4"><strong class="text-slate-800">本期損益</strong><br><span class="text-xs text-slate-500">Current Period Income</span></td>
+                            <td class="p-4 leading-relaxed">結帳過程中使用的過渡科目，用以彙總各項收益與費用之差額，最終結轉至保留盈餘。</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4"><strong class="text-slate-800">保留盈餘</strong><br><span class="text-xs text-slate-500">Retained Earnings</span></td>
+                            <td class="p-4 leading-relaxed">公司歷年累積賺得但尚未以股利形式分派給股東的淨利總額。</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4"><strong class="text-slate-800">公允價值法</strong><br><span class="text-xs text-slate-500">Fair Value Method</span></td>
+                            <td class="p-4 leading-relaxed">針對持股 20% 以下投資，以市場報價（收盤價）為評價基礎，並根據變動路徑分為 FVPL 或 FVOCI。</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4"><strong class="text-slate-800">權益法</strong><br><span class="text-xs text-slate-500">Equity Method</span></td>
+                            <td class="p-4 leading-relaxed">針對具重大影響力之投資，投資帳戶需隨被投資公司淨資產（權益）的增減同步聯動。</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4"><strong class="text-slate-800">非控制權益</strong><br><span class="text-xs text-slate-500">Non-controlling Interest (NCI)</span></td>
+                            <td class="p-4 leading-relaxed">在合併報表中，代表子公司淨資產中不屬於母公司持有的部分，列為合併權益。</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4"><strong class="text-slate-800">商譽</strong><br><span class="text-xs text-slate-500">Goodwill</span></td>
+                            <td class="p-4 leading-relaxed">購併時支付的溢價，代表被投資公司未來超額獲利能力或無法個別辨認的無形資產。</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4"><strong class="text-slate-800">其他綜合損益</strong><br><span class="text-xs text-slate-500">Other Comprehensive Income (OCI)</span></td>
+                            <td class="p-4 leading-relaxed">反映在資產負債表權益項下，但不進入損益表計算 EPS 的未實現損益項目（如 FVOCI 之變動）。</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="p-4"><strong class="text-slate-800">重分類</strong><br><span class="text-xs text-slate-500">Recycle / Reclassification</span></td>
+                            <td class="p-4 leading-relaxed">指將原本記錄在 OCI 的金額在特定條件下轉入本期損益的行為；現行 FVOCI 之權益工具通常禁止此操作。</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </section>
 
