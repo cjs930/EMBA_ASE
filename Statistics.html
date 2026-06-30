@@ -42,51 +42,95 @@
         details[open] summary .toggle-icon {
             transform: rotate(180deg);
         }
+
+        /* 讓選單有滾動條時更美觀 */
+        .sidebar-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+        .sidebar-scroll::-webkit-scrollbar-thumb {
+            background: #3b82f6; 
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body class="h-screen flex flex-col md:flex-row overflow-hidden">
 
     <!-- 左側邊欄 (Sidebar) -->
-    <aside class="w-full md:w-64 bg-blue-900 text-white flex flex-col h-auto md:h-full shadow-xl z-10 flex-shrink-0">
-        <div class="p-6 bg-blue-950">
+    <aside class="w-full md:w-72 bg-blue-900 text-white flex flex-col h-auto md:h-full shadow-xl z-10 flex-shrink-0">
+        <div class="p-6 bg-blue-950 flex-shrink-0">
             <h1 class="text-2xl font-bold tracking-wider mb-2">EMBA 115</h1>
-            <h2 class="text-sm text-blue-300 font-medium">統計學 / 課程學習指南</h2>
+            <h2 class="text-sm text-blue-300 font-medium">統計學 / 綜合學習指南</h2>
         </div>
-        <nav class="flex-1 overflow-y-auto py-4">
+        <nav class="flex-1 overflow-y-auto sidebar-scroll py-2">
             <ul class="space-y-1">
+                <!-- 第一週 -->
+                <li><div class="px-6 py-3 text-xs font-bold text-blue-400 uppercase tracking-wider bg-blue-900/50">Week 1: 基礎與應用</div></li>
                 <li>
-                    <button onclick="showChapter('ch1', this)" class="nav-item active w-full text-left px-6 py-3 flex items-center hover:bg-blue-800 text-sm md:text-base">
-                        <i data-lucide="book-open" class="w-5 h-5 mr-3 text-blue-300"></i>
-                        1. 學習指南簡介
+                    <button onclick="showChapter('ch1', this)" class="nav-item active w-full text-left px-6 py-2.5 flex items-center hover:bg-blue-800 text-sm">
+                        <i data-lucide="book-open" class="w-4 h-4 mr-3 text-blue-300"></i>
+                        1. 第一週指南簡介
                     </button>
                 </li>
                 <li>
-                    <button onclick="showChapter('ch2', this)" class="nav-item w-full text-left px-6 py-3 flex items-center hover:bg-blue-800 text-sm md:text-base">
-                        <i data-lucide="help-circle" class="w-5 h-5 mr-3 text-blue-300"></i>
-                        2. 短答題測驗 (上)
+                    <button onclick="showChapter('ch2', this)" class="nav-item w-full text-left px-6 py-2.5 flex items-center hover:bg-blue-800 text-sm">
+                        <i data-lucide="help-circle" class="w-4 h-4 mr-3 text-blue-300"></i>
+                        2. 基礎測驗 (上)
                     </button>
                 </li>
                 <li>
-                    <button onclick="showChapter('ch3', this)" class="nav-item w-full text-left px-6 py-3 flex items-center hover:bg-blue-800 text-sm md:text-base">
-                        <i data-lucide="message-circle" class="w-5 h-5 mr-3 text-blue-300"></i>
-                        3. 短答題測驗 (下)
+                    <button onclick="showChapter('ch3', this)" class="nav-item w-full text-left px-6 py-2.5 flex items-center hover:bg-blue-800 text-sm">
+                        <i data-lucide="message-circle" class="w-4 h-4 mr-3 text-blue-300"></i>
+                        3. 基礎測驗 (下)
                     </button>
                 </li>
                 <li>
-                    <button onclick="showChapter('ch4', this)" class="nav-item w-full text-left px-6 py-3 flex items-center hover:bg-blue-800 text-sm md:text-base">
-                        <i data-lucide="lightbulb" class="w-5 h-5 mr-3 text-blue-300"></i>
-                        4. 申論題建議
+                    <button onclick="showChapter('ch4', this)" class="nav-item w-full text-left px-6 py-2.5 flex items-center hover:bg-blue-800 text-sm">
+                        <i data-lucide="lightbulb" class="w-4 h-4 mr-3 text-blue-300"></i>
+                        4. 基礎申論建議
                     </button>
                 </li>
                 <li>
-                    <button onclick="showChapter('ch5', this)" class="nav-item w-full text-left px-6 py-3 flex items-center hover:bg-blue-800 text-sm md:text-base">
-                        <i data-lucide="book-a" class="w-5 h-5 mr-3 text-blue-300"></i>
-                        5. 關鍵術語彙編
+                    <button onclick="showChapter('ch5', this)" class="nav-item w-full text-left px-6 py-2.5 flex items-center hover:bg-blue-800 text-sm">
+                        <i data-lucide="book-a" class="w-4 h-4 mr-3 text-blue-300"></i>
+                        5. 第一週關鍵術語
+                    </button>
+                </li>
+
+                <!-- 第二週 -->
+                <li><div class="px-6 py-3 text-xs font-bold text-indigo-400 uppercase tracking-wider bg-blue-900/50 mt-2 border-t border-blue-800">Week 2: 機率與專題</div></li>
+                <li>
+                    <button onclick="showChapter('ch6', this)" class="nav-item w-full text-left px-6 py-2.5 flex items-center hover:bg-blue-800 text-sm">
+                        <i data-lucide="target" class="w-4 h-4 mr-3 text-indigo-300"></i>
+                        6. 專題研究簡介
+                    </button>
+                </li>
+                <li>
+                    <button onclick="showChapter('ch7', this)" class="nav-item w-full text-left px-6 py-2.5 flex items-center hover:bg-blue-800 text-sm">
+                        <i data-lucide="pie-chart" class="w-4 h-4 mr-3 text-indigo-300"></i>
+                        7. 描述統計測驗
+                    </button>
+                </li>
+                <li>
+                    <button onclick="showChapter('ch8', this)" class="nav-item w-full text-left px-6 py-2.5 flex items-center hover:bg-blue-800 text-sm">
+                        <i data-lucide="dice-5" class="w-4 h-4 mr-3 text-indigo-300"></i>
+                        8. 機率論測驗
+                    </button>
+                </li>
+                <li>
+                    <button onclick="showChapter('ch9', this)" class="nav-item w-full text-left px-6 py-2.5 flex items-center hover:bg-blue-800 text-sm">
+                        <i data-lucide="brain-circuit" class="w-4 h-4 mr-3 text-indigo-300"></i>
+                        9. 機率申論思考
+                    </button>
+                </li>
+                <li>
+                    <button onclick="showChapter('ch10', this)" class="nav-item w-full text-left px-6 py-2.5 flex items-center hover:bg-blue-800 text-sm">
+                        <i data-lucide="library" class="w-4 h-4 mr-3 text-indigo-300"></i>
+                        10. 機率關鍵術語
                     </button>
                 </li>
             </ul>
         </nav>
-        <div class="p-4 bg-blue-950 text-xs text-blue-400 text-center">
+        <div class="p-4 bg-blue-950 text-xs text-blue-400 text-center flex-shrink-0">
             授課教師：葉瑞徽 老師<br>
             NTUST EMBA Program
         </div>
@@ -95,9 +139,12 @@
     <!-- 右側內容區 (Main Content) -->
     <main class="flex-1 h-full overflow-y-auto p-6 md:p-12 bg-gray-50 relative">
         
+        <!-- ================= WEEK 1 內容 (Ch1 - Ch5) ================= -->
+        
         <!-- Chapter 1: 簡介 -->
         <div id="ch1" class="chapter-content active max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-200 pb-2">1. EMBA 統計學課程學習指南</h2>
+            <span class="text-blue-500 font-bold tracking-widest text-sm mb-2 block">WEEK 1</span>
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-200 pb-2">1. 第一週課程學習指南</h2>
             
             <div class="bg-white rounded-xl shadow-sm p-8 mb-8 border border-gray-100 flex items-start gap-6">
                 <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center shrink-0">
@@ -121,9 +168,10 @@
 
         <!-- Chapter 2: 短答題測驗 (上) -->
         <div id="ch2" class="chapter-content max-w-4xl mx-auto">
+            <span class="text-blue-500 font-bold tracking-widest text-sm mb-2 block">WEEK 1</span>
             <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-200 pb-2">2. 短答題測驗 (上) - 基礎觀念</h2>
             <p class="text-gray-600 mb-6 flex items-center">
-                <i data-lucide="info" class="w-5 h-5 mr-2 text-blue-500"></i> 請針對以下問題提供 2-3 句的簡要回答。點擊問題面板即可核對解答與圖解。
+                <i data-lucide="info" class="w-5 h-5 mr-2 text-blue-500"></i> 請針對以下問題提供簡要回答。點擊面板核對解答與圖解。
             </p>
 
             <div class="space-y-4">
@@ -135,26 +183,20 @@
                     <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
                         <span class="font-bold text-blue-700">解答：</span><br>
                         統計學的主要目的在於對資料進行<strong>描述（Describe）</strong>、<strong>預測（Predict）</strong>與<strong>控制（Control）</strong>。透過科學的方法收集、組織與分析資訊，將日常直覺轉化為客觀的決策依據。
-                        <!-- 視覺化圖解 -->
                         <div class="mt-4 flex flex-col md:flex-row items-center justify-center gap-2 text-sm text-center">
                             <div class="bg-white p-3 rounded-lg border border-blue-200 shadow-sm w-full md:w-1/3">
                                 <i data-lucide="bar-chart" class="w-6 h-6 mx-auto mb-1 text-blue-500"></i>
                                 <div class="font-bold text-blue-800">1. 描述 (Describe)</div>
-                                <div class="text-xs text-gray-500">敘述統計了解現況</div>
                             </div>
                             <i data-lucide="arrow-right" class="hidden md:block text-blue-300"></i>
-                            <i data-lucide="arrow-down" class="md:hidden text-blue-300"></i>
                             <div class="bg-white p-3 rounded-lg border border-blue-200 shadow-sm w-full md:w-1/3">
                                 <i data-lucide="trending-up" class="w-6 h-6 mx-auto mb-1 text-blue-500"></i>
                                 <div class="font-bold text-blue-800">2. 預測 (Predict)</div>
-                                <div class="text-xs text-gray-500">推論統計推估未來</div>
                             </div>
                             <i data-lucide="arrow-right" class="hidden md:block text-blue-300"></i>
-                            <i data-lucide="arrow-down" class="md:hidden text-blue-300"></i>
                             <div class="bg-white p-3 rounded-lg border border-blue-200 shadow-sm w-full md:w-1/3">
                                 <i data-lucide="settings" class="w-6 h-6 mx-auto mb-1 text-blue-500"></i>
                                 <div class="font-bold text-blue-800">3. 控制 (Control)</div>
-                                <div class="text-xs text-gray-500">降低決策的變異風險</div>
                             </div>
                         </div>
                     </div>
@@ -162,120 +204,50 @@
 
                 <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
                     <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-blue-600 transition">
-                        <div class="flex"><span class="text-blue-500 mr-3">Q2.</span> 何謂「母體參數」與「樣本統計量」？兩者有何區別？</div>
+                        <div class="flex"><span class="text-blue-500 mr-3">Q2.</span> 何謂「母體參數」與「樣本統計量」？</div>
                         <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
                     </summary>
                     <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
                         <span class="font-bold text-blue-700">解答：</span><br>
-                        <strong>母體參數</strong>（如 &mu;）是描述整個母體特徵的固定數值；<strong>樣本統計量</strong>（如 X̄）則是從樣本中計算得出，會隨抽樣而變動。統計學的核心在於透過樣本統計量來推論未知的母體參數。
-                        <!-- 視覺化圖解 -->
-                        <div class="mt-4 flex flex-col md:flex-row items-center justify-center gap-6 bg-white p-4 rounded-xl border border-blue-100 shadow-sm">
-                            <div class="relative w-24 h-24 bg-blue-50 border-2 border-blue-300 rounded-full flex flex-col items-center justify-center">
-                                <span class="font-bold text-blue-800">母體 (全體)</span>
-                                <span class="text-xs text-blue-600">參數 (未知)</span>
-                            </div>
-                            <div class="flex flex-col items-center gap-2">
-                                <div class="flex items-center text-xs font-bold text-gray-500">抽樣 <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></div>
-                                <div class="flex items-center text-xs font-bold text-blue-500 bg-blue-100 px-2 rounded-full"><i data-lucide="arrow-left" class="w-3 h-3 mr-1"></i> 推論</div>
-                            </div>
-                            <div class="w-16 h-16 bg-green-50 border-2 border-green-400 rounded-full flex flex-col items-center justify-center shadow-md">
-                                <span class="font-bold text-green-800">樣本</span>
-                                <span class="text-xs text-green-600">統計量</span>
-                            </div>
+                        <strong>母體參數</strong>是描述整個母體特徵的固定數值；<strong>樣本統計量</strong>則是從樣本中計算得出。統計學的核心在於透過樣本推論未知的母體。
+                        <div class="mt-4 flex items-center justify-center gap-6 bg-white p-4 rounded-xl border border-blue-100 shadow-sm">
+                            <div class="w-20 h-20 bg-blue-50 border-2 border-blue-300 rounded-full flex flex-col items-center justify-center"><span class="font-bold text-blue-800 text-sm">母體</span></div>
+                            <div class="flex flex-col items-center text-xs font-bold text-gray-500">抽樣推論 <i data-lucide="arrow-right-left" class="w-4 h-4 mt-1 text-blue-500"></i></div>
+                            <div class="w-16 h-16 bg-green-50 border-2 border-green-400 rounded-full flex flex-col items-center justify-center shadow-md"><span class="font-bold text-green-800 text-sm">樣本</span></div>
                         </div>
+                    </div>
+                </details>
+                
+                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
+                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-blue-600 transition">
+                        <div class="flex"><span class="text-blue-500 mr-3">Q3.</span> 描述一組資料時最關鍵的三個特徵為何？</div>
+                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
+                        <span class="font-bold text-blue-700">解答：</span><br>
+                        最關鍵的三個特徵是<strong>中心點</strong>、<strong>散布狀況</strong>以及<strong>形狀</strong>。
                     </div>
                 </details>
 
                 <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
                     <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-blue-600 transition">
-                        <div class="flex"><span class="text-blue-500 mr-3">Q3.</span> 描述一組資料或變數時，最關鍵的三個特徵為何？</div>
+                        <div class="flex"><span class="text-blue-500 mr-3">Q4.</span> 偏態分布時為何中位數比平均數貼近真實？</div>
                         <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
                     </summary>
                     <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
                         <span class="font-bold text-blue-700">解答：</span><br>
-                        最關鍵的三個特徵是<strong>中心點</strong>（Location/Center）、<strong>散布狀況</strong>（Spread/Dispersion）以及<strong>形狀</strong>（Shape）。掌握這三個要素即可大致理解資料的整體形態與特質。
-                        <!-- 視覺化圖解 -->
-                        <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-                            <div class="bg-white p-3 rounded-lg border border-blue-100 shadow-sm flex flex-col items-center">
-                                <i data-lucide="target" class="w-6 h-6 mb-2 text-red-500"></i>
-                                <div class="font-bold text-gray-800 text-sm">中心點 (Location)</div>
-                                <div class="text-xs text-gray-500 mt-1 bg-gray-100 px-2 rounded">平均、中位數</div>
-                            </div>
-                            <div class="bg-white p-3 rounded-lg border border-blue-100 shadow-sm flex flex-col items-center">
-                                <i data-lucide="maximize" class="w-6 h-6 mb-2 text-green-500"></i>
-                                <div class="font-bold text-gray-800 text-sm">散布狀況 (Spread)</div>
-                                <div class="text-xs text-gray-500 mt-1 bg-gray-100 px-2 rounded">變異數、全距</div>
-                            </div>
-                            <div class="bg-white p-3 rounded-lg border border-blue-100 shadow-sm flex flex-col items-center">
-                                <i data-lucide="activity" class="w-6 h-6 mb-2 text-purple-500"></i>
-                                <div class="font-bold text-gray-800 text-sm">形狀 (Shape)</div>
-                                <div class="text-xs text-gray-500 mt-1 bg-gray-100 px-2 rounded">常態、偏態</div>
-                            </div>
-                        </div>
+                        平均數容易受極端值影響被拉偏。中位數代表正中間的數值，能反映大眾的實際位階。
                     </div>
                 </details>
 
                 <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
                     <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-blue-600 transition">
-                        <div class="flex"><span class="text-blue-500 mr-3">Q4.</span> 在處理偏態分布（如薪資結構）時，為何中位數通常比平均數更能貼近真實感受？</div>
+                        <div class="flex"><span class="text-blue-500 mr-3">Q5.</span> 變異數與標準差的主要差別？</div>
                         <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
                     </summary>
                     <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
                         <span class="font-bold text-blue-700">解答：</span><br>
-                        平均數容易受極端值（如極高收入者）影響而往右拉升，導致多數人的數值低於平均。中位數代表正中間的數值，能反映 50% 大眾的實際位階，避免受少數極端資料誤導。
-                        <!-- 視覺化圖解 (右偏態) -->
-                        <div class="mt-4 relative h-28 bg-white rounded-lg border border-blue-100 shadow-sm flex items-end px-4 pb-4">
-                            <div class="absolute inset-0 flex items-center justify-center opacity-10">
-                                <!-- 右偏曲線 SVG -->
-                                <svg viewBox="0 0 200 50" class="w-full h-full" preserveAspectRatio="none"><path d="M0,50 Q40,0 60,0 T150,45 L200,50 Z" fill="#3b82f6"/></svg>
-                            </div>
-                            <div class="w-full flex items-end justify-start h-full pt-4">
-                                <div class="w-1/6 h-8 bg-blue-200 mx-1 rounded-t border-b-2 border-blue-500"></div>
-                                <div class="w-1/6 h-16 bg-blue-300 mx-1 rounded-t border-b-2 border-blue-500 relative">
-                                    <div class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-bold text-blue-700 whitespace-nowrap">多數窮人</div>
-                                </div>
-                                <div class="w-1/6 h-20 bg-blue-400 mx-1 rounded-t border-b-2 border-blue-500 relative">
-                                    <div class="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] font-bold text-white bg-red-500 px-1 rounded whitespace-nowrap z-10">中位數(貼近真實)</div>
-                                    <div class="w-0.5 h-full bg-red-600 mx-auto"></div>
-                                </div>
-                                <div class="w-1/6 h-10 bg-blue-200 mx-1 rounded-t border-b-2 border-blue-500 relative">
-                                    <div class="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] font-bold text-white bg-orange-400 px-1 rounded whitespace-nowrap z-10">平均數(被拉高)</div>
-                                    <div class="w-0.5 h-full bg-orange-500 mx-auto"></div>
-                                </div>
-                                <div class="w-1/6 h-3 bg-blue-100 mx-1 rounded-t border-b-2 border-blue-500"></div>
-                                <div class="w-1/6 h-1 bg-red-200 mx-1 rounded-t border-b-2 border-red-500 relative">
-                                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 text-xs font-bold text-red-500 whitespace-nowrap">郭台銘</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </details>
-
-                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
-                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-blue-600 transition">
-                        <div class="flex"><span class="text-blue-500 mr-3">Q5.</span> 變異數（Variance）與標準差（Standard Deviation）的主要差別在於何處？</div>
-                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
-                    </summary>
-                    <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
-                        <span class="font-bold text-blue-700">解答：</span><br>
-                        <strong>變異數</strong>是離差平方的平均值，其單位為原始單位的平方，缺乏直觀意義；<strong>標準差</strong>則是變異數的算術平方根，其單位與原始資料一致，便於直接與平均數進行比較。
-                        <!-- 視覺化圖解 -->
-                        <div class="mt-4 flex flex-row items-center justify-center gap-2 md:gap-4 bg-white p-4 rounded-xl border border-blue-100 shadow-sm">
-                            <div class="bg-gray-50 p-3 md:p-4 rounded-lg border border-gray-200 text-center w-5/12">
-                                <div class="text-xl md:text-2xl font-bold text-gray-800">S²</div>
-                                <div class="text-sm font-bold text-blue-600 mt-1">變異數</div>
-                                <div class="text-[10px] md:text-xs text-gray-500 mt-1">單位被「平方」<br>(例：薪水²)</div>
-                            </div>
-                            <div class="flex flex-col items-center justify-center">
-                                <i data-lucide="arrow-right" class="w-5 h-5 md:w-6 md:h-6 text-gray-400"></i>
-                                <div class="text-[10px] md:text-xs font-bold text-gray-600 bg-gray-100 px-2 py-0.5 rounded-full mt-1 whitespace-nowrap">開根號 (√)</div>
-                            </div>
-                            <div class="bg-green-50 p-3 md:p-4 rounded-lg border border-green-200 text-center w-5/12 shadow-inner">
-                                <div class="text-xl md:text-2xl font-bold text-gray-800">S</div>
-                                <div class="text-sm font-bold text-green-600 mt-1">標準差</div>
-                                <div class="text-[10px] md:text-xs text-green-700 mt-1">還原「原始單位」<br>(例：薪水)</div>
-                            </div>
-                        </div>
+                        變異數是平方值缺乏直觀意義；標準差是開根號後，單位與原始資料一致。
                     </div>
                 </details>
             </div>
@@ -283,144 +255,62 @@
 
         <!-- Chapter 3: 短答題測驗 (下) -->
         <div id="ch3" class="chapter-content max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-200 pb-2">3. 短答題測驗 (下) - 應用與管理意涵</h2>
-            <p class="text-gray-600 mb-6 flex items-center">
-                <i data-lucide="info" class="w-5 h-5 mr-2 text-blue-500"></i> 請針對以下問題提供 2-3 句的簡要回答。點擊問題面板即可核對解答與圖解。
-            </p>
-
+            <span class="text-blue-500 font-bold tracking-widest text-sm mb-2 block">WEEK 1</span>
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-200 pb-2">3. 短答題測驗 (下) - 應用與意涵</h2>
+            
             <div class="space-y-4">
                 <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
                     <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-blue-600 transition">
-                        <div class="flex"><span class="text-blue-500 mr-3">Q6.</span> 何謂 Z 分數（Z-score）？其在比較不同資料集時有何功用？</div>
+                        <div class="flex"><span class="text-blue-500 mr-3">Q6.</span> 何謂 Z 分數？有何功用？</div>
                         <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
                     </summary>
                     <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
                         <span class="font-bold text-blue-700">解答：</span><br>
-                        Z 分數代表某個數值距離平均值有多少個標準差。它是一個不具單位的指標，能將不同背景、不同規模的資料轉換至同一標準進行比較（如比較不同班級的成績排名）。
-                        <!-- 視覺化圖解 -->
-                        <div class="mt-4 bg-white p-6 rounded-xl border border-orange-100 shadow-sm text-center">
-                            <div class="text-xs font-bold text-orange-600 mb-4 bg-orange-50 inline-block px-3 py-1 rounded-full">通用標準化尺規：萬物皆可比</div>
-                            <div class="flex justify-between items-end h-8 border-b-2 border-gray-300 relative w-full max-w-sm mx-auto">
-                                <div class="w-px h-3 bg-gray-400"></div><div class="text-xs absolute -bottom-5 left-0 -translate-x-1/2 text-gray-500">-2σ</div>
-                                <div class="w-px h-3 bg-gray-400"></div><div class="text-xs absolute -bottom-5 left-1/4 -translate-x-1/2 text-gray-500">-1σ</div>
-                                <div class="w-0.5 h-5 bg-blue-500"></div><div class="text-[10px] md:text-xs absolute -bottom-5 left-1/2 -translate-x-1/2 font-bold text-blue-600 whitespace-nowrap">平均(Z=0)</div>
-                                <div class="w-px h-3 bg-gray-400"></div><div class="text-xs absolute -bottom-5 left-3/4 -translate-x-1/2 text-gray-500">+1σ</div>
-                                <div class="w-0.5 h-6 bg-red-500"></div><div class="text-[10px] md:text-xs absolute -bottom-5 right-0 translate-x-1/2 font-bold text-red-500 whitespace-nowrap">頂尖(Z=+2)</div>
-                            </div>
-                        </div>
+                        Z 分數代表距離平均值有幾個標準差。它是不具單位的指標，能將不同背景資料轉換至同一標準比較。
                     </div>
                 </details>
 
                 <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
                     <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-blue-600 transition">
-                        <div class="flex"><span class="text-blue-500 mr-3">Q7.</span> 全距（Range）作為衡量散布狀況的指標，有何優缺點？</div>
+                        <div class="flex"><span class="text-blue-500 mr-3">Q7.</span> 全距作為散布指標有何優缺點？</div>
                         <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
                     </summary>
                     <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
                         <span class="font-bold text-blue-700">解答：</span><br>
-                        全距的<strong>優點</strong>在於計算極其簡單（最大值減最小值），在品管現場非常實用。<strong>缺點</strong>是極易受到單一極端值的影響，且無法反映資料內部的變動細節。
-                        <!-- 視覺化圖解 -->
-                        <div class="mt-4 bg-white p-6 rounded-xl border border-orange-100 shadow-sm flex flex-col items-center">
-                            <div class="w-full max-w-sm relative h-12 flex items-center">
-                                <div class="absolute w-full h-1 bg-gray-200 rounded"></div>
-                                <div class="absolute left-0 w-3 h-3 bg-blue-500 rounded-full -mt-1"><div class="absolute -top-5 left-1/2 -translate-x-1/2 text-xs font-bold text-blue-600">最小值</div></div>
-                                <div class="absolute left-[20%] w-3 h-3 bg-gray-400 rounded-full -mt-1"></div>
-                                <div class="absolute left-[25%] w-3 h-3 bg-gray-400 rounded-full -mt-1"></div>
-                                <div class="absolute left-[35%] w-3 h-3 bg-gray-400 rounded-full -mt-1"></div>
-                                <div class="absolute right-0 w-3 h-3 bg-red-500 rounded-full -mt-1"><div class="absolute -top-5 left-1/2 -translate-x-1/2 text-xs font-bold text-red-600 whitespace-nowrap">最大值 (極端值)</div></div>
-                                
-                                <div class="absolute top-4 left-0 right-0 h-4 border-l-2 border-r-2 border-b-2 border-orange-400 rounded-b flex items-end justify-center pb-1">
-                                    <span class="text-[10px] md:text-xs font-bold text-orange-600 bg-white px-2 -mb-2 whitespace-nowrap">全距 Range (輕易被紅色點拉大)</span>
-                                </div>
-                            </div>
-                        </div>
+                        優點是計算簡單，缺點是極易受單一極端值影響。
                     </div>
                 </details>
 
                 <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
                     <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-blue-600 transition">
-                        <div class="flex"><span class="text-blue-500 mr-3">Q8.</span> 虛核圖（Box Plot）包含了哪五個關鍵數值？</div>
+                        <div class="flex"><span class="text-blue-500 mr-3">Q8.</span> 虛核圖包含了哪五個關鍵數值？</div>
                         <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
                     </summary>
                     <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
                         <span class="font-bold text-blue-700">解答：</span><br>
-                        虛核圖（盒鬚圖）由五數總括（Five-number summary）構成，分別是：<strong>最小值</strong>、<strong>第一四分位數（Q1）</strong>、<strong>中位數（Q2）</strong>、<strong>第三四分位數（Q3）</strong>及<strong>最大值</strong>。
-                        <!-- 視覺化圖解 -->
-                        <div class="mt-4 bg-white p-6 rounded-xl border border-orange-100 shadow-sm flex flex-col items-center">
-                            <div class="text-xs font-bold text-gray-500 mb-6">秒懂五數總括</div>
-                            <div class="relative w-full max-w-sm mx-auto h-8 flex items-center">
-                                <div class="absolute left-[10%] right-[10%] h-0.5 bg-gray-400"></div>
-                                <div class="absolute left-[10%] w-0.5 h-4 bg-gray-600 -mt-2"><div class="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] text-gray-500 bg-gray-100 px-1 rounded">1. Min</div></div>
-                                <div class="absolute right-[10%] w-0.5 h-4 bg-gray-600 -mt-2"><div class="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] text-gray-500 bg-gray-100 px-1 rounded">5. Max</div></div>
-                                
-                                <div class="absolute left-[30%] right-[30%] h-8 bg-orange-50 border-2 border-orange-400 -mt-4 rounded-sm shadow-inner"></div>
-                                <div class="absolute left-[30%] -top-6 text-[10px] font-bold text-orange-600 -translate-x-1/2">2. Q1</div>
-                                <div class="absolute right-[30%] -top-6 text-[10px] font-bold text-orange-600 translate-x-1/2">4. Q3</div>
-                                
-                                <div class="absolute left-[45%] w-0.5 h-8 bg-red-500 -mt-4"><div class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] font-bold text-white bg-red-500 px-1 rounded whitespace-nowrap">3. 中位數 Q2</div></div>
-                            </div>
-                        </div>
+                        最小值、Q1、中位數(Q2)、Q3、最大值。
                     </div>
                 </details>
 
                 <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
                     <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-blue-600 transition">
-                        <div class="flex"><span class="text-blue-500 mr-3">Q9.</span> 德菲法（Delphi Method）的基本操作邏輯為何？其在市場定價中有何價值？</div>
+                        <div class="flex"><span class="text-blue-500 mr-3">Q9.</span> 德菲法的基本邏輯與價值？</div>
                         <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
                     </summary>
                     <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
                         <span class="font-bold text-blue-700">解答：</span><br>
-                        德菲法透過多輪匿名問卷收集專家或群眾意見，每輪後公佈平均值與散布狀況供參與者修正意見。此方法能使預測結果趨於收斂，找出市場最能接受的合理價格。
-                        <!-- 視覺化圖解 -->
-                        <div class="mt-4 flex items-center justify-center text-sm font-bold text-gray-700 bg-white py-6 px-2 rounded-xl border border-orange-100 shadow-sm">
-                            <div class="flex flex-col items-center">
-                                <div class="bg-gray-100 p-2 md:p-3 rounded-lg border border-gray-200 text-center"><i data-lucide="users" class="w-5 h-5 mx-auto text-gray-500 mb-1"></i>匿名意見</div>
-                            </div>
-                            <div class="flex flex-col items-center mx-1 md:mx-2 w-10 md:w-16">
-                                <i data-lucide="arrow-right" class="text-orange-400 mb-1 w-4 h-4 md:w-5 md:h-5"></i>
-                                <span class="text-[8px] md:text-[10px] text-blue-500">公佈再測</span>
-                                <i data-lucide="arrow-left" class="text-blue-400 mt-1 w-4 h-4 md:w-5 md:h-5"></i>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <div class="bg-orange-50 text-orange-800 p-2 md:p-3 rounded-lg border border-orange-200 text-center"><i data-lucide="calculator" class="w-5 h-5 mx-auto text-orange-500 mb-1"></i>計算平均</div>
-                            </div>
-                            <i data-lucide="arrow-right" class="text-green-500 mx-2 w-5 h-5"></i>
-                            <div class="flex flex-col items-center">
-                                <div class="bg-green-50 text-green-800 p-2 md:p-3 rounded-lg border border-green-200 text-center shadow-inner"><i data-lucide="check-circle" class="w-5 h-5 mx-auto text-green-600 mb-1"></i>共識收斂</div>
-                            </div>
-                        </div>
+                        透過多輪匿名問卷收集意見，公佈平均後供修正，使結果收斂達成共識。
                     </div>
                 </details>
 
                 <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
                     <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-blue-600 transition">
-                        <div class="flex"><span class="text-blue-500 mr-3">Q10.</span> 從統計學的角度來看，管理者的「焦慮」來源為何？如何透過統計方法緩解？</div>
+                        <div class="flex"><span class="text-blue-500 mr-3">Q10.</span> 管理者的「焦慮」來源為何？</div>
                         <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
                     </summary>
                     <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
                         <span class="font-bold text-blue-700">解答：</span><br>
-                        所有焦慮皆源於<strong>「不確定性」</strong>（Uncertainty），即統計上的變異數。透過降低變異數、精確控制製程或提供透明資訊，能增加可預測性，進而減少管理者與顧客的焦慮。
-                        <!-- 視覺化圖解 -->
-                        <div class="mt-4 grid grid-cols-2 gap-4 text-center text-sm">
-                            <div class="bg-white p-4 rounded-xl border-t-4 border-red-400 shadow-sm flex flex-col items-center justify-end">
-                                <div class="font-bold text-red-700 mb-2 bg-red-50 px-2 py-1 rounded w-full">高變異 = 高焦慮</div>
-                                <!-- 寬扁的鐘形曲線 -->
-                                <div class="h-12 w-full relative flex items-end justify-center mb-1 mt-2">
-                                    <svg viewBox="0 0 100 40" class="w-full h-full opacity-60"><path d="M0,40 Q50,-20 100,40 Z" fill="#ef4444"/></svg>
-                                    <div class="absolute w-full flex justify-between bottom-0 px-2 text-[10px] text-red-700 font-bold"><span>極低</span><span>極高</span></div>
-                                </div>
-                                <div class="text-xs text-red-500 mt-2">結果忽好忽壞，無法預測</div>
-                            </div>
-                            <div class="bg-white p-4 rounded-xl border-t-4 border-green-400 shadow-sm flex flex-col items-center justify-end">
-                                <div class="font-bold text-green-700 mb-2 bg-green-50 px-2 py-1 rounded w-full">低變異 = 可預期</div>
-                                <!-- 窄高的鐘形曲線 -->
-                                <div class="h-12 w-full relative flex items-end justify-center mb-1 mt-2">
-                                    <svg viewBox="0 0 100 40" class="w-full h-full opacity-80"><path d="M30,40 Q50,-40 70,40 Z" fill="#22c55e"/></svg>
-                                    <div class="absolute w-full flex justify-center bottom-0 text-[10px] font-bold text-white bg-green-700 px-1 rounded">穩定一致</div>
-                                </div>
-                                <div class="text-xs text-green-600 mt-2">品質受控，安心信任</div>
-                            </div>
-                        </div>
+                        焦慮源於「不確定性」（變異數）。降低變異數能增加可預測性，進而減少焦慮。
                     </div>
                 </details>
             </div>
@@ -428,227 +318,177 @@
 
         <!-- Chapter 4: 申論題建議 -->
         <div id="ch4" class="chapter-content max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-200 pb-2">4. 申論題建議</h2>
-            <p class="text-gray-700 mb-6 flex items-center">
-                <i data-lucide="info" class="w-5 h-5 mr-2 text-blue-500"></i> 結合理論與實務工作經驗，適合做為小組討論或考前深度思考。點擊面板即可查看參考擬答與說明。
+            <span class="text-blue-500 font-bold tracking-widest text-sm mb-2 block">WEEK 1</span>
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-200 pb-2">4. 第一週申論題建議</h2>
+            <div class="grid grid-cols-1 gap-4">
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-blue-500">
+                    <h3 class="font-bold text-lg text-gray-800 mb-2">1. 統計學與管理決策</h3>
+                    <p class="text-sm text-gray-600">在企業管理中，如何利用「描述、預測、控制」來提升營運效率？</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-green-500">
+                    <h3 class="font-bold text-lg text-gray-800 mb-2">2. 不確定性管理</h3>
+                    <p class="text-sm text-gray-600">舉出具體案例，說明如何透過降低散布狀況（變異數）改善服務品質。</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-purple-500">
+                    <h3 class="font-bold text-lg text-gray-800 mb-2">3. 相關性與因果關係</h3>
+                    <p class="text-sm text-gray-600">解釋相關性與因果關係差異，及誤認因果帶來的決策風險。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chapter 5: 關鍵術語彙編 -->
+        <div id="ch5" class="chapter-content max-w-5xl mx-auto">
+            <span class="text-blue-500 font-bold tracking-widest text-sm mb-2 block">WEEK 1</span>
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-200 pb-2">5. 第一週關鍵術語</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                    <h4 class="font-bold text-blue-700 mb-1 border-b pb-1">母體 (Population)</h4>
+                    <p class="text-sm text-gray-600">研究對象的全體。</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                    <h4 class="font-bold text-blue-700 mb-1 border-b pb-1">樣本 (Sample)</h4>
+                    <p class="text-sm text-gray-600">從母體中抽取的部分。</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                    <h4 class="font-bold text-blue-700 mb-1 border-b pb-1">直方圖 (Histogram)</h4>
+                    <p class="text-sm text-gray-600">連續性量化資料的分布圖表。</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ================= WEEK 2 內容 (Ch6 - Ch10) ================= -->
+
+        <!-- Chapter 6: 第二週簡介 -->
+        <div id="ch6" class="chapter-content max-w-4xl mx-auto">
+            <span class="text-indigo-500 font-bold tracking-widest text-sm mb-2 block">WEEK 2</span>
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-indigo-200 pb-2">6. 統計學專題研究：機率與描述統計</h2>
+            
+            <div class="bg-white rounded-xl shadow-sm p-8 mb-8 border border-gray-100 flex items-start gap-6">
+                <div class="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center shrink-0">
+                    <i data-lucide="target" class="w-8 h-8"></i>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold text-indigo-800 mb-4">本週學習目標</h3>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        本學習指南旨在彙整 EMBA 統計學課程中關於 <strong>描述性統計</strong>、<strong>計數原理</strong> 及 <strong>機率論</strong> 核心概念的教學內容。
+                    </p>
+                    <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-100">
+                        <p class="text-indigo-900 text-sm leading-relaxed">
+                            透過對課堂討論與實例的深度分析，協助學習者掌握統計工具（包含不確定性管理、期望收益、貝氏定理等）在決策管理中的實際應用。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chapter 7: 第二週 短答題 (上) -->
+        <div id="ch7" class="chapter-content max-w-4xl mx-auto">
+            <span class="text-indigo-500 font-bold tracking-widest text-sm mb-2 block">WEEK 2</span>
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-indigo-200 pb-2">7. 描述統計測驗 (Q1 - Q5)</h2>
+            <p class="text-gray-600 mb-6 flex items-center">
+                <i data-lucide="info" class="w-5 h-5 mr-2 text-indigo-500"></i> 先看「解答金鑰」抓重點，再看「詳細說明」與「視覺圖解」加深記憶。
             </p>
 
             <div class="space-y-4">
-                <!-- 申論 1 -->
-                <details class="bg-white rounded-xl shadow-sm border border-gray-200 border-l-4 border-l-blue-500 group">
-                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-blue-600 transition">
-                        <div class="flex items-center"><span class="text-blue-500 mr-3 text-xl">1.</span> 統計學與管理決策</div>
+                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
+                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
+                        <div class="flex"><span class="text-indigo-500 mr-3">Q1.</span> 統計學的主要目的是什麼？</div>
                         <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
                     </summary>
                     <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
-                        <p class="text-sm text-gray-500 mb-4 font-medium">問題：請論述為何統計學被視為 EMBA 的核心通識課程。在企業管理中，如何利用「描述、預測、控制」這三個層次來提升營運效率？</p>
-                        <div class="p-4 bg-blue-50 rounded-lg border border-blue-100 text-sm">
-                            <span class="font-bold text-blue-800 block mb-2">💡 擬答與說明：</span>
-                            統計學提供了一套科學化、客觀的思維框架，幫助經理人擺脫單憑直覺的決策模式，這是 EMBA 必備的素養。<br><br>
-                            在管理應用上：<br>
-                            <strong>1. 描述 (Describe)：</strong> 透過敘述統計（如平均營收、良率變異數）看清企業目前的營運現況。<br>
-                            <strong>2. 預測 (Predict)：</strong> 利用歷史資料與推論統計（如抽樣調查、迴歸分析）來推估未來的市場需求或潛在風險。<br>
-                            <strong>3. 控制 (Control)：</strong> 建立標準化流程與品管機制（降低變異），確保產出與服務品質穩定，從而全面提升企業營運效率。
+                        <div class="mb-3"><span class="font-bold text-indigo-700">🔑 解答金鑰：</span>描述與預測。</div>
+                        <div class="mb-3 text-sm"><span class="font-bold text-indigo-700">📖 詳細說明：</span>統計學的主要目的在於「描述」與「預測」。透過整理現有的資料來源與變數，能幫助我們勾勒出數據的現狀，並對未來的不確定性進行科學化的預測。</div>
+                        <!-- 視覺圖解 -->
+                        <div class="mt-4 flex items-center justify-center gap-6 bg-white p-4 rounded-xl border border-indigo-100 shadow-sm text-center">
+                            <div><i data-lucide="layout-list" class="w-8 h-8 text-indigo-400 mx-auto mb-2"></i><span class="font-bold text-sm">現狀描述</span></div>
+                            <i data-lucide="arrow-right" class="text-gray-300"></i>
+                            <div><i data-lucide="telescope" class="w-8 h-8 text-purple-400 mx-auto mb-2"></i><span class="font-bold text-sm">未來預測</span></div>
                         </div>
-                        <!-- 視覺化圖解 -->
-                        <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-2 text-center text-sm bg-white p-4 rounded-xl border border-blue-100 shadow-sm">
-                            <div class="flex flex-col items-center">
-                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mb-2"><i data-lucide="search"></i></div>
-                                <span class="font-bold text-blue-800">1. 描述</span>
-                                <span class="text-xs text-gray-500 mt-1">敘述統計看清現況</span>
+                    </div>
+                </details>
+
+                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
+                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
+                        <div class="flex"><span class="text-indigo-500 mr-3">Q2.</span> 描述資料或變數時，最重要的三個特徵為何？</div>
+                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
+                        <div class="mb-3"><span class="font-bold text-indigo-700">🔑 解答金鑰：</span>中心點、散佈狀況、分配型態。</div>
+                        <div class="mb-3 text-sm"><span class="font-bold text-indigo-700">📖 詳細說明：</span>最重要的三個特徵分別是「中心點」（如平均值、中位數）、「散佈狀況」（資料的跳動程度）以及整體的分配型態。這些特徵共同構成了一組資料的完整輪廓。</div>
+                        <!-- 視覺圖解 -->
+                        <div class="mt-4 grid grid-cols-3 gap-2 text-center text-xs bg-white p-4 rounded-xl border border-indigo-100 shadow-sm">
+                            <div class="bg-indigo-50 p-2 rounded"><div class="font-bold text-indigo-800">1. 中心點</div>(位置)</div>
+                            <div class="bg-indigo-50 p-2 rounded"><div class="font-bold text-indigo-800">2. 散佈狀況</div>(變異跳動)</div>
+                            <div class="bg-indigo-50 p-2 rounded"><div class="font-bold text-indigo-800">3. 分配型態</div>(形狀偏態)</div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
+                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
+                        <div class="flex"><span class="text-indigo-500 mr-3">Q3.</span> 在統計運算中，變異數與標準差有何本質上的區別？</div>
+                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
+                        <div class="mb-3"><span class="font-bold text-indigo-700">🔑 解答金鑰：</span>變異數具可加性，為真實運算量；標準差為開根號結果，便於與平均值比較。</div>
+                        <div class="mb-3 text-sm"><span class="font-bold text-indigo-700">📖 詳細說明：</span>變異數是描述散佈狀況的真實量值，具有可加減性，常用於變異數分析；標準差是變異數開根號後的結果，使單位與平均值保持一致，方便人類直覺認知。</div>
+                        <!-- 視覺圖解 -->
+                        <div class="mt-4 flex items-center justify-center gap-4 bg-white p-4 rounded-xl border border-indigo-100 shadow-sm text-sm">
+                            <div class="border-2 border-dashed border-gray-300 p-2 rounded text-center"><span class="font-bold text-gray-800 text-lg">Var(X)</span><br><span class="text-xs text-gray-500">真實運算量 (可加減)</span></div>
+                            <div class="flex flex-col items-center"><i data-lucide="arrow-right" class="text-indigo-400"></i><span class="text-[10px] bg-indigo-100 text-indigo-700 px-1 rounded mt-1">開根號</span></div>
+                            <div class="border-2 border-indigo-400 bg-indigo-50 p-2 rounded text-center"><span class="font-bold text-indigo-800 text-lg">SD(X)</span><br><span class="text-xs text-indigo-600">直覺單位 (好比較)</span></div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
+                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
+                        <div class="flex"><span class="text-indigo-500 mr-3">Q4.</span> 財務金融學系如何定義與應用「變異數」？</div>
+                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
+                        <div class="mb-3"><span class="font-bold text-indigo-700">🔑 解答金鑰：</span>變異數即風險，代表收益的波動程度。</div>
+                        <div class="mb-3 text-sm"><span class="font-bold text-indigo-700">📖 詳細說明：</span>在財金領域，變異數被直接等同於「風險」。它描述了投資標的收益的跳動程度；跳動越大（變異數越高），代表該項投資的不確定性與風險越高。</div>
+                        <!-- 視覺圖解 -->
+                        <div class="mt-4 grid grid-cols-2 gap-4 text-center text-xs">
+                            <div class="bg-white p-3 rounded-xl border border-red-200 shadow-sm">
+                                <div class="font-bold text-red-600 mb-2">高變異數 = 高風險</div>
+                                <!-- 高波動折線 -->
+                                <svg viewBox="0 0 100 30" class="w-full h-8 stroke-red-500" fill="none" stroke-width="2"><polyline points="0,15 20,5 40,25 60,0 80,28 100,10"/></svg>
                             </div>
-                            <div class="flex flex-col items-center border-t md:border-t-0 md:border-l border-gray-100 pt-4 md:pt-0 mt-2 md:mt-0">
-                                <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 mb-2"><i data-lucide="line-chart"></i></div>
-                                <span class="font-bold text-purple-800">2. 預測</span>
-                                <span class="text-xs text-gray-500 mt-1">推論統計推估未來</span>
-                            </div>
-                            <div class="flex flex-col items-center border-t md:border-t-0 md:border-l border-gray-100 pt-4 md:pt-0 mt-2 md:mt-0">
-                                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 mb-2"><i data-lucide="shield-check"></i></div>
-                                <span class="font-bold text-green-800">3. 控制</span>
-                                <span class="text-xs text-gray-500 mt-1">建立 SOP 穩固良率</span>
+                            <div class="bg-white p-3 rounded-xl border border-green-200 shadow-sm">
+                                <div class="font-bold text-green-600 mb-2">低變異數 = 低風險</div>
+                                <!-- 低波動折線 -->
+                                <svg viewBox="0 0 100 30" class="w-full h-8 stroke-green-500" fill="none" stroke-width="2"><polyline points="0,15 20,13 40,16 60,14 80,17 100,15"/></svg>
                             </div>
                         </div>
                     </div>
                 </details>
 
-                <!-- 申論 2 -->
-                <details class="bg-white rounded-xl shadow-sm border border-gray-200 border-l-4 border-l-green-500 group">
-                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-green-600 transition">
-                        <div class="flex items-center"><span class="text-green-500 mr-3 text-xl">2.</span> 不確定性管理</div>
+                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
+                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
+                        <div class="flex"><span class="text-indigo-500 mr-3">Q5.</span> 根據課堂討論，焦慮的來源與不確定性有何關係？</div>
                         <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
                     </summary>
                     <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
-                        <p class="text-sm text-gray-500 mb-4 font-medium">問題：課程提到「所有焦慮都來自不確定性」。請結合您的工作經驗，舉出一個具體案例，說明如何透過降低散布狀況（變異數）來改善服務品質或庫存管理。</p>
-                        <div class="p-4 bg-green-50 rounded-lg border border-green-100 text-sm">
-                            <span class="font-bold text-green-800 block mb-2">💡 擬答與說明：</span>
-                            統計學上的「不確定性」就是「變異數（Variance）」，變異越大，結果越難預料，顧客與管理者就會焦慮。<br><br>
-                            <strong>具體案例（以物流/送餐為例）：</strong><br>
-                            若某餐廳平均送餐時間是 15 分鐘，但標準差極大（有時 5 分鐘出餐，有時卻要等 40 分鐘），顧客的體驗會非常差。管理者透過建立 SOP（標準作業流程），將送餐時間穩定控制在 12~18 分鐘內（大幅降低變異數與全距）。即便平均時間仍是 15 分鐘，但「可預期性」大幅提高，顧客不用焦慮等待，客訴自然下降，服務品質也因此提升。
-                        </div>
-                        <!-- 視覺化圖解 -->
-                        <div class="mt-4 bg-white p-4 md:p-6 rounded-xl border border-green-100 shadow-sm">
-                            <div class="flex flex-col gap-6 text-sm">
-                                <div>
-                                    <div class="flex justify-between font-bold text-red-600 text-xs md:text-sm mb-2"><span>❌ 無 SOP 餐廳 (高變異)</span><span class="bg-gray-100 px-2 rounded text-gray-600">平均: 15分</span></div>
-                                    <div class="w-full bg-gray-100 rounded-full h-6 relative shadow-inner">
-                                        <div class="bg-red-300 h-6 rounded-full absolute left-[10%] w-[80%]"></div>
-                                        <div class="absolute top-0 bottom-0 left-[10%] text-[10px] md:text-xs flex items-center text-red-800 font-bold px-2">最快 5分</div>
-                                        <div class="absolute top-0 bottom-0 right-[10%] text-[10px] md:text-xs flex items-center text-red-800 font-bold px-2">最慢 40分 (客訴!)</div>
-                                        <div class="w-1 h-8 bg-red-700 absolute left-[30%] -mt-1"><div class="absolute -top-4 left-1/2 -translate-x-1/2 text-[10px] font-bold text-red-700 whitespace-nowrap">平均15分</div></div>
-                                    </div>
+                        <div class="mb-3"><span class="font-bold text-indigo-700">🔑 解答金鑰：</span>不確定性產生焦慮。管理上可透過增減不確定性來控制情緒或行為。</div>
+                        <div class="mb-3 text-sm"><span class="font-bold text-indigo-700">📖 詳細說明：</span>所有的焦慮都源自於「不確定性」。在管理學上，若要讓顧客安心，必須降低不確定性；若要讓部屬戰戰兢兢，則可策略性地增加其所面臨的不確定性。</div>
+                        <!-- 視覺圖解 -->
+                        <div class="mt-4 flex flex-col md:flex-row gap-4">
+                            <div class="flex-1 bg-white p-3 rounded-xl border border-orange-200 flex items-center justify-between shadow-sm">
+                                <div class="text-xs">
+                                    <div class="font-bold text-orange-700">增加不確定性</div>
+                                    <div class="text-gray-500 mt-1">產生焦慮 (如: 隨機抽考)</div>
                                 </div>
-                                <div>
-                                    <div class="flex justify-between font-bold text-green-600 text-xs md:text-sm mb-2"><span>✅ 有 SOP 餐廳 (低變異 = 可預期)</span><span class="bg-gray-100 px-2 rounded text-gray-600">平均: 15分</span></div>
-                                    <div class="w-full bg-gray-100 rounded-full h-6 relative shadow-inner">
-                                        <div class="bg-green-400 h-6 rounded-full absolute left-[24%] w-[12%] shadow"></div>
-                                        <div class="absolute top-0 bottom-0 left-[24%] -ml-8 md:-ml-10 text-[10px] md:text-xs flex items-center text-green-700 font-bold px-1">12分</div>
-                                        <div class="absolute top-0 bottom-0 left-[36%] text-[10px] md:text-xs flex items-center text-green-700 font-bold px-1">18分</div>
-                                        <div class="w-1 h-8 bg-green-800 absolute left-[30%] -mt-1"><div class="absolute -bottom-4 left-1/2 -translate-x-1/2 text-[10px] font-bold text-green-800 whitespace-nowrap">平均一樣是15分</div></div>
-                                    </div>
-                                </div>
+                                <i data-lucide="flame" class="w-6 h-6 text-orange-500"></i>
                             </div>
-                        </div>
-                    </div>
-                </details>
-
-                <!-- 申論 3 -->
-                <details class="bg-white rounded-xl shadow-sm border border-gray-200 border-l-4 border-l-purple-500 group">
-                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-purple-600 transition">
-                        <div class="flex items-center"><span class="text-purple-500 mr-3 text-xl">3.</span> 相關性與因果關係</div>
-                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
-                    </summary>
-                    <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
-                        <p class="text-sm text-gray-500 mb-4 font-medium">問題：統計數據呈現高度相關是否等同於存在因果關係？請解釋兩者的差異，並說明在解讀商業數據報告時，誤認因果關係可能帶來的決策風險。</p>
-                        <div class="p-4 bg-purple-50 rounded-lg border border-purple-100 text-sm">
-                            <span class="font-bold text-purple-800 block mb-2">💡 擬答與說明：</span>
-                            <strong>相關性 ≠ 因果關係。</strong><br>
-                            「相關性」僅代表兩個變數在數據上呈現同步變動（如 A 增加，B 也增加），但不代表是 A 導致了 B。<br><br>
-                            <strong>實務案例與風險：</strong><br>
-                            如同課堂提到的「名師補習班榜單亮眼」，升學率高與補習班高度相關，但因果上可能是因為「名師只挑成績好的學生收」，而非教學導致成績好。若企業在解讀商業數據時誤認因果（例如：看到某高價位產品銷量好，就以為是「價格高導致熱賣」而全面漲價），可能會將資源投入錯誤的驅動因素上，最終導致決策災難。
-                        </div>
-                        <!-- 視覺化圖解 -->
-                        <div class="mt-4 bg-white p-6 rounded-xl border border-purple-100 shadow-sm flex flex-col items-center">
-                            <div class="text-sm font-bold text-purple-800 mb-4">經典案例：冰淇淋與鯊魚的偽因果</div>
-                            <div class="flex items-center justify-center gap-2 md:gap-6 w-full">
-                                <div class="text-center bg-gray-50 p-3 rounded-lg border border-gray-200">
-                                    <div class="text-3xl mb-1">🍦</div>
-                                    <div class="text-[10px] md:text-xs font-bold text-gray-700">冰淇淋銷量</div>
+                            <div class="flex-1 bg-white p-3 rounded-xl border border-teal-200 flex items-center justify-between shadow-sm">
+                                <div class="text-xs">
+                                    <div class="font-bold text-teal-700">降低不確定性</div>
+                                    <div class="text-gray-500 mt-1">建立安心 (如: 物流追蹤)</div>
                                 </div>
-                                <div class="flex flex-col items-center">
-                                    <div class="text-[10px] md:text-xs font-bold text-purple-600 bg-purple-100 px-2 py-1 rounded whitespace-nowrap">數據高度正相關</div>
-                                    <!-- 雙向箭頭 -->
-                                    <div class="w-12 md:w-16 h-0.5 bg-purple-400 mt-2 relative">
-                                        <div class="absolute -top-1 -left-1 w-2 h-2 border-t-2 border-l-2 border-purple-400 rotate-[-45deg]"></div>
-                                        <div class="absolute -top-1 -right-1 w-2 h-2 border-t-2 border-r-2 border-purple-400 rotate-[45deg]"></div>
-                                    </div>
-                                    <div class="text-[10px] text-red-500 font-bold mt-1 bg-red-50 px-1 rounded whitespace-nowrap">≠ 互相導致</div>
-                                </div>
-                                <div class="text-center bg-gray-50 p-3 rounded-lg border border-gray-200">
-                                    <div class="text-3xl mb-1">🦈</div>
-                                    <div class="text-[10px] md:text-xs font-bold text-gray-700">鯊魚攻擊數</div>
-                                </div>
-                            </div>
-                            <div class="mt-4 pt-4 border-t-2 border-dashed border-gray-200 w-full flex justify-center">
-                                <div class="flex flex-col items-center bg-red-50 p-3 rounded-xl border border-red-100">
-                                    <div class="text-3xl mb-1">☀️</div>
-                                    <div class="text-xs font-bold text-red-600">背後共同真因：夏天高溫</div>
-                                    <div class="text-[10px] text-red-500">(天氣熱導致吃冰多，也導致去海邊玩水的人多)</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </details>
-
-                <!-- 申論 4 -->
-                <details class="bg-white rounded-xl shadow-sm border border-gray-200 border-l-4 border-l-orange-500 group">
-                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-orange-600 transition">
-                        <div class="flex items-center"><span class="text-orange-500 mr-3 text-xl">4.</span> 資料呈現的藝術</div>
-                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
-                    </summary>
-                    <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
-                        <p class="text-sm text-gray-500 mb-4 font-medium">問題：課程強調「圖勝於表，表勝於文」。請討論在向高階主管報告時，如何運用直方圖、散佈圖及虛核圖等工具，快速傳達資料的中心點、散布與偏態情況？</p>
-                        <div class="p-4 bg-orange-50 rounded-lg border border-orange-100 text-sm">
-                            <span class="font-bold text-orange-800 block mb-2">💡 擬答與說明：</span>
-                            高階主管時間寶貴，需要能一目了然的視覺化資訊，善用圖表能大幅降低溝通成本：<br><br>
-                            <strong>1. 直方圖 (Histogram)：</strong> 能快速展示數據的分配形狀。一眼就能看出產品良率或客戶年齡層的分佈是呈現常態、左偏還是右偏。<br>
-                            <strong>2. 散佈圖 (Scatter Plot)：</strong> 用於呈現兩個變數之間的關係。例如行銷預算與營業額的關係，可以直觀看出正相關趨勢，也能瞬間抓出異常值 (Outliers)。<br>
-                            <strong>3. 虛核圖/盒鬚圖 (Box Plot)：</strong> 僅用五個數字就能精準傳達。中間的盒子展示了「核心 50%」的散布範圍；紅線（中位數）偏向哪一側能直接判斷偏態；伸出的鬚線與單獨的點則能快速定位極端值。
-                        </div>
-                        <!-- 視覺化圖解 -->
-                        <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4 text-center bg-white p-4 rounded-xl border border-orange-100 shadow-sm">
-                            <div class="flex flex-col items-center bg-gray-50 p-3 rounded-lg border border-gray-200">
-                                <!-- 直方圖 CSS -->
-                                <div class="w-12 h-10 flex items-end justify-center gap-0.5 mb-2 border-b border-gray-300 pb-1">
-                                    <div class="w-2.5 h-3 bg-blue-400 rounded-t-sm"></div>
-                                    <div class="w-2.5 h-6 bg-blue-500 rounded-t-sm"></div>
-                                    <div class="w-2.5 h-8 bg-blue-600 rounded-t-sm"></div>
-                                    <div class="w-2.5 h-5 bg-blue-500 rounded-t-sm"></div>
-                                    <div class="w-2.5 h-2 bg-blue-400 rounded-t-sm"></div>
-                                </div>
-                                <span class="text-sm font-bold text-gray-800 bg-white px-2 py-0.5 rounded shadow-sm">直方圖</span>
-                                <span class="text-xs text-gray-500 mt-2">看分配形狀與偏態</span>
-                            </div>
-                            <div class="flex flex-col items-center bg-gray-50 p-3 rounded-lg border border-gray-200">
-                                <!-- 散佈圖 CSS -->
-                                <div class="w-12 h-10 flex flex-wrap relative mb-2 border-l border-b border-gray-300">
-                                    <div class="absolute bottom-1 left-1 w-1.5 h-1.5 bg-purple-500 rounded-full"></div>
-                                    <div class="absolute bottom-2 left-3 w-1.5 h-1.5 bg-purple-500 rounded-full"></div>
-                                    <div class="absolute bottom-4 left-5 w-1.5 h-1.5 bg-purple-500 rounded-full"></div>
-                                    <div class="absolute bottom-6 left-7 w-1.5 h-1.5 bg-purple-500 rounded-full"></div>
-                                    <div class="absolute bottom-7 left-9 w-1.5 h-1.5 bg-purple-500 rounded-full"></div>
-                                    <div class="absolute bottom-2 right-1 w-1.5 h-1.5 bg-red-500 rounded-full"></div> <!-- Outlier -->
-                                </div>
-                                <span class="text-sm font-bold text-gray-800 bg-white px-2 py-0.5 rounded shadow-sm">散佈圖</span>
-                                <span class="text-xs text-gray-500 mt-2">找兩變數關係與異常點</span>
-                            </div>
-                            <div class="flex flex-col items-center bg-gray-50 p-3 rounded-lg border border-gray-200">
-                                <!-- 盒鬚圖 CSS -->
-                                <div class="w-12 h-10 flex items-center justify-center mb-2">
-                                    <div class="w-10 h-0.5 bg-orange-400 relative">
-                                        <div class="absolute left-1/2 -translate-x-1/2 -top-2 w-5 h-4 border-2 border-orange-500 bg-orange-100 rounded-sm"></div>
-                                        <div class="absolute left-[40%] -translate-x-1/2 -top-2 w-0.5 h-4 bg-red-500"></div>
-                                        <div class="absolute left-0 -top-1 w-0.5 h-2 bg-orange-500"></div>
-                                        <div class="absolute right-0 -top-1 w-0.5 h-2 bg-orange-500"></div>
-                                    </div>
-                                </div>
-                                <span class="text-sm font-bold text-gray-800 bg-white px-2 py-0.5 rounded shadow-sm">盒鬚圖</span>
-                                <span class="text-xs text-gray-500 mt-2">秒抓核心50%與極端值</span>
-                            </div>
-                        </div>
-                    </div>
-                </details>
-
-                <!-- 申論 5 -->
-                <details class="bg-white rounded-xl shadow-sm border border-gray-200 border-l-4 border-l-teal-500 group">
-                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-teal-600 transition">
-                        <div class="flex items-center"><span class="text-teal-500 mr-3 text-xl">5.</span> 團隊學習與統計實務</div>
-                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
-                    </summary>
-                    <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
-                        <p class="text-sm text-gray-500 mb-4 font-medium">問題：本課程採用小組共同考試與討論的模式。請探討這種「團隊協作（Teamwork）」模式在學習統計工具（如解決計算錯誤、互相稽核）中的重要性。</p>
-                        <div class="p-4 bg-teal-50 rounded-lg border border-teal-100 text-sm">
-                            <span class="font-bold text-teal-800 block mb-2">💡 擬答與說明：</span>
-                            <strong>1. 互相稽核與除錯：</strong> 統計分析過程繁瑣，不論是按計算機或輸入軟體，單人作業極易產生盲點。團隊協作能落實「一人計算、另一人驗證」的防呆機制，降低人為的變異與失誤。<br><br>
-                            <strong>2. 跨領域視角激盪：</strong> 統計數字本身沒有生命，需要結合實務來解讀。EMBA 學員來自各行各業（如財務、行銷、工程），在小組討論中，對於同一個「極端值」或「相關係數」，不同背景的人能提出截然不同的商業洞見與解讀。這種多元視角的結合，正是統計學跨入高階管理決策的最重要價值。
-                        </div>
-                        <!-- 視覺化圖解 -->
-                        <div class="mt-4 bg-white p-6 rounded-xl border border-teal-100 shadow-sm flex flex-col md:flex-row items-center justify-center gap-8">
-                            <div class="relative w-32 h-32 flex-shrink-0">
-                                <!-- 圓圈連線 SVG -->
-                                <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full text-teal-200"><circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4"/></svg>
-                                <!-- 3 個人 -->
-                                <div class="absolute -top-2 left-1/2 -translate-x-1/2 flex flex-col items-center bg-white p-1 rounded-full text-teal-600 shadow-sm border border-teal-100"><i data-lucide="user" class="w-5 h-5"></i><span class="text-[10px] font-bold">行銷背景</span></div>
-                                <div class="absolute bottom-2 -left-2 flex flex-col items-center bg-white p-1 rounded-full text-blue-600 shadow-sm border border-blue-100"><i data-lucide="user" class="w-5 h-5"></i><span class="text-[10px] font-bold">財務背景</span></div>
-                                <div class="absolute bottom-2 -right-2 flex flex-col items-center bg-white p-1 rounded-full text-orange-600 shadow-sm border border-orange-100"><i data-lucide="user" class="w-5 h-5"></i><span class="text-[10px] font-bold">工程背景</span></div>
-                                <!-- 中心點 -->
-                                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center text-teal-600 font-bold text-xs shadow-inner">洞見</div>
-                            </div>
-                            <div class="flex flex-col items-center md:items-start text-teal-800 bg-teal-50 p-4 rounded-lg border border-teal-100">
-                                <div class="flex items-center mb-2"><i data-lucide="check-circle" class="w-6 h-6 text-green-500 mr-2"></i><span class="font-bold">落實防呆除錯</span></div>
-                                <p class="text-xs text-teal-700 leading-relaxed text-center md:text-left">
-                                    數字沒有生命，需要結合各行各業的實務經驗。<br>
-                                    團隊協作不僅能互相稽核計算，更能從不同視角解讀同一份數據，將死板的統計學化為立體的商業策略！
-                                </p>
+                                <i data-lucide="shield-check" class="w-6 h-6 text-teal-500"></i>
                             </div>
                         </div>
                     </div>
@@ -656,130 +496,322 @@
             </div>
         </div>
 
-        <!-- Chapter 5: 關鍵術語彙編 -->
-        <div id="ch5" class="chapter-content max-w-5xl mx-auto">
-            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-200 pb-2">5. 關鍵術語彙編 (Glossary)</h2>
-            <p class="text-gray-700 mb-6">重點名詞整理，協助快速建立統計學共同語言。</p>
+        <!-- Chapter 8: 第二週 短答題 (下) -->
+        <div id="ch8" class="chapter-content max-w-4xl mx-auto">
+            <span class="text-indigo-500 font-bold tracking-widest text-sm mb-2 block">WEEK 2</span>
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-indigo-200 pb-2">8. 機率論測驗 (Q6 - Q10)</h2>
+            
+            <div class="space-y-4">
+                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
+                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
+                        <div class="flex"><span class="text-indigo-500 mr-3">Q6.</span> 何謂「樣本空間」（Sample Space）？</div>
+                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
+                        <div class="mb-3"><span class="font-bold text-indigo-700">🔑 解答金鑰：</span>實驗所有可能結果的完整集合。</div>
+                        <div class="mb-3 text-sm"><span class="font-bold text-indigo-700">📖 詳細說明：</span>樣本空間是指在一次實驗或觀測中，所有可能出現的結果之集合，通常以代號 S 表示。樣本空間中的每一個單一結果則被稱為「樣本點」。</div>
+                        <div class="mt-4 bg-white p-4 rounded-xl border border-indigo-100 shadow-sm flex flex-col items-center">
+                            <span class="text-xs font-bold text-gray-500 mb-2">範例：擲一顆骰子的樣本空間</span>
+                            <div class="flex gap-2 p-3 bg-indigo-50 rounded-lg border-2 border-indigo-200">
+                                <span class="font-bold text-lg mr-2 text-indigo-800">S = {</span>
+                                <i data-lucide="dice-1" class="w-6 h-6 text-gray-600"></i>,
+                                <i data-lucide="dice-2" class="w-6 h-6 text-gray-600"></i>,
+                                <i data-lucide="dice-3" class="w-6 h-6 text-gray-600"></i>,
+                                <i data-lucide="dice-4" class="w-6 h-6 text-gray-600"></i>,
+                                <i data-lucide="dice-5" class="w-6 h-6 text-gray-600"></i>,
+                                <i data-lucide="dice-6" class="w-6 h-6 text-gray-600"></i>
+                                <span class="font-bold text-lg ml-2 text-indigo-800">}</span>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
+                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
+                        <div class="flex"><span class="text-indigo-500 mr-3">Q7.</span> 試述「主觀機率」與「客觀機率」的差異。</div>
+                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
+                        <div class="mb-3"><span class="font-bold text-indigo-700">🔑 解答金鑰：</span>主觀靠直覺經驗；客觀靠數據實證。</div>
+                        <div class="mb-3 text-sm"><span class="font-bold text-indigo-700">📖 詳細說明：</span>主觀機率是個人根據經驗或直覺對事件發生程度的判斷，雖不具公式但對專家決策重要；客觀機率則是透過實際收集數據、計算相對頻率或根據計數原理推導出的機率。</div>
+                        <div class="mt-4 grid grid-cols-2 gap-4 text-center">
+                            <div class="bg-white p-4 rounded-xl border border-blue-100 shadow-sm">
+                                <i data-lucide="brain" class="w-8 h-8 text-blue-500 mx-auto mb-2"></i>
+                                <div class="font-bold text-sm text-gray-800">主觀機率</div>
+                                <div class="text-xs text-gray-500 mt-1">「我覺得明天下雨機率80%」</div>
+                            </div>
+                            <div class="bg-white p-4 rounded-xl border border-green-100 shadow-sm">
+                                <i data-lucide="database" class="w-8 h-8 text-green-500 mx-auto mb-2"></i>
+                                <div class="font-bold text-sm text-gray-800">客觀機率</div>
+                                <div class="text-xs text-gray-500 mt-1">「過去100天有30天下雨=30%」</div>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
+                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
+                        <div class="flex"><span class="text-indigo-500 mr-3">Q8.</span> 「排列」與「組合」的區別為何？</div>
+                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
+                        <div class="mb-3"><span class="font-bold text-indigo-700">🔑 解答金鑰：</span>排列在乎順序；組合不在乎順序。</div>
+                        <div class="mb-3 text-sm"><span class="font-bold text-indigo-700">📖 詳細說明：</span>排列（Permutation）關注物體的「順序」，例如五位數的數字組成；組合（Combination）則僅關注「選取」的結果，而不考慮順序，例如在班級中選出四人組成一個小組。</div>
+                        <div class="mt-4 flex flex-col md:flex-row gap-4 bg-white p-4 rounded-xl border border-indigo-100 shadow-sm text-sm justify-center">
+                            <div class="flex-1 text-center border-b md:border-b-0 md:border-r border-gray-200 pb-3 md:pb-0 pr-0 md:pr-3">
+                                <div class="font-bold text-red-600 mb-2">排列 (順序重要)</div>
+                                <div class="bg-red-50 p-2 rounded text-red-800 font-mono">1-2-3 ≠ 3-2-1</div>
+                                <div class="text-xs text-gray-500 mt-1">如：保險箱密碼</div>
+                            </div>
+                            <div class="flex-1 text-center">
+                                <div class="font-bold text-green-600 mb-2">組合 (順序無關)</div>
+                                <div class="bg-green-50 p-2 rounded text-green-800 font-mono">{🍎, 🍌} = {🍌, 🍎}</div>
+                                <div class="text-xs text-gray-500 mt-1">如：綜合果汁材料</div>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
+                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
+                        <div class="flex"><span class="text-indigo-500 mr-3">Q9.</span> 「連集」（Union）機率的計算公式及其含義為何？</div>
+                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
+                        <div class="mb-3"><span class="font-bold text-indigo-700">🔑 解答金鑰：</span>P(A ∪ B) = P(A) + P(B) - P(A ∩ B)。</div>
+                        <div class="mb-3 text-sm"><span class="font-bold text-indigo-700">📖 詳細說明：</span>其含義是事件 A 或事件 B 發生（包括兩者同時發生）的機率，減去交集部分是為了避免中間重疊的機率被重複計算。</div>
+                        <!-- 視覺圖解：文氏圖 -->
+                        <div class="mt-4 flex flex-col items-center bg-white p-4 rounded-xl border border-indigo-100 shadow-sm">
+                            <div class="relative w-40 h-24 mb-4 flex justify-center items-center">
+                                <div class="absolute w-20 h-20 bg-blue-400/50 rounded-full left-4 flex items-center justify-start pl-3 text-blue-900 font-bold">P(A)</div>
+                                <div class="absolute w-20 h-20 bg-yellow-400/50 rounded-full right-4 flex items-center justify-end pr-3 text-yellow-900 font-bold">P(B)</div>
+                                <div class="absolute w-8 h-20 flex items-center justify-center text-xs font-bold text-red-700 z-10">- 扣除交集</div>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
+                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
+                        <div class="flex"><span class="text-indigo-500 mr-3">Q10.</span> 「條件機率」（Conditional Probability）的核心觀念是什麼？</div>
+                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
+                        <div class="mb-3"><span class="font-bold text-indigo-700">🔑 解答金鑰：</span>利用新資訊修正樣本空間，進而修正機率。</div>
+                        <div class="mb-3 text-sm"><span class="font-bold text-indigo-700">📖 詳細說明：</span>條件機率是指在「已知某資訊或事件 B 已發生」的前提下，重新評估事件 A 發生的機率。本質上是透過新資訊來限縮或修正原本的樣本空間。</div>
+                        <div class="mt-4 flex items-center justify-center gap-4 bg-white p-4 rounded-xl border border-indigo-100 shadow-sm">
+                            <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center text-xs text-gray-500 text-center">原本的<br>大樣本S</div>
+                            <div class="flex flex-col items-center">
+                                <span class="text-[10px] bg-indigo-100 text-indigo-800 px-2 rounded mb-1">獲得新資訊</span>
+                                <i data-lucide="arrow-right" class="text-indigo-500"></i>
+                                <span class="text-[10px] text-gray-500 mt-1">範圍縮小</span>
+                            </div>
+                            <div class="w-16 h-16 bg-indigo-200 border-2 border-indigo-500 rounded-lg flex items-center justify-center text-xs text-indigo-800 font-bold text-center shadow-lg">新的<br>條件樣本B</div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <!-- Chapter 9: 第二週 申論題建議 -->
+        <div id="ch9" class="chapter-content max-w-4xl mx-auto">
+            <span class="text-indigo-500 font-bold tracking-widest text-sm mb-2 block">WEEK 2</span>
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-indigo-200 pb-2">9. 機率與決策：申論思考題</h2>
+            <p class="text-gray-700 mb-6">這部分為開放式討論題，**不提供標準答案**。請結合課堂所學與個人實務經驗進行探討。</p>
+
+            <div class="space-y-4">
+                <details class="bg-white rounded-xl shadow-sm border border-gray-200 border-l-4 border-l-indigo-500 group">
+                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
+                        <div class="flex items-center"><span class="text-indigo-500 mr-3 text-xl">1.</span> 風險與報酬的權衡</div>
+                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 pt-2 border-t border-gray-100 text-sm">
+                        <p class="text-gray-600 mb-4">問題：請結合課堂提到的「最低投資報酬率」與變異數概念，分析投資人為何願意承擔高風險（高變異數）的投資標的？其決策邏輯為何？</p>
+                        <div class="p-3 bg-gray-50 rounded-lg text-gray-500 italic flex items-center">
+                            <i data-lucide="users" class="w-4 h-4 mr-2 text-indigo-400"></i> 小組討論題：建議結合金融實務或投資經驗進行探討。
+                        </div>
+                    </div>
+                </details>
+
+                <details class="bg-white rounded-xl shadow-sm border border-gray-200 border-l-4 border-l-indigo-500 group">
+                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
+                        <div class="flex items-center"><span class="text-indigo-500 mr-3 text-xl">2.</span> 管理學中的不確定性運用</div>
+                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 pt-2 border-t border-gray-100 text-sm">
+                        <p class="text-gray-600 mb-4">問題：課堂提到「焦慮來自於不確定性」，請舉出兩個具體的管理實例，說明領導者如何透過「增加」或「減少」資訊不確定性來達成組織目標。</p>
+                        <div class="p-3 bg-gray-50 rounded-lg text-gray-500 italic flex items-center">
+                            <i data-lucide="users" class="w-4 h-4 mr-2 text-indigo-400"></i> 小組討論題：建議從員工績效管理或顧客體驗旅程切入。
+                        </div>
+                    </div>
+                </details>
+
+                <details class="bg-white rounded-xl shadow-sm border border-gray-200 border-l-4 border-l-indigo-500 group">
+                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
+                        <div class="flex items-center"><span class="text-indigo-500 mr-3 text-xl">3.</span> 資訊對機率修正的重要性</div>
+                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 pt-2 border-t border-gray-100 text-sm">
+                        <p class="text-gray-600 mb-4">問題：以貝氏定理（Bayes' Theorem）為架構，說明在數位化時代（如手機輸入法預測、信譽建立），連續的新資訊進來如何協助我們修正主觀機率，進而優化預測模型？</p>
+                        <div class="p-3 bg-gray-50 rounded-lg text-gray-500 italic flex items-center">
+                            <i data-lucide="users" class="w-4 h-4 mr-2 text-indigo-400"></i> 小組討論題：可結合演算法或日常決策「動態調整」的經驗。
+                        </div>
+                    </div>
+                </details>
+
+                <details class="bg-white rounded-xl shadow-sm border border-gray-200 border-l-4 border-l-indigo-500 group">
+                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
+                        <div class="flex items-center"><span class="text-indigo-500 mr-3 text-xl">4.</span> 樂透彩券的機率與公益性質</div>
+                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 pt-2 border-t border-gray-100 text-sm">
+                        <p class="text-gray-600 mb-4">問題：根據課堂計算，大樂透的中獎機率極低（如普獎僅約 2.5%），為何大眾仍願意參與？請從統計學的「期望收益」與社會心理層面進行探討。</p>
+                        <div class="p-3 bg-gray-50 rounded-lg text-gray-500 italic flex items-center">
+                            <i data-lucide="users" class="w-4 h-4 mr-2 text-indigo-400"></i> 小組討論題：結合行為經濟學或小機率大賠率的心理探討。
+                        </div>
+                    </div>
+                </details>
+
+                <details class="bg-white rounded-xl shadow-sm border border-gray-200 border-l-4 border-l-indigo-500 group">
+                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
+                        <div class="flex items-center"><span class="text-indigo-500 mr-3 text-xl">5.</span> 樣本空間的定義策略</div>
+                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 pt-2 border-t border-gray-100 text-sm">
+                        <p class="text-gray-600 mb-4">問題：為什麼在進行實驗設計或數據收集時，專家建議樣本空間應包含「越多資訊越好」？這對後續的資料轉化與重複研究有何影響？</p>
+                        <div class="p-3 bg-gray-50 rounded-lg text-gray-500 italic flex items-center">
+                            <i data-lucide="users" class="w-4 h-4 mr-2 text-indigo-400"></i> 小組討論題：探討原始數據(Raw Data)顆粒度對分析維度的影響。
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <!-- Chapter 10: 第二週 關鍵術語彙編 -->
+        <div id="ch10" class="chapter-content max-w-5xl mx-auto">
+            <span class="text-indigo-500 font-bold tracking-widest text-sm mb-2 block">WEEK 2</span>
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-indigo-200 pb-2">10. 關鍵術語彙編 (Glossary)</h2>
+            <p class="text-gray-700 mb-6">包含機率論、計數原理與描述統計的核心名詞，並附上易懂範例。</p>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex flex-col">
-                    <h4 class="font-bold text-blue-700 mb-1 border-b border-gray-100 pb-1">母體 (Population)</h4>
-                    <p class="text-sm text-gray-600 mt-2 flex-grow">研究對象的全體，包含所有具備共同特徵的個體。</p>
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col">
+                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">平均值 (Mean)</h4>
+                    <p class="text-sm text-gray-600 mt-2 flex-grow">數據的重心點，描述資料整體位置最常用的指標。</p>
                     <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
-                        <span class="font-bold text-blue-600">💡 範例：</span>某連鎖咖啡品牌全台灣的 100 萬名活躍會員。
+                        <span class="font-bold text-indigo-500">💡 範例：</span>班級平均分數，最易受極端高/低分拉扯。
                     </div>
                 </div>
 
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex flex-col">
-                    <h4 class="font-bold text-blue-700 mb-1 border-b border-gray-100 pb-1">樣本 (Sample)</h4>
-                    <p class="text-sm text-gray-600 mt-2 flex-grow">從母體中抽取出來的部分個體，用於代表母體進行分析。</p>
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col">
+                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">中位數 (Median)</h4>
+                    <p class="text-sm text-gray-600 mt-2 flex-grow">將資料按大小排序後，位處中間位置的數值，描述資料中心的另一種方式。</p>
                     <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
-                        <span class="font-bold text-blue-600">💡 範例：</span>從 100 萬名會員中隨機抽出的 1,000 名問卷受訪者。
+                        <span class="font-bold text-indigo-500">💡 範例：</span>國民所得中位數，不受極端富豪干擾，最貼近老百姓感受。
                     </div>
                 </div>
 
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex flex-col">
-                    <h4 class="font-bold text-blue-700 mb-1 border-b border-gray-100 pb-1">平均數 (Mean)</h4>
-                    <p class="text-sm text-gray-600 mt-2 flex-grow">所有數值之和除以個數，反映資料的平均權重中心，易受極端值影響。</p>
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col">
+                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">變異數 (Variance)</h4>
+                    <p class="text-sm text-gray-600 mt-2 flex-grow">描述數據散佈、跳動狀況的量值，具可相加減特性。財金中代表風險。</p>
                     <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
-                        <span class="font-bold text-blue-600">💡 範例：</span>班上薪資總和除以人數（若首富郭台銘加入，此數值會失去代表性）。
-                    </div>
-                </div>
-                
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex flex-col">
-                    <h4 class="font-bold text-blue-700 mb-1 border-b border-gray-100 pb-1">中位數 (Median)</h4>
-                    <p class="text-sm text-gray-600 mt-2 flex-grow">資料按大小排序後位居正中間的數值，平分資料為高低各半。</p>
-                    <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
-                        <span class="font-bold text-blue-600">💡 範例：</span>全國人民薪資由低排到高，正中間那一個人的薪水（更能反映一般人現況）。
+                        <span class="font-bold text-indigo-500">💡 範例：</span>高變異數的股票代表報酬率忽高忽低，風險極大。
                     </div>
                 </div>
 
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex flex-col">
-                    <h4 class="font-bold text-blue-700 mb-1 border-b border-gray-100 pb-1">全距 (Range)</h4>
-                    <p class="text-sm text-gray-600 mt-2 flex-grow">資料集中的最大值與最小值之差，衡量散布的最簡單指標。</p>
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col">
+                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">標準差 (Standard Deviation)</h4>
+                    <p class="text-sm text-gray-600 mt-2 flex-grow">變異數的平方根，使單位回歸到與原始數據一致，便於認知散佈程度。</p>
                     <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
-                        <span class="font-bold text-blue-600">💡 範例：</span>品管檢測中，當天產品最重 105g 與最輕 95g 的差距為 10g。
+                        <span class="font-bold text-indigo-500">💡 範例：</span>標準差若為5分，代表多數人的成績距離平均大約正負5分。
                     </div>
                 </div>
 
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex flex-col">
-                    <h4 class="font-bold text-blue-700 mb-1 border-b border-gray-100 pb-1">變異數 (Variance)</h4>
-                    <p class="text-sm text-gray-600 mt-2 flex-grow">衡量各數值偏離平均數程度的指標，為離差平方的平均值。</p>
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col">
+                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">樣本空間 (Sample Space)</h4>
+                    <p class="text-sm text-gray-600 mt-2 flex-grow">一次實驗中所有可能出現結果的集合，常用符號 S 表示。</p>
                     <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
-                        <span class="font-bold text-blue-600">💡 範例：</span>用來計算送餐時間不穩定程度的指標（數值越大代表送餐忽快忽慢）。
-                    </div>
-                </div>
-                
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex flex-col">
-                    <h4 class="font-bold text-blue-700 mb-1 border-b border-gray-100 pb-1">標準差 (Standard Deviation)</h4>
-                    <p class="text-sm text-gray-600 mt-2 flex-grow">變異數的平方根，用於描述資料散布狀況，單位與原資料相同。</p>
-                    <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
-                        <span class="font-bold text-blue-600">💡 範例：</span>員工 A 績效標準差小，代表產出穩定；員工 B 標準差大，代表表現大起大落。
+                        <span class="font-bold text-indigo-500">💡 範例：</span>擲一枚硬幣的樣本空間為 S = {正面, 反面}。
                     </div>
                 </div>
 
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex flex-col">
-                    <h4 class="font-bold text-blue-700 mb-1 border-b border-gray-100 pb-1">變異係數 (CV)</h4>
-                    <p class="text-sm text-gray-600 mt-2 flex-grow">標準差與平均數的比值，用於比較平均值差異極大的兩組資料的相對變動。</p>
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col">
+                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">階層 (Factorial)</h4>
+                    <p class="text-sm text-gray-600 mt-2 flex-grow">從 n 連續乘到 1 的乘積，符號為 n!，用於計算排列的總數。</p>
                     <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
-                        <span class="font-bold text-blue-600">💡 範例：</span>比較「台積電股票（高單價）」與「雞蛋（低單價）」誰的價格波動風險比較大。
+                        <span class="font-bold text-indigo-500">💡 範例：</span>5本不同的書排在書架上的排法有 5! = 5×4×3×2×1 = 120 種。
                     </div>
                 </div>
 
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex flex-col">
-                    <h4 class="font-bold text-blue-700 mb-1 border-b border-gray-100 pb-1">Z 分數 (Z-score)</h4>
-                    <p class="text-sm text-gray-600 mt-2 flex-grow">數值相對於平均值的標準化距離，表示該值偏離平均值幾個標準差。</p>
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col">
+                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">排列 (Permutation)</h4>
+                    <p class="text-sm text-gray-600 mt-2 flex-grow">從 n 個元素中取出 m 個，並「考慮」其先後順序的組合方式。</p>
                     <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
-                        <span class="font-bold text-blue-600">💡 範例：</span>業務員甲在 A 區、乙在 B 區，用 Z 分數可跨區比較誰在自己的戰區內業績更頂尖。
-                    </div>
-                </div>
-                
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex flex-col">
-                    <h4 class="font-bold text-blue-700 mb-1 border-b border-gray-100 pb-1">四分位數 (Quartiles)</h4>
-                    <p class="text-sm text-gray-600 mt-2 flex-grow">將資料分為四等份的數值（Q1, Q2, Q3），常用於分析分布狀態。</p>
-                    <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
-                        <span class="font-bold text-blue-600">💡 範例：</span>考績排名落在 Q1（前 25%）的員工可獲得最高額獎金；Q2 即為中位數。
+                        <span class="font-bold text-indigo-500">💡 範例：</span>設定三位數密碼鎖，123 與 321 是完全不同的結果。
                     </div>
                 </div>
 
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex flex-col">
-                    <h4 class="font-bold text-blue-700 mb-1 border-b border-gray-100 pb-1">直方圖 (Histogram)</h4>
-                    <p class="text-sm text-gray-600 mt-2 flex-grow">用於呈現量化資料分布形狀的圖表，各長條間通常無間隔以示連續性。</p>
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col">
+                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">組合 (Combination)</h4>
+                    <p class="text-sm text-gray-600 mt-2 flex-grow">從 n 個元素中取出 m 個，但「不考慮」其排列順序。</p>
                     <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
-                        <span class="font-bold text-blue-600">💡 範例：</span>將顧客年齡分為 20-30、30-40 歲等區間，畫出長條圖看哪個年齡層最多。
+                        <span class="font-bold text-indigo-500">💡 範例：</span>10名員工中選3人出差，選中A,B,C跟選中C,B,A是同一組人馬。
                     </div>
                 </div>
 
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex flex-col">
-                    <h4 class="font-bold text-blue-700 mb-1 border-b border-gray-100 pb-1">散佈圖 (Scatter Plot)</h4>
-                    <p class="text-sm text-gray-600 mt-2 flex-grow">呈現兩個變數間關係的圖表，用於初步觀察正相關、負相關或無相關。</p>
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col">
+                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">互補事件 (Complementary Event)</h4>
+                    <p class="text-sm text-gray-600 mt-2 flex-grow">在樣本空間中，除了事件 A 以外的所有其他樣本點組成的事件。</p>
                     <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
-                        <span class="font-bold text-blue-600">💡 範例：</span>X 軸為廣告費用，Y 軸為營業額，點狀分佈可直觀看出廣告砸越多是否營收越高。
-                    </div>
-                </div>
-                
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex flex-col">
-                    <h4 class="font-bold text-blue-700 mb-1 border-b border-gray-100 pb-1">偏態 (Skewness)</h4>
-                    <p class="text-sm text-gray-600 mt-2 flex-grow">描述資料分布形狀不對稱程度的特徵，分為左偏與右偏。</p>
-                    <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
-                        <span class="font-bold text-blue-600">💡 範例：</span>國民所得分佈通常是「右偏」，因為少數極高收入者會將圖形尾巴向右拉長。
+                        <span class="font-bold text-indigo-500">💡 範例：</span>顧客「買單」的互補事件就是「不買單」。兩者機率相加為1。
                     </div>
                 </div>
 
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex flex-col">
-                    <h4 class="font-bold text-blue-700 mb-1 border-b border-gray-100 pb-1">自由度 (Degrees of Freedom)</h4>
-                    <p class="text-sm text-gray-600 mt-2 flex-grow">樣本中可以自由變動的觀測值數量，計算樣本變異數時通常為 n-1。</p>
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col">
+                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">連集 (Union)</h4>
+                    <p class="text-sm text-gray-600 mt-2 flex-grow">兩個事件 A 或 B 中至少有一個發生的集合。</p>
                     <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
-                        <span class="font-bold text-blue-600">💡 範例：</span>7天內穿不同衣服，前6天可自由選，第7天只能穿剩的那件，自由度為 7-1=6。
+                        <span class="font-bold text-indigo-500">💡 範例：</span>進店客中「買了咖啡」或「買了蛋糕」（或兩者都買）的群體。
                     </div>
                 </div>
 
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex flex-col">
-                    <h4 class="font-bold text-blue-700 mb-1 border-b border-gray-100 pb-1">德菲法 (Delphi Method)</h4>
-                    <p class="text-sm text-gray-600 mt-2 flex-grow">一種透過反饋循環使專家意見達成一致的系統化直覺預測法。</p>
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col">
+                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">交集 (Intersection)</h4>
+                    <p class="text-sm text-gray-600 mt-2 flex-grow">兩個事件 A 與 B 同時發生的集合。</p>
                     <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
-                        <span class="font-bold text-blue-600">💡 範例：</span>推出新產品前，發問卷請主管匿名預估定價，公佈平均後再估一次，直到價格收斂。
+                        <span class="font-bold text-indigo-500">💡 範例：</span>進店客中「同時」買了咖啡「和」蛋糕的顧客群體。
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col">
+                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">互斥 (Mutually Exclusive)</h4>
+                    <p class="text-sm text-gray-600 mt-2 flex-grow">指兩個事件 A 與 B 不可能同時發生，即交集機率為 0。</p>
+                    <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
+                        <span class="font-bold text-indigo-500">💡 範例：</span>同一位顧客結帳，不可能同時是「全額付現」又「全額刷卡」。
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col">
+                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">條件機率 (Conditional Probability)</h4>
+                    <p class="text-sm text-gray-600 mt-2 flex-grow">在給定某一事件已發生的條件下，另一事件發生的機率。</p>
+                    <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
+                        <span class="font-bold text-indigo-500">💡 範例：</span>「已知進店的是女性顧客（條件）」的前提下，購買化妝品的機率。
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col">
+                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">貝氏定理 (Bayes' Theorem)</h4>
+                    <p class="text-sm text-gray-600 mt-2 flex-grow">一種透過新證據（新資訊）不斷修正原始機率（先驗機率）的學習與運算過程。</p>
+                    <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
+                        <span class="font-bold text-indigo-500">💡 範例：</span>看到求職者「附上推薦信」這個新資訊後，更新錄取他的主觀機率。
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col">
+                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">大數法則 (Law of Large Numbers)</h4>
+                    <p class="text-sm text-gray-600 mt-2 flex-grow">隨著實驗次數增加，觀察到的頻率會趨近於理論上的真實機率。</p>
+                    <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
+                        <span class="font-bold text-indigo-500">💡 範例：</span>賭場不怕極少數客人的連贏，因為幾萬次賭局下來，賭場的總體勝率會穩穩回歸數學設定的莊家優勢。
                     </div>
                 </div>
 
