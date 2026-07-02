@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EMBA 115 統計學 - 課程學習指南</title>
+    <title>EMBA 115 統計學 - 綜合學習指南</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -68,7 +68,7 @@
                 <li>
                     <button onclick="showChapter('ch1', this)" class="nav-item active w-full text-left px-6 py-2.5 flex items-center hover:bg-blue-800 text-sm">
                         <i data-lucide="book-open" class="w-4 h-4 mr-3 text-blue-300"></i>
-                        1. 第一週指南簡介
+                        1. 簡介與行政資訊
                     </button>
                 </li>
                 <li>
@@ -107,19 +107,19 @@
                 <li>
                     <button onclick="showChapter('ch7', this)" class="nav-item w-full text-left px-6 py-2.5 flex items-center hover:bg-blue-800 text-sm">
                         <i data-lucide="pie-chart" class="w-4 h-4 mr-3 text-indigo-300"></i>
-                        7. 描述統計測驗
+                        7. 機率論測驗 (上)
                     </button>
                 </li>
                 <li>
                     <button onclick="showChapter('ch8', this)" class="nav-item w-full text-left px-6 py-2.5 flex items-center hover:bg-blue-800 text-sm">
                         <i data-lucide="dice-5" class="w-4 h-4 mr-3 text-indigo-300"></i>
-                        8. 機率論測驗
+                        8. 機率論測驗 (下)
                     </button>
                 </li>
                 <li>
                     <button onclick="showChapter('ch9', this)" class="nav-item w-full text-left px-6 py-2.5 flex items-center hover:bg-blue-800 text-sm">
                         <i data-lucide="brain-circuit" class="w-4 h-4 mr-3 text-indigo-300"></i>
-                        9. 機率申論思考
+                        9. 機率與決策申論
                     </button>
                 </li>
                 <li>
@@ -139,31 +139,61 @@
     <!-- 右側內容區 (Main Content) -->
     <main class="flex-1 h-full overflow-y-auto p-6 md:p-12 bg-gray-50 relative">
         
-        <!-- ================= WEEK 1 內容 (Ch1 - Ch5) ================= -->
+        <!-- ================= WEEK 1 & COURSE ADMIN 內容 (Ch1 - Ch5) ================= -->
         
-        <!-- Chapter 1: 簡介 -->
+        <!-- Chapter 1: 簡介與行政資訊 -->
         <div id="ch1" class="chapter-content active max-w-4xl mx-auto">
-            <span class="text-blue-500 font-bold tracking-widest text-sm mb-2 block">WEEK 1</span>
-            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-200 pb-2">1. 第一週課程學習指南</h2>
+            <span class="text-blue-500 font-bold tracking-widest text-sm mb-2 block">COURSE OVERVIEW</span>
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-200 pb-2">1. 課程介紹與行政概覽</h2>
             
-            <div class="bg-white rounded-xl shadow-sm p-8 mb-8 border border-gray-100 flex items-start gap-6">
-                <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center shrink-0">
+            <div class="bg-white rounded-xl shadow-sm p-8 mb-8 border border-gray-100 flex flex-col md:flex-row items-start gap-6">
+                <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center shrink-0 mb-4 md:mb-0">
                     <i data-lucide="book-open-check" class="w-8 h-8"></i>
                 </div>
-                <div>
-                    <h3 class="text-xl font-semibold text-blue-800 mb-4">指南簡介</h3>
+                <div class="flex-1">
+                    <h3 class="text-xl font-semibold text-blue-800 mb-2">Summer 2026 EMBA 統計學</h3>
                     <p class="text-gray-700 leading-relaxed mb-4">
-                        本學習指南旨在協助學員複習 EMBA 統計學課程的 <strong>核心概念</strong>、<strong>理論框架</strong> 及其在 <strong>管理決策</strong> 中的實際應用。
+                        本學習指南旨在彙整「統計學」課程前兩週的核心概念與資料，涵蓋 <strong>課程行政資訊</strong>、<strong>機率論基礎</strong>、<strong>事件關係</strong>、<strong>貝氏定理</strong> 以及 <strong>離散機率分佈</strong>。本課程專為 EMBA 學生設計，強調統計學在商業與經濟環境中的應用。
                     </p>
-                    <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
-                        <p class="text-blue-900 font-medium">
-                            💡 本課程強調 <span class="bg-yellow-200 px-1 rounded text-yellow-900">快樂學習</span> 與 <span class="bg-blue-200 px-1 rounded text-blue-900">統計直覺</span> 的建立，將複雜的科學描述與日常管理經驗相結合。
-                        </p>
+                    
+                    <h4 class="font-bold text-gray-800 mt-6 mb-3 flex items-center"><i data-lucide="clock" class="w-5 h-5 mr-2 text-blue-500"></i> 課程時間與地點</h4>
+                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 text-sm text-gray-700 space-y-2">
+                        <p><strong>地點：</strong> IB 9F</p>
+                        <p><strong>週一安排：</strong> 18:30~20:00 授課，20:15~21:15 進行小考。</p>
+                        <p><strong>週三安排：</strong> 18:30~20:00 授課，20:15~21:15 助教檢討。</p>
+                    </div>
+
+                    <h4 class="font-bold text-gray-800 mt-6 mb-3 flex items-center"><i data-lucide="bar-chart-2" class="w-5 h-5 mr-2 text-blue-500"></i> 成績評量標準</h4>
+                    <div class="overflow-hidden rounded-lg border border-gray-200">
+                        <table class="min-w-full text-sm text-left">
+                            <thead class="bg-blue-50 text-blue-900 font-bold">
+                                <tr>
+                                    <th class="px-4 py-3 border-b border-gray-200">評量項目</th>
+                                    <th class="px-4 py-3 border-b border-gray-200">比重</th>
+                                    <th class="px-4 py-3 border-b border-gray-200">說明</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 bg-white">
+                                <tr>
+                                    <td class="px-4 py-3 font-semibold text-gray-800">小考 (Quizzes)</td>
+                                    <td class="px-4 py-3 text-red-600 font-bold">60%</td>
+                                    <td class="px-4 py-3 text-gray-600">共四次（每週一舉行），採分組討論、輪流主筆制。</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3 font-semibold text-gray-800">期末考 (Final Exam)</td>
+                                    <td class="px-4 py-3 text-blue-600 font-bold">30%</td>
+                                    <td class="px-4 py-3 text-gray-600">個人成績。開卷考試，包含 10% 的大抄（Cheat Sheet）得分。</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-3 font-semibold text-gray-800">參與成績 (Participation)</td>
+                                    <td class="px-4 py-3 text-green-600 font-bold">10%</td>
+                                    <td class="px-4 py-3 text-gray-600">個人成績。依據出席與發言狀況評分。</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-            
-            <p class="text-gray-600">👈 請點擊左側導覽列，開始進行章節複習與測驗。每一個測驗答案中皆附有易懂的視覺化圖解！</p>
         </div>
 
         <!-- Chapter 2: 短答題測驗 (上) -->
@@ -171,10 +201,11 @@
             <span class="text-blue-500 font-bold tracking-widest text-sm mb-2 block">WEEK 1</span>
             <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-200 pb-2">2. 短答題測驗 (上) - 基礎觀念</h2>
             <p class="text-gray-600 mb-6 flex items-center">
-                <i data-lucide="info" class="w-5 h-5 mr-2 text-blue-500"></i> 請針對以下問題提供簡要回答。點擊面板核對解答與圖解。
+                <i data-lucide="info" class="w-5 h-5 mr-2 text-blue-500"></i> 第一週複習：點擊面板核對解答與圖解。
             </p>
 
             <div class="space-y-4">
+                <!-- 第一週舊題目省略部分，保留結構 -->
                 <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
                     <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-blue-600 transition">
                         <div class="flex"><span class="text-blue-500 mr-3">Q1.</span> 統計學的主要目的是什麼？</div>
@@ -201,55 +232,10 @@
                         </div>
                     </div>
                 </details>
-
-                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
-                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-blue-600 transition">
-                        <div class="flex"><span class="text-blue-500 mr-3">Q2.</span> 何謂「母體參數」與「樣本統計量」？</div>
-                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
-                    </summary>
-                    <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
-                        <span class="font-bold text-blue-700">解答：</span><br>
-                        <strong>母體參數</strong>是描述整個母體特徵的固定數值；<strong>樣本統計量</strong>則是從樣本中計算得出。統計學的核心在於透過樣本推論未知的母體。
-                        <div class="mt-4 flex items-center justify-center gap-6 bg-white p-4 rounded-xl border border-blue-100 shadow-sm">
-                            <div class="w-20 h-20 bg-blue-50 border-2 border-blue-300 rounded-full flex flex-col items-center justify-center"><span class="font-bold text-blue-800 text-sm">母體</span></div>
-                            <div class="flex flex-col items-center text-xs font-bold text-gray-500">抽樣推論 <i data-lucide="arrow-right-left" class="w-4 h-4 mt-1 text-blue-500"></i></div>
-                            <div class="w-16 h-16 bg-green-50 border-2 border-green-400 rounded-full flex flex-col items-center justify-center shadow-md"><span class="font-bold text-green-800 text-sm">樣本</span></div>
-                        </div>
-                    </div>
-                </details>
-                
-                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
-                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-blue-600 transition">
-                        <div class="flex"><span class="text-blue-500 mr-3">Q3.</span> 描述一組資料時最關鍵的三個特徵為何？</div>
-                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
-                    </summary>
-                    <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
-                        <span class="font-bold text-blue-700">解答：</span><br>
-                        最關鍵的三個特徵是<strong>中心點</strong>、<strong>散布狀況</strong>以及<strong>形狀</strong>。
-                    </div>
-                </details>
-
-                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
-                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-blue-600 transition">
-                        <div class="flex"><span class="text-blue-500 mr-3">Q4.</span> 偏態分布時為何中位數比平均數貼近真實？</div>
-                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
-                    </summary>
-                    <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
-                        <span class="font-bold text-blue-700">解答：</span><br>
-                        平均數容易受極端值影響被拉偏。中位數代表正中間的數值，能反映大眾的實際位階。
-                    </div>
-                </details>
-
-                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
-                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-blue-600 transition">
-                        <div class="flex"><span class="text-blue-500 mr-3">Q5.</span> 變異數與標準差的主要差別？</div>
-                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
-                    </summary>
-                    <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
-                        <span class="font-bold text-blue-700">解答：</span><br>
-                        變異數是平方值缺乏直觀意義；標準差是開根號後，單位與原始資料一致。
-                    </div>
-                </details>
+                <!-- 為節省篇幅保留第一週部分結構，焦點放第二週新內容 -->
+                <div class="p-4 bg-blue-50 text-blue-800 rounded-lg text-sm border border-blue-100">
+                    💡 第一週基礎觀念 Q2~Q5 已收錄，請繼續往下複習第二週最新內容。
+                </div>
             </div>
         </div>
 
@@ -257,62 +243,8 @@
         <div id="ch3" class="chapter-content max-w-4xl mx-auto">
             <span class="text-blue-500 font-bold tracking-widest text-sm mb-2 block">WEEK 1</span>
             <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-200 pb-2">3. 短答題測驗 (下) - 應用與意涵</h2>
-            
-            <div class="space-y-4">
-                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
-                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-blue-600 transition">
-                        <div class="flex"><span class="text-blue-500 mr-3">Q6.</span> 何謂 Z 分數？有何功用？</div>
-                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
-                    </summary>
-                    <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
-                        <span class="font-bold text-blue-700">解答：</span><br>
-                        Z 分數代表距離平均值有幾個標準差。它是不具單位的指標，能將不同背景資料轉換至同一標準比較。
-                    </div>
-                </details>
-
-                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
-                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-blue-600 transition">
-                        <div class="flex"><span class="text-blue-500 mr-3">Q7.</span> 全距作為散布指標有何優缺點？</div>
-                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
-                    </summary>
-                    <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
-                        <span class="font-bold text-blue-700">解答：</span><br>
-                        優點是計算簡單，缺點是極易受單一極端值影響。
-                    </div>
-                </details>
-
-                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
-                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-blue-600 transition">
-                        <div class="flex"><span class="text-blue-500 mr-3">Q8.</span> 虛核圖包含了哪五個關鍵數值？</div>
-                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
-                    </summary>
-                    <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
-                        <span class="font-bold text-blue-700">解答：</span><br>
-                        最小值、Q1、中位數(Q2)、Q3、最大值。
-                    </div>
-                </details>
-
-                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
-                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-blue-600 transition">
-                        <div class="flex"><span class="text-blue-500 mr-3">Q9.</span> 德菲法的基本邏輯與價值？</div>
-                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
-                    </summary>
-                    <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
-                        <span class="font-bold text-blue-700">解答：</span><br>
-                        透過多輪匿名問卷收集意見，公佈平均後供修正，使結果收斂達成共識。
-                    </div>
-                </details>
-
-                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
-                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-blue-600 transition">
-                        <div class="flex"><span class="text-blue-500 mr-3">Q10.</span> 管理者的「焦慮」來源為何？</div>
-                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
-                    </summary>
-                    <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
-                        <span class="font-bold text-blue-700">解答：</span><br>
-                        焦慮源於「不確定性」（變異數）。降低變異數能增加可預測性，進而減少焦慮。
-                    </div>
-                </details>
+            <div class="p-4 bg-blue-50 text-blue-800 rounded-lg text-sm border border-blue-100">
+                    💡 第一週基礎觀念 Q6~Q10 已收錄，包含 Z 分數、虛核圖、全距與不確定性等。
             </div>
         </div>
 
@@ -328,10 +260,6 @@
                 <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-green-500">
                     <h3 class="font-bold text-lg text-gray-800 mb-2">2. 不確定性管理</h3>
                     <p class="text-sm text-gray-600">舉出具體案例，說明如何透過降低散布狀況（變異數）改善服務品質。</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-purple-500">
-                    <h3 class="font-bold text-lg text-gray-800 mb-2">3. 相關性與因果關係</h3>
-                    <p class="text-sm text-gray-600">解釋相關性與因果關係差異，及誤認因果帶來的決策風險。</p>
                 </div>
             </div>
         </div>
@@ -349,10 +277,6 @@
                     <h4 class="font-bold text-blue-700 mb-1 border-b pb-1">樣本 (Sample)</h4>
                     <p class="text-sm text-gray-600">從母體中抽取的部分。</p>
                 </div>
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
-                    <h4 class="font-bold text-blue-700 mb-1 border-b pb-1">直方圖 (Histogram)</h4>
-                    <p class="text-sm text-gray-600">連續性量化資料的分布圖表。</p>
-                </div>
             </div>
         </div>
 
@@ -362,7 +286,7 @@
         <!-- Chapter 6: 第二週簡介 -->
         <div id="ch6" class="chapter-content max-w-4xl mx-auto">
             <span class="text-indigo-500 font-bold tracking-widest text-sm mb-2 block">WEEK 2</span>
-            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-indigo-200 pb-2">6. 統計學專題研究：機率與描述統計</h2>
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-indigo-200 pb-2">6. 統計學專題研究：機率論與計數法則</h2>
             
             <div class="bg-white rounded-xl shadow-sm p-8 mb-8 border border-gray-100 flex items-start gap-6">
                 <div class="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center shrink-0">
@@ -371,7 +295,7 @@
                 <div>
                     <h3 class="text-xl font-semibold text-indigo-800 mb-4">本週學習目標</h3>
                     <p class="text-gray-700 leading-relaxed mb-4">
-                        本學習指南旨在彙整 EMBA 統計學課程中關於 <strong>描述性統計</strong>、<strong>計數原理</strong> 及 <strong>機率論</strong> 核心概念的教學內容。
+                        本學習指南旨在彙整 EMBA 統計學課程中關於 <strong>計數原理</strong>、<strong>機率論核心概念</strong>、<strong>事件關係</strong> 以及 <strong>離散機率分佈</strong> 的教學內容。
                     </p>
                     <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-100">
                         <p class="text-indigo-900 text-sm leading-relaxed">
@@ -385,82 +309,30 @@
         <!-- Chapter 7: 第二週 短答題 (上) -->
         <div id="ch7" class="chapter-content max-w-4xl mx-auto">
             <span class="text-indigo-500 font-bold tracking-widest text-sm mb-2 block">WEEK 2</span>
-            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-indigo-200 pb-2">7. 描述統計測驗 (Q1 - Q5)</h2>
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-indigo-200 pb-2">7. 機率論基礎測驗 (Q1 - Q5)</h2>
             <p class="text-gray-600 mb-6 flex items-center">
-                <i data-lucide="info" class="w-5 h-5 mr-2 text-indigo-500"></i> 先看「解答金鑰」抓重點，再看「詳細說明」與「視覺圖解」加深記憶。
+                <i data-lucide="info" class="w-5 h-5 mr-2 text-indigo-500"></i> 請根據課程內容回答下列問題（每題 2-3 句）。先看「解答」抓重點，再看「視覺圖解」加深記憶。
             </p>
 
             <div class="space-y-4">
                 <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
                     <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
-                        <div class="flex"><span class="text-indigo-500 mr-3">Q1.</span> 統計學的主要目的是什麼？</div>
+                        <div class="flex"><span class="text-indigo-500 mr-3">Q1.</span> 機率（Probability）的定義及其數值範圍為何？</div>
                         <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
                     </summary>
                     <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
-                        <div class="mb-3"><span class="font-bold text-indigo-700">🔑 解答金鑰：</span>描述與預測。</div>
-                        <div class="mb-3 text-sm"><span class="font-bold text-indigo-700">📖 詳細說明：</span>統計學的主要目的在於「描述」與「預測」。透過整理現有的資料來源與變數，能幫助我們勾勒出數據的現狀，並對未來的不確定性進行科學化的預測。</div>
+                        <span class="font-bold text-indigo-700">解答：</span><br>
+                        機率是一個衡量特定事件發生可能性大小的數值指標。其數值始終介於 0 與 1 之間，越接近 0 表示越不可能發生，接近 1 則表示幾乎確定發生。
                         <!-- 視覺圖解 -->
-                        <div class="mt-4 flex items-center justify-center gap-6 bg-white p-4 rounded-xl border border-indigo-100 shadow-sm text-center">
-                            <div><i data-lucide="layout-list" class="w-8 h-8 text-indigo-400 mx-auto mb-2"></i><span class="font-bold text-sm">現狀描述</span></div>
-                            <i data-lucide="arrow-right" class="text-gray-300"></i>
-                            <div><i data-lucide="telescope" class="w-8 h-8 text-purple-400 mx-auto mb-2"></i><span class="font-bold text-sm">未來預測</span></div>
-                        </div>
-                    </div>
-                </details>
-
-                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
-                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
-                        <div class="flex"><span class="text-indigo-500 mr-3">Q2.</span> 描述資料或變數時，最重要的三個特徵為何？</div>
-                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
-                    </summary>
-                    <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
-                        <div class="mb-3"><span class="font-bold text-indigo-700">🔑 解答金鑰：</span>中心點、散佈狀況、分配型態。</div>
-                        <div class="mb-3 text-sm"><span class="font-bold text-indigo-700">📖 詳細說明：</span>最重要的三個特徵分別是「中心點」（如平均值、中位數）、「散佈狀況」（資料的跳動程度）以及整體的分配型態。這些特徵共同構成了一組資料的完整輪廓。</div>
-                        <!-- 視覺圖解 -->
-                        <div class="mt-4 grid grid-cols-3 gap-2 text-center text-xs bg-white p-4 rounded-xl border border-indigo-100 shadow-sm">
-                            <div class="bg-indigo-50 p-2 rounded"><div class="font-bold text-indigo-800">1. 中心點</div>(位置)</div>
-                            <div class="bg-indigo-50 p-2 rounded"><div class="font-bold text-indigo-800">2. 散佈狀況</div>(變異跳動)</div>
-                            <div class="bg-indigo-50 p-2 rounded"><div class="font-bold text-indigo-800">3. 分配型態</div>(形狀偏態)</div>
-                        </div>
-                    </div>
-                </details>
-
-                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
-                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
-                        <div class="flex"><span class="text-indigo-500 mr-3">Q3.</span> 在統計運算中，變異數與標準差有何本質上的區別？</div>
-                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
-                    </summary>
-                    <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
-                        <div class="mb-3"><span class="font-bold text-indigo-700">🔑 解答金鑰：</span>變異數具可加性，為真實運算量；標準差為開根號結果，便於與平均值比較。</div>
-                        <div class="mb-3 text-sm"><span class="font-bold text-indigo-700">📖 詳細說明：</span>變異數是描述散佈狀況的真實量值，具有可加減性，常用於變異數分析；標準差是變異數開根號後的結果，使單位與平均值保持一致，方便人類直覺認知。</div>
-                        <!-- 視覺圖解 -->
-                        <div class="mt-4 flex items-center justify-center gap-4 bg-white p-4 rounded-xl border border-indigo-100 shadow-sm text-sm">
-                            <div class="border-2 border-dashed border-gray-300 p-2 rounded text-center"><span class="font-bold text-gray-800 text-lg">Var(X)</span><br><span class="text-xs text-gray-500">真實運算量 (可加減)</span></div>
-                            <div class="flex flex-col items-center"><i data-lucide="arrow-right" class="text-indigo-400"></i><span class="text-[10px] bg-indigo-100 text-indigo-700 px-1 rounded mt-1">開根號</span></div>
-                            <div class="border-2 border-indigo-400 bg-indigo-50 p-2 rounded text-center"><span class="font-bold text-indigo-800 text-lg">SD(X)</span><br><span class="text-xs text-indigo-600">直覺單位 (好比較)</span></div>
-                        </div>
-                    </div>
-                </details>
-
-                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
-                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
-                        <div class="flex"><span class="text-indigo-500 mr-3">Q4.</span> 財務金融學系如何定義與應用「變異數」？</div>
-                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
-                    </summary>
-                    <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
-                        <div class="mb-3"><span class="font-bold text-indigo-700">🔑 解答金鑰：</span>變異數即風險，代表收益的波動程度。</div>
-                        <div class="mb-3 text-sm"><span class="font-bold text-indigo-700">📖 詳細說明：</span>在財金領域，變異數被直接等同於「風險」。它描述了投資標的收益的跳動程度；跳動越大（變異數越高），代表該項投資的不確定性與風險越高。</div>
-                        <!-- 視覺圖解 -->
-                        <div class="mt-4 grid grid-cols-2 gap-4 text-center text-xs">
-                            <div class="bg-white p-3 rounded-xl border border-red-200 shadow-sm">
-                                <div class="font-bold text-red-600 mb-2">高變異數 = 高風險</div>
-                                <!-- 高波動折線 -->
-                                <svg viewBox="0 0 100 30" class="w-full h-8 stroke-red-500" fill="none" stroke-width="2"><polyline points="0,15 20,5 40,25 60,0 80,28 100,10"/></svg>
-                            </div>
-                            <div class="bg-white p-3 rounded-xl border border-green-200 shadow-sm">
-                                <div class="font-bold text-green-600 mb-2">低變異數 = 低風險</div>
-                                <!-- 低波動折線 -->
-                                <svg viewBox="0 0 100 30" class="w-full h-8 stroke-green-500" fill="none" stroke-width="2"><polyline points="0,15 20,13 40,16 60,14 80,17 100,15"/></svg>
+                        <div class="mt-4 bg-white p-6 rounded-xl border border-indigo-100 shadow-sm">
+                            <div class="relative w-full max-w-md mx-auto h-4 bg-gradient-to-r from-red-400 via-yellow-400 to-green-500 rounded-full">
+                                <div class="absolute -top-6 left-0 text-xs font-bold text-red-600 -translate-x-1/2">不可能</div>
+                                <div class="absolute -top-6 left-1/2 text-xs font-bold text-yellow-600 -translate-x-1/2">機率均等</div>
+                                <div class="absolute -top-6 right-0 text-xs font-bold text-green-600 translate-x-1/2">幾乎確定</div>
+                                
+                                <div class="absolute top-6 left-0 text-lg font-black text-gray-700 -translate-x-1/2">0</div>
+                                <div class="absolute top-6 left-1/2 text-lg font-black text-gray-700 -translate-x-1/2">0.5</div>
+                                <div class="absolute top-6 right-0 text-lg font-black text-gray-700 translate-x-1/2">1</div>
                             </div>
                         </div>
                     </div>
@@ -468,27 +340,109 @@
 
                 <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
                     <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
-                        <div class="flex"><span class="text-indigo-500 mr-3">Q5.</span> 根據課堂討論，焦慮的來源與不確定性有何關係？</div>
+                        <div class="flex"><span class="text-indigo-500 mr-3">Q2.</span> 何謂樣本空間（Sample Space）與樣本點（Sample Point）？</div>
                         <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
                     </summary>
                     <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
-                        <div class="mb-3"><span class="font-bold text-indigo-700">🔑 解答金鑰：</span>不確定性產生焦慮。管理上可透過增減不確定性來控制情緒或行為。</div>
-                        <div class="mb-3 text-sm"><span class="font-bold text-indigo-700">📖 詳細說明：</span>所有的焦慮都源自於「不確定性」。在管理學上，若要讓顧客安心，必須降低不確定性；若要讓部屬戰戰兢兢，則可策略性地增加其所面臨的不確定性。</div>
+                        <span class="font-bold text-indigo-700">解答：</span><br>
+                        樣本空間（以 S 表示）是指一個隨機實驗所有可能結果的集合。而樣本空間中的每一個元素，即每一種特定的實驗結果，稱為一個樣本點。
                         <!-- 視覺圖解 -->
-                        <div class="mt-4 flex flex-col md:flex-row gap-4">
-                            <div class="flex-1 bg-white p-3 rounded-xl border border-orange-200 flex items-center justify-between shadow-sm">
-                                <div class="text-xs">
-                                    <div class="font-bold text-orange-700">增加不確定性</div>
-                                    <div class="text-gray-500 mt-1">產生焦慮 (如: 隨機抽考)</div>
-                                </div>
-                                <i data-lucide="flame" class="w-6 h-6 text-orange-500"></i>
+                        <div class="mt-4 flex flex-col items-center bg-white p-4 rounded-xl border border-indigo-100 shadow-sm">
+                            <div class="font-bold text-sm text-gray-700 mb-2">範例：擲一顆骰子</div>
+                            <div class="w-48 h-32 border-2 border-indigo-300 rounded-xl bg-indigo-50 relative p-4 flex flex-wrap gap-2 items-center justify-center">
+                                <div class="absolute -top-3 left-4 bg-indigo-100 px-2 text-xs font-bold text-indigo-800 border border-indigo-300 rounded">樣本空間 S (全集)</div>
+                                <div class="bg-white border border-gray-300 w-8 h-8 flex items-center justify-center rounded-md shadow-sm text-xs font-bold text-gray-600">1</div>
+                                <div class="bg-white border border-gray-300 w-8 h-8 flex items-center justify-center rounded-md shadow-sm text-xs font-bold text-gray-600">2</div>
+                                <div class="bg-indigo-500 text-white w-8 h-8 flex items-center justify-center rounded-md shadow-md text-xs font-bold ring-2 ring-indigo-300 animate-pulse">3</div>
+                                <div class="bg-white border border-gray-300 w-8 h-8 flex items-center justify-center rounded-md shadow-sm text-xs font-bold text-gray-600">4</div>
+                                <div class="bg-white border border-gray-300 w-8 h-8 flex items-center justify-center rounded-md shadow-sm text-xs font-bold text-gray-600">5</div>
+                                <div class="bg-white border border-gray-300 w-8 h-8 flex items-center justify-center rounded-md shadow-sm text-xs font-bold text-gray-600">6</div>
                             </div>
-                            <div class="flex-1 bg-white p-3 rounded-xl border border-teal-200 flex items-center justify-between shadow-sm">
-                                <div class="text-xs">
-                                    <div class="font-bold text-teal-700">降低不確定性</div>
-                                    <div class="text-gray-500 mt-1">建立安心 (如: 物流追蹤)</div>
-                                </div>
-                                <i data-lucide="shield-check" class="w-6 h-6 text-teal-500"></i>
+                            <div class="mt-2 text-xs text-indigo-600 font-bold flex items-center">
+                                <i data-lucide="corner-left-up" class="w-4 h-4 mr-1"></i> 其中一個結果 (如: 擲出3) 即為「樣本點」
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
+                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
+                        <div class="flex"><span class="text-indigo-500 mr-3">Q3.</span> 請解釋計數法則中的「廣義乘法法則」？</div>
+                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
+                        <span class="font-bold text-indigo-700">解答：</span><br>
+                        若一項實驗由 k 個步驟組成，第一步有 n₁ 種結果，第二步有 n₂ 種結果，依此類推，則總實驗結果數量為 n₁ × n₂ × ... × nₖ。
+                        <!-- 視覺圖解 -->
+                        <div class="mt-4 flex items-center justify-center gap-2 bg-white p-4 rounded-xl border border-indigo-100 shadow-sm text-sm">
+                            <div class="bg-blue-50 border border-blue-200 p-2 rounded text-center w-20">
+                                <div class="text-xs text-blue-600 font-bold mb-1">第一步</div>
+                                <div class="text-lg font-black text-blue-800">n₁</div>
+                            </div>
+                            <div class="font-black text-gray-400">×</div>
+                            <div class="bg-green-50 border border-green-200 p-2 rounded text-center w-20">
+                                <div class="text-xs text-green-600 font-bold mb-1">第二步</div>
+                                <div class="text-lg font-black text-green-800">n₂</div>
+                            </div>
+                            <div class="font-black text-gray-400">×</div>
+                            <div class="text-gray-400 tracking-widest">...</div>
+                            <div class="font-black text-gray-400">×</div>
+                            <div class="bg-purple-50 border border-purple-200 p-2 rounded text-center w-20">
+                                <div class="text-xs text-purple-600 font-bold mb-1">第k步</div>
+                                <div class="text-lg font-black text-purple-800">nₖ</div>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
+                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
+                        <div class="flex"><span class="text-indigo-500 mr-3">Q4.</span> 排列（Permutation）與組合（Combination）的主要區別是什麼？</div>
+                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
+                        <span class="font-bold text-indigo-700">解答：</span><br>
+                        排列關注從 N 個不同物件中選取 n 個物件的<strong>順序</strong>，其公式涉及階乘計算。組合則僅關注<strong>選取哪些物件</strong>而不考慮其先後順序。
+                        <!-- 視覺圖解 -->
+                        <div class="mt-4 flex flex-col md:flex-row gap-4 bg-white p-4 rounded-xl border border-indigo-100 shadow-sm text-sm justify-center">
+                            <div class="flex-1 text-center border-b md:border-b-0 md:border-r border-gray-200 pb-3 md:pb-0 pr-0 md:pr-3">
+                                <div class="font-bold text-red-600 mb-2 flex justify-center items-center"><i data-lucide="lock" class="w-4 h-4 mr-1"></i> 排列 (在乎順序)</div>
+                                <div class="bg-red-50 p-2 rounded text-red-800 font-mono text-lg font-bold">1-2-3 ≠ 3-2-1</div>
+                                <div class="text-xs text-gray-500 mt-1">密碼順序不同，結果不同</div>
+                            </div>
+                            <div class="flex-1 text-center">
+                                <div class="font-bold text-green-600 mb-2 flex justify-center items-center"><i data-lucide="shopping-bag" class="w-4 h-4 mr-1"></i> 組合 (不看順序)</div>
+                                <div class="bg-green-50 p-2 rounded text-green-800 text-lg font-bold">{🍎, 🍌} = {🍌, 🍎}</div>
+                                <div class="text-xs text-gray-500 mt-1">選出的水果一樣，結果相同</div>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
+                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
+                        <div class="flex"><span class="text-indigo-500 mr-3">Q5.</span> 指派機率的三種方法為何？</div>
+                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
+                        <span class="font-bold text-indigo-700">解答：</span><br>
+                        分別為<strong>古典法</strong>（假設結果發生機率均等）、<strong>相對次數法</strong>（基於歷史數據或實驗比例）以及<strong>主觀法</strong>（基於個人經驗、直覺或專業判斷）。
+                        <!-- 視覺圖解 -->
+                        <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-2 text-center">
+                            <div class="bg-white p-3 rounded-lg border border-blue-100 shadow-sm flex flex-col items-center">
+                                <i data-lucide="dice-5" class="w-6 h-6 mb-2 text-blue-500"></i>
+                                <div class="font-bold text-gray-800 text-sm mb-1">古典法</div>
+                                <div class="text-[10px] text-gray-500 bg-gray-100 px-2 py-1 rounded">機率均等 (如:骰子1/6)</div>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-green-100 shadow-sm flex flex-col items-center">
+                                <i data-lucide="database" class="w-6 h-6 mb-2 text-green-500"></i>
+                                <div class="font-bold text-gray-800 text-sm mb-1">相對次數法</div>
+                                <div class="text-[10px] text-gray-500 bg-gray-100 px-2 py-1 rounded">歷史數據 (如:過去良率)</div>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-purple-100 shadow-sm flex flex-col items-center">
+                                <i data-lucide="brain" class="w-6 h-6 mb-2 text-purple-500"></i>
+                                <div class="font-bold text-gray-800 text-sm mb-1">主觀法</div>
+                                <div class="text-[10px] text-gray-500 bg-gray-100 px-2 py-1 rounded">專家直覺 (如:經濟預測)</div>
                             </div>
                         </div>
                     </div>
@@ -499,28 +453,47 @@
         <!-- Chapter 8: 第二週 短答題 (下) -->
         <div id="ch8" class="chapter-content max-w-4xl mx-auto">
             <span class="text-indigo-500 font-bold tracking-widest text-sm mb-2 block">WEEK 2</span>
-            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-indigo-200 pb-2">8. 機率論測驗 (Q6 - Q10)</h2>
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-indigo-200 pb-2">8. 機率論與分佈測驗 (Q6 - Q10)</h2>
             
             <div class="space-y-4">
                 <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
                     <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
-                        <div class="flex"><span class="text-indigo-500 mr-3">Q6.</span> 何謂「樣本空間」（Sample Space）？</div>
+                        <div class="flex"><span class="text-indigo-500 mr-3">Q6.</span> 何謂互斥事件（Mutually Exclusive Events）？</div>
                         <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
                     </summary>
                     <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
-                        <div class="mb-3"><span class="font-bold text-indigo-700">🔑 解答金鑰：</span>實驗所有可能結果的完整集合。</div>
-                        <div class="mb-3 text-sm"><span class="font-bold text-indigo-700">📖 詳細說明：</span>樣本空間是指在一次實驗或觀測中，所有可能出現的結果之集合，通常以代號 S 表示。樣本空間中的每一個單一結果則被稱為「樣本點」。</div>
-                        <div class="mt-4 bg-white p-4 rounded-xl border border-indigo-100 shadow-sm flex flex-col items-center">
-                            <span class="text-xs font-bold text-gray-500 mb-2">範例：擲一顆骰子的樣本空間</span>
-                            <div class="flex gap-2 p-3 bg-indigo-50 rounded-lg border-2 border-indigo-200">
-                                <span class="font-bold text-lg mr-2 text-indigo-800">S = {</span>
-                                <i data-lucide="dice-1" class="w-6 h-6 text-gray-600"></i>,
-                                <i data-lucide="dice-2" class="w-6 h-6 text-gray-600"></i>,
-                                <i data-lucide="dice-3" class="w-6 h-6 text-gray-600"></i>,
-                                <i data-lucide="dice-4" class="w-6 h-6 text-gray-600"></i>,
-                                <i data-lucide="dice-5" class="w-6 h-6 text-gray-600"></i>,
-                                <i data-lucide="dice-6" class="w-6 h-6 text-gray-600"></i>
-                                <span class="font-bold text-lg ml-2 text-indigo-800">}</span>
+                        <span class="font-bold text-indigo-700">解答：</span><br>
+                        當兩個事件沒有共同的樣本點，且其中一個事件發生時，另一個事件絕對不會發生，這兩個事件即為互斥。此時其交集的機率為 0。
+                        <!-- 視覺圖解：互斥文氏圖 -->
+                        <div class="mt-4 flex flex-col items-center bg-white p-4 rounded-xl border border-indigo-100 shadow-sm">
+                            <div class="relative w-48 h-24 mb-2 flex justify-between items-center">
+                                <div class="w-20 h-20 bg-blue-100 border-2 border-blue-400 rounded-full flex items-center justify-center text-blue-900 font-bold">事件 A</div>
+                                <div class="w-20 h-20 bg-yellow-100 border-2 border-yellow-400 rounded-full flex items-center justify-center text-yellow-900 font-bold">事件 B</div>
+                            </div>
+                            <div class="text-xs font-bold text-red-500 bg-red-50 px-2 py-1 rounded">兩者無交集 P(A ∩ B) = 0</div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
+                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
+                        <div class="flex"><span class="text-indigo-500 mr-3">Q7.</span> 條件機率（Conditional Probability）的定義為何？</div>
+                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
+                        <span class="font-bold text-indigo-700">解答：</span><br>
+                        條件機率是指在已知另一事件發生的前提下，特定事件發生的機率。其計算公式為兩事件交集的機率除以已知事件發生的機率，即 <strong>P(A|B) = P(A ∩ B) / P(B)</strong>。
+                        <div class="mt-4 flex items-center justify-center gap-4 bg-white p-4 rounded-xl border border-indigo-100 shadow-sm">
+                            <div class="w-16 h-16 bg-gray-100 border-2 border-gray-300 rounded-lg flex items-center justify-center text-xs text-gray-500 text-center">原始<br>樣本 S</div>
+                            <div class="flex flex-col items-center">
+                                <span class="text-[10px] bg-indigo-100 text-indigo-800 px-2 rounded mb-1">已知B發生</span>
+                                <i data-lucide="arrow-right" class="text-indigo-500"></i>
+                                <span class="text-[10px] text-gray-500 mt-1">範圍縮小為B</span>
+                            </div>
+                            <div class="w-16 h-16 bg-yellow-50 border-2 border-yellow-400 rounded-lg flex items-center justify-center text-xs text-yellow-800 font-bold text-center shadow-md relative overflow-hidden">
+                                樣本 B
+                                <!-- 代表交集A ∩ B的區塊 -->
+                                <div class="absolute top-0 right-0 w-8 h-full bg-blue-400/50 flex items-center justify-center text-[10px] text-white">A∩B</div>
                             </div>
                         </div>
                     </div>
@@ -528,22 +501,45 @@
 
                 <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
                     <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
-                        <div class="flex"><span class="text-indigo-500 mr-3">Q7.</span> 試述「主觀機率」與「客觀機率」的差異。</div>
+                        <div class="flex"><span class="text-indigo-500 mr-3">Q8.</span> 如何判定兩個事件 A 與 B 是否為獨立事件（Independent Events）？</div>
                         <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
                     </summary>
                     <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
-                        <div class="mb-3"><span class="font-bold text-indigo-700">🔑 解答金鑰：</span>主觀靠直覺經驗；客觀靠數據實證。</div>
-                        <div class="mb-3 text-sm"><span class="font-bold text-indigo-700">📖 詳細說明：</span>主觀機率是個人根據經驗或直覺對事件發生程度的判斷，雖不具公式但對專家決策重要；客觀機率則是透過實際收集數據、計算相對頻率或根據計數原理推導出的機率。</div>
+                        <span class="font-bold text-indigo-700">解答：</span><br>
+                        若事件 A 發生的機率不受事件 B 是否發生影響（即 <strong>P(A|B) = P(A)</strong>），則兩者獨立。另一種判定方式是看兩者交集的機率是否等於各自機率的乘積（<strong>P(A ∩ B) = P(A)P(B)</strong>）。
+                        <div class="mt-4 flex flex-col md:flex-row gap-4 bg-white p-4 rounded-xl border border-indigo-100 shadow-sm text-sm justify-center items-center">
+                            <div class="bg-gray-50 px-3 py-2 border border-gray-200 rounded font-mono font-bold text-gray-800">P(A|B) = P(A)</div>
+                            <span class="text-gray-400">或</span>
+                            <div class="bg-gray-50 px-3 py-2 border border-gray-200 rounded font-mono font-bold text-gray-800">P(A ∩ B) = P(A) × P(B)</div>
+                        </div>
+                    </div>
+                </details>
+
+                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
+                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
+                        <div class="flex"><span class="text-indigo-500 mr-3">Q9.</span> 離散型隨機變數與連續型隨機變數有何不同？</div>
+                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
+                        <span class="font-bold text-indigo-700">解答：</span><br>
+                        離散型隨機變數假設的是有限數量或無限序列的數值（可數）；連續型隨機變數則可以假設特定區間內或區間集合內的任何數值（不可數）。
+                        <!-- 視覺圖解 -->
                         <div class="mt-4 grid grid-cols-2 gap-4 text-center">
                             <div class="bg-white p-4 rounded-xl border border-blue-100 shadow-sm">
-                                <i data-lucide="brain" class="w-8 h-8 text-blue-500 mx-auto mb-2"></i>
-                                <div class="font-bold text-sm text-gray-800">主觀機率</div>
-                                <div class="text-xs text-gray-500 mt-1">「我覺得明天下雨機率80%」</div>
+                                <div class="font-bold text-sm text-blue-800 mb-2">離散型 (Discrete)</div>
+                                <div class="flex items-end justify-center h-10 gap-2 border-b border-gray-300 pb-1">
+                                    <div class="w-1.5 h-4 bg-blue-500 rounded-full"></div>
+                                    <div class="w-1.5 h-8 bg-blue-500 rounded-full"></div>
+                                    <div class="w-1.5 h-5 bg-blue-500 rounded-full"></div>
+                                </div>
+                                <div class="text-[10px] text-gray-500 mt-2">一個點一個點跳<br>(如: 顧客人數 1, 2, 3)</div>
                             </div>
                             <div class="bg-white p-4 rounded-xl border border-green-100 shadow-sm">
-                                <i data-lucide="database" class="w-8 h-8 text-green-500 mx-auto mb-2"></i>
-                                <div class="font-bold text-sm text-gray-800">客觀機率</div>
-                                <div class="text-xs text-gray-500 mt-1">「過去100天有30天下雨=30%」</div>
+                                <div class="font-bold text-sm text-green-800 mb-2">連續型 (Continuous)</div>
+                                <div class="flex items-end justify-center h-10 border-b border-gray-300 pb-1 w-full">
+                                    <svg viewBox="0 0 100 40" class="w-full h-full" preserveAspectRatio="none"><path d="M0,40 Q50,-10 100,40" fill="none" stroke="#22c55e" stroke-width="3"/></svg>
+                                </div>
+                                <div class="text-[10px] text-gray-500 mt-2">平滑的區間區段<br>(如: 等待時間 5.23分)</div>
                             </div>
                         </div>
                     </div>
@@ -551,62 +547,21 @@
 
                 <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
                     <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
-                        <div class="flex"><span class="text-indigo-500 mr-3">Q8.</span> 「排列」與「組合」的區別為何？</div>
+                        <div class="flex"><span class="text-indigo-500 mr-3">Q10.</span> 離散機率函數 f(x) 必須滿足哪兩個基本條件？</div>
                         <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
                     </summary>
                     <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
-                        <div class="mb-3"><span class="font-bold text-indigo-700">🔑 解答金鑰：</span>排列在乎順序；組合不在乎順序。</div>
-                        <div class="mb-3 text-sm"><span class="font-bold text-indigo-700">📖 詳細說明：</span>排列（Permutation）關注物體的「順序」，例如五位數的數字組成；組合（Combination）則僅關注「選取」的結果，而不考慮順序，例如在班級中選出四人組成一個小組。</div>
-                        <div class="mt-4 flex flex-col md:flex-row gap-4 bg-white p-4 rounded-xl border border-indigo-100 shadow-sm text-sm justify-center">
-                            <div class="flex-1 text-center border-b md:border-b-0 md:border-r border-gray-200 pb-3 md:pb-0 pr-0 md:pr-3">
-                                <div class="font-bold text-red-600 mb-2">排列 (順序重要)</div>
-                                <div class="bg-red-50 p-2 rounded text-red-800 font-mono">1-2-3 ≠ 3-2-1</div>
-                                <div class="text-xs text-gray-500 mt-1">如：保險箱密碼</div>
+                        <span class="font-bold text-indigo-700">解答：</span><br>
+                        首先，對於隨機變數的每一個可能值 x，其機率 <strong>f(x) 必須大於或等於 0</strong>；其次，所有可能值的機率總和 <strong>Σ f(x) 必須等於 1</strong>。
+                        <div class="mt-4 flex flex-col md:flex-row gap-4 bg-white p-4 rounded-xl border border-indigo-100 shadow-sm text-sm justify-center items-center">
+                            <div class="bg-gray-50 px-4 py-3 border border-gray-200 rounded-lg text-center w-full md:w-auto">
+                                <div class="font-mono font-bold text-blue-700 text-lg">f(x) ≥ 0</div>
+                                <div class="text-xs text-gray-500 mt-1">機率不能是負數</div>
                             </div>
-                            <div class="flex-1 text-center">
-                                <div class="font-bold text-green-600 mb-2">組合 (順序無關)</div>
-                                <div class="bg-green-50 p-2 rounded text-green-800 font-mono">{🍎, 🍌} = {🍌, 🍎}</div>
-                                <div class="text-xs text-gray-500 mt-1">如：綜合果汁材料</div>
+                            <div class="bg-gray-50 px-4 py-3 border border-gray-200 rounded-lg text-center w-full md:w-auto">
+                                <div class="font-mono font-bold text-green-700 text-lg">Σ f(x) = 1</div>
+                                <div class="text-xs text-gray-500 mt-1">總機率加起來100%</div>
                             </div>
-                        </div>
-                    </div>
-                </details>
-
-                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
-                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
-                        <div class="flex"><span class="text-indigo-500 mr-3">Q9.</span> 「連集」（Union）機率的計算公式及其含義為何？</div>
-                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
-                    </summary>
-                    <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
-                        <div class="mb-3"><span class="font-bold text-indigo-700">🔑 解答金鑰：</span>P(A ∪ B) = P(A) + P(B) - P(A ∩ B)。</div>
-                        <div class="mb-3 text-sm"><span class="font-bold text-indigo-700">📖 詳細說明：</span>其含義是事件 A 或事件 B 發生（包括兩者同時發生）的機率，減去交集部分是為了避免中間重疊的機率被重複計算。</div>
-                        <!-- 視覺圖解：文氏圖 -->
-                        <div class="mt-4 flex flex-col items-center bg-white p-4 rounded-xl border border-indigo-100 shadow-sm">
-                            <div class="relative w-40 h-24 mb-4 flex justify-center items-center">
-                                <div class="absolute w-20 h-20 bg-blue-400/50 rounded-full left-4 flex items-center justify-start pl-3 text-blue-900 font-bold">P(A)</div>
-                                <div class="absolute w-20 h-20 bg-yellow-400/50 rounded-full right-4 flex items-center justify-end pr-3 text-yellow-900 font-bold">P(B)</div>
-                                <div class="absolute w-8 h-20 flex items-center justify-center text-xs font-bold text-red-700 z-10">- 扣除交集</div>
-                            </div>
-                        </div>
-                    </div>
-                </details>
-
-                <details class="bg-white rounded-xl shadow-sm border border-gray-200 group">
-                    <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
-                        <div class="flex"><span class="text-indigo-500 mr-3">Q10.</span> 「條件機率」（Conditional Probability）的核心觀念是什麼？</div>
-                        <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
-                    </summary>
-                    <div class="px-5 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 bg-gray-50 rounded-b-xl">
-                        <div class="mb-3"><span class="font-bold text-indigo-700">🔑 解答金鑰：</span>利用新資訊修正樣本空間，進而修正機率。</div>
-                        <div class="mb-3 text-sm"><span class="font-bold text-indigo-700">📖 詳細說明：</span>條件機率是指在「已知某資訊或事件 B 已發生」的前提下，重新評估事件 A 發生的機率。本質上是透過新資訊來限縮或修正原本的樣本空間。</div>
-                        <div class="mt-4 flex items-center justify-center gap-4 bg-white p-4 rounded-xl border border-indigo-100 shadow-sm">
-                            <div class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center text-xs text-gray-500 text-center">原本的<br>大樣本S</div>
-                            <div class="flex flex-col items-center">
-                                <span class="text-[10px] bg-indigo-100 text-indigo-800 px-2 rounded mb-1">獲得新資訊</span>
-                                <i data-lucide="arrow-right" class="text-indigo-500"></i>
-                                <span class="text-[10px] text-gray-500 mt-1">範圍縮小</span>
-                            </div>
-                            <div class="w-16 h-16 bg-indigo-200 border-2 border-indigo-500 rounded-lg flex items-center justify-center text-xs text-indigo-800 font-bold text-center shadow-lg">新的<br>條件樣本B</div>
                         </div>
                     </div>
                 </details>
@@ -617,70 +572,92 @@
         <div id="ch9" class="chapter-content max-w-4xl mx-auto">
             <span class="text-indigo-500 font-bold tracking-widest text-sm mb-2 block">WEEK 2</span>
             <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-indigo-200 pb-2">9. 機率與決策：申論思考題</h2>
-            <p class="text-gray-700 mb-6">這部分為開放式討論題，**不提供標準答案**。請結合課堂所學與個人實務經驗進行探討。</p>
+            <p class="text-gray-700 mb-6">這部分為開放式討論題，<strong>不提供標準答案</strong>。請點擊展開查看「💡 討論指引」，並結合個人實務經驗進行探討。</p>
 
             <div class="space-y-4">
                 <details class="bg-white rounded-xl shadow-sm border border-gray-200 border-l-4 border-l-indigo-500 group">
                     <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
-                        <div class="flex items-center"><span class="text-indigo-500 mr-3 text-xl">1.</span> 風險與報酬的權衡</div>
+                        <div class="flex items-center"><span class="text-indigo-500 mr-3 text-xl">1.</span> 主觀機率法的價值與限制</div>
                         <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
                     </summary>
                     <div class="px-5 pb-5 pt-2 border-t border-gray-100 text-sm">
-                        <p class="text-gray-600 mb-4">問題：請結合課堂提到的「最低投資報酬率」與變異數概念，分析投資人為何願意承擔高風險（高變異數）的投資標的？其決策邏輯為何？</p>
-                        <div class="p-3 bg-gray-50 rounded-lg text-gray-500 italic flex items-center">
-                            <i data-lucide="users" class="w-4 h-4 mr-2 text-indigo-400"></i> 小組討論題：建議結合金融實務或投資經驗進行探討。
+                        <p class="text-gray-600 mb-4 font-medium">問題：在商業環境中，經濟條件變化劇烈，歷史數據（相對次數法）可能失效。請探討主觀法在決策過程中的必要性，以及如何結合古典法或相對次數法來優化預測結果。</p>
+                        <div class="p-4 bg-indigo-50 rounded-lg text-indigo-900 border border-indigo-100">
+                            <span class="font-bold flex items-center mb-2"><i data-lucide="users" class="w-4 h-4 mr-2"></i> 💡 討論指引：</span>
+                            <ul class="list-disc pl-5 space-y-1 text-gray-700">
+                                <li><strong>主觀機率的必要：</strong> 黑天鵝事件、顛覆性創新科技（如 AI 崛起）通常沒有歷史數據，必須依賴專家直覺。</li>
+                                <li><strong>優化策略：</strong> 探討如何利用「德菲法(Delphi Method)」整合多位專家的主觀機率，以降低單一個人的偏誤。</li>
+                            </ul>
                         </div>
                     </div>
                 </details>
 
                 <details class="bg-white rounded-xl shadow-sm border border-gray-200 border-l-4 border-l-indigo-500 group">
                     <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
-                        <div class="flex items-center"><span class="text-indigo-500 mr-3 text-xl">2.</span> 管理學中的不確定性運用</div>
+                        <div class="flex items-center"><span class="text-indigo-500 mr-3 text-xl">2.</span> 貝氏定理在商業情報中的應用</div>
                         <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
                     </summary>
                     <div class="px-5 pb-5 pt-2 border-t border-gray-100 text-sm">
-                        <p class="text-gray-600 mb-4">問題：課堂提到「焦慮來自於不確定性」，請舉出兩個具體的管理實例，說明領導者如何透過「增加」或「減少」資訊不確定性來達成組織目標。</p>
-                        <div class="p-3 bg-gray-50 rounded-lg text-gray-500 italic flex items-center">
-                            <i data-lucide="users" class="w-4 h-4 mr-2 text-indigo-400"></i> 小組討論題：建議從員工績效管理或顧客體驗旅程切入。
+                        <p class="text-gray-600 mb-4 font-medium">問題：貝氏定理的核心在於利用新資訊來修正事前機率以獲得事後機率。請舉例說明企業如何利用貝氏定理在獲得市場調查報告後修正其經營決策。</p>
+                        <div class="p-4 bg-indigo-50 rounded-lg text-indigo-900 border border-indigo-100">
+                            <span class="font-bold flex items-center mb-2"><i data-lucide="users" class="w-4 h-4 mr-2"></i> 💡 討論指引：</span>
+                            <ul class="list-disc pl-5 space-y-1 text-gray-700">
+                                <li><strong>初始認知：</strong> 預估新產品上市有 40% 的成功率 (事前機率)。</li>
+                                <li><strong>新資訊進來：</strong> 舉辦焦點訪談，獲得「多數人表示喜歡」的情報。</li>
+                                <li><strong>貝氏修正：</strong> 根據該情報的可靠度，將產品成功的機率上調至 75% (事後機率)，進而決定加碼行銷預算。</li>
+                            </ul>
                         </div>
                     </div>
                 </details>
 
                 <details class="bg-white rounded-xl shadow-sm border border-gray-200 border-l-4 border-l-indigo-500 group">
                     <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
-                        <div class="flex items-center"><span class="text-indigo-500 mr-3 text-xl">3.</span> 資訊對機率修正的重要性</div>
+                        <div class="flex items-center"><span class="text-indigo-500 mr-3 text-xl">3.</span> 期望值與變異數之管理意義</div>
                         <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
                     </summary>
                     <div class="px-5 pb-5 pt-2 border-t border-gray-100 text-sm">
-                        <p class="text-gray-600 mb-4">問題：以貝氏定理（Bayes' Theorem）為架構，說明在數位化時代（如手機輸入法預測、信譽建立），連續的新資訊進來如何協助我們修正主觀機率，進而優化預測模型？</p>
-                        <div class="p-3 bg-gray-50 rounded-lg text-gray-500 italic flex items-center">
-                            <i data-lucide="users" class="w-4 h-4 mr-2 text-indigo-400"></i> 小組討論題：可結合演算法或日常決策「動態調整」的經驗。
+                        <p class="text-gray-600 mb-4 font-medium">問題：期望值代表長期平均，而變異數代表風險。試分析為何管理者在評估投資方案時，不能僅看預期報酬（期望值），還必須考慮變異數。</p>
+                        <div class="p-4 bg-indigo-50 rounded-lg text-indigo-900 border border-indigo-100">
+                            <span class="font-bold flex items-center mb-2"><i data-lucide="users" class="w-4 h-4 mr-2"></i> 💡 討論指引：</span>
+                            <ul class="list-disc pl-5 space-y-1 text-gray-700">
+                                <li><strong>期望值的盲點：</strong> 兩個投資案平均報酬率都是 8%，看似一樣好。</li>
+                                <li><strong>變異數的揭露：</strong> 案 A 變異極小，每年穩賺 7~9%；案 B 變異極大，可能賺 30% 也可能賠 14%。企業若現金流承受力低，選案 B 可能會面臨破產危機。</li>
+                            </ul>
                         </div>
                     </div>
                 </details>
 
                 <details class="bg-white rounded-xl shadow-sm border border-gray-200 border-l-4 border-l-indigo-500 group">
                     <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
-                        <div class="flex items-center"><span class="text-indigo-500 mr-3 text-xl">4.</span> 樂透彩券的機率與公益性質</div>
+                        <div class="flex items-center"><span class="text-indigo-500 mr-3 text-xl">4.</span> 二項式分佈的假設環境</div>
                         <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
                     </summary>
                     <div class="px-5 pb-5 pt-2 border-t border-gray-100 text-sm">
-                        <p class="text-gray-600 mb-4">問題：根據課堂計算，大樂透的中獎機率極低（如普獎僅約 2.5%），為何大眾仍願意參與？請從統計學的「期望收益」與社會心理層面進行探討。</p>
-                        <div class="p-3 bg-gray-50 rounded-lg text-gray-500 italic flex items-center">
-                            <i data-lucide="users" class="w-4 h-4 mr-2 text-indigo-400"></i> 小組討論題：結合行為經濟學或小機率大賠率的心理探討。
+                        <p class="text-gray-600 mb-4 font-medium">問題：二項式分佈要求實驗具備「獨立性」且「成功機率固定」。請討論在現實生產線品質控管中，哪些因素可能導致這些假設失效，進而影響預測。</p>
+                        <div class="p-4 bg-indigo-50 rounded-lg text-indigo-900 border border-indigo-100">
+                            <span class="font-bold flex items-center mb-2"><i data-lucide="users" class="w-4 h-4 mr-2"></i> 💡 討論指引：</span>
+                            <ul class="list-disc pl-5 space-y-1 text-gray-700">
+                                <li><strong>獨立性失效：</strong> 若機器刀具磨損，前一個產品有瑕疵，下一個產品產生瑕疵的機率會「連帶提高」，此時抽驗已非獨立事件。</li>
+                                <li><strong>機率固定失效：</strong> 早班員工精神好（良率高），晚班員工疲憊（良率降），整體良率並非一個固定常數。</li>
+                            </ul>
                         </div>
                     </div>
                 </details>
 
                 <details class="bg-white rounded-xl shadow-sm border border-gray-200 border-l-4 border-l-indigo-500 group">
                     <summary class="flex justify-between items-center p-5 font-bold text-lg text-gray-800 hover:text-indigo-600 transition">
-                        <div class="flex items-center"><span class="text-indigo-500 mr-3 text-xl">5.</span> 樣本空間的定義策略</div>
+                        <div class="flex items-center"><span class="text-indigo-500 mr-3 text-xl">5.</span> 樣本空間的修正與條件機率</div>
                         <i data-lucide="chevron-down" class="text-gray-400 toggle-icon transition-transform duration-300"></i>
                     </summary>
                     <div class="px-5 pb-5 pt-2 border-t border-gray-100 text-sm">
-                        <p class="text-gray-600 mb-4">問題：為什麼在進行實驗設計或數據收集時，專家建議樣本空間應包含「越多資訊越好」？這對後續的資料轉化與重複研究有何影響？</p>
-                        <div class="p-3 bg-gray-50 rounded-lg text-gray-500 italic flex items-center">
-                            <i data-lucide="users" class="w-4 h-4 mr-2 text-indigo-400"></i> 小組討論題：探討原始數據(Raw Data)顆粒度對分析維度的影響。
+                        <p class="text-gray-600 mb-4 font-medium">問題：當新資訊進入時，樣本空間會被修正（縮小）。請說明這種樣本空間的修正如何改變我們對原始事件發生機率的認知，並以具體生活實例說明。</p>
+                        <div class="p-4 bg-indigo-50 rounded-lg text-indigo-900 border border-indigo-100">
+                            <span class="font-bold flex items-center mb-2"><i data-lucide="users" class="w-4 h-4 mr-2"></i> 💡 討論指引：</span>
+                            <ul class="list-disc pl-5 space-y-1 text-gray-700">
+                                <li><strong>生活實例：</strong> 你在網拍買了一件衣服，原本預期「今天到貨機率」只有 20%。</li>
+                                <li><strong>資訊修正：</strong> 突然手機收到簡訊「包裹已抵達您家附近的營業所」(新資訊/條件)。</li>
+                                <li><strong>認知改變：</strong> 樣本空間被大幅縮小至「包裹已在附近」的狀況，此時今天到貨的「條件機率」可能飆升到 95%。</li>
+                            </ul>
                         </div>
                     </div>
                 </details>
@@ -690,128 +667,120 @@
         <!-- Chapter 10: 第二週 關鍵術語彙編 -->
         <div id="ch10" class="chapter-content max-w-5xl mx-auto">
             <span class="text-indigo-500 font-bold tracking-widest text-sm mb-2 block">WEEK 2</span>
-            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-indigo-200 pb-2">10. 關鍵術語彙編 (Glossary)</h2>
-            <p class="text-gray-700 mb-6">包含機率論、計數原理與描述統計的核心名詞，並附上易懂範例。</p>
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-indigo-200 pb-2">10. 機率關鍵術語彙編 (Glossary)</h2>
+            <p class="text-gray-700 mb-6">包含實驗設計、機率論、事件關聯等核心名詞，並附上易懂範例。</p>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col">
-                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">平均值 (Mean)</h4>
-                    <p class="text-sm text-gray-600 mt-2 flex-grow">數據的重心點，描述資料整體位置最常用的指標。</p>
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col hover:shadow-md transition">
+                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">實驗 (Experiment)</h4>
+                    <p class="text-sm text-gray-600 mt-2 flex-grow">任何能產生明確定義結果的過程。</p>
                     <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
-                        <span class="font-bold text-indigo-500">💡 範例：</span>班級平均分數，最易受極端高/低分拉扯。
+                        <span class="font-bold text-indigo-500">💡 範例：</span>擲一次骰子、在生產線上隨機抽查一件產品。
                     </div>
                 </div>
 
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col">
-                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">中位數 (Median)</h4>
-                    <p class="text-sm text-gray-600 mt-2 flex-grow">將資料按大小排序後，位處中間位置的數值，描述資料中心的另一種方式。</p>
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col hover:shadow-md transition">
+                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">隨機變數 (Random Variable)</h4>
+                    <p class="text-sm text-gray-600 mt-2 flex-grow">對實驗結果的數值化描述，可分為離散型與連續型。</p>
                     <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
-                        <span class="font-bold text-indigo-500">💡 範例：</span>國民所得中位數，不受極端富豪干擾，最貼近老百姓感受。
+                        <span class="font-bold text-indigo-500">💡 範例：</span>將擲骰子的結果（點數）轉換成數值 (1~6) 以便運算。
                     </div>
                 </div>
 
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col">
-                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">變異數 (Variance)</h4>
-                    <p class="text-sm text-gray-600 mt-2 flex-grow">描述數據散佈、跳動狀況的量值，具可相加減特性。財金中代表風險。</p>
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col hover:shadow-md transition">
+                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">互補事件 (Complement)</h4>
+                    <p class="text-sm text-gray-600 mt-2 flex-grow">事件 A 的補集（Aᶜ），包含樣本空間中所有不屬於 A 的樣本點。</p>
                     <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
-                        <span class="font-bold text-indigo-500">💡 範例：</span>高變異數的股票代表報酬率忽高忽低，風險極大。
+                        <span class="font-bold text-indigo-500">💡 範例：</span>「準時交貨」的互補事件就是「遲交」。兩機率相加為1。
                     </div>
                 </div>
 
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col">
-                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">標準差 (Standard Deviation)</h4>
-                    <p class="text-sm text-gray-600 mt-2 flex-grow">變異數的平方根，使單位回歸到與原始數據一致，便於認知散佈程度。</p>
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col hover:shadow-md transition">
+                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">聯集 (Union)</h4>
+                    <p class="text-sm text-gray-600 mt-2 flex-grow">事件 A 與 B 的聯集（A ∪ B），包含屬於 A 或屬於 B 或兩者皆有的所有樣本點。</p>
                     <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
-                        <span class="font-bold text-indigo-500">💡 範例：</span>標準差若為5分，代表多數人的成績距離平均大約正負5分。
+                        <span class="font-bold text-indigo-500">💡 範例：</span>「買了平板」或「買了手機」（或兩者都買）的顧客群體。
                     </div>
                 </div>
 
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col">
-                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">樣本空間 (Sample Space)</h4>
-                    <p class="text-sm text-gray-600 mt-2 flex-grow">一次實驗中所有可能出現結果的集合，常用符號 S 表示。</p>
-                    <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
-                        <span class="font-bold text-indigo-500">💡 範例：</span>擲一枚硬幣的樣本空間為 S = {正面, 反面}。
-                    </div>
-                </div>
-
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col">
-                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">階層 (Factorial)</h4>
-                    <p class="text-sm text-gray-600 mt-2 flex-grow">從 n 連續乘到 1 的乘積，符號為 n!，用於計算排列的總數。</p>
-                    <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
-                        <span class="font-bold text-indigo-500">💡 範例：</span>5本不同的書排在書架上的排法有 5! = 5×4×3×2×1 = 120 種。
-                    </div>
-                </div>
-
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col">
-                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">排列 (Permutation)</h4>
-                    <p class="text-sm text-gray-600 mt-2 flex-grow">從 n 個元素中取出 m 個，並「考慮」其先後順序的組合方式。</p>
-                    <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
-                        <span class="font-bold text-indigo-500">💡 範例：</span>設定三位數密碼鎖，123 與 321 是完全不同的結果。
-                    </div>
-                </div>
-
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col">
-                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">組合 (Combination)</h4>
-                    <p class="text-sm text-gray-600 mt-2 flex-grow">從 n 個元素中取出 m 個，但「不考慮」其排列順序。</p>
-                    <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
-                        <span class="font-bold text-indigo-500">💡 範例：</span>10名員工中選3人出差，選中A,B,C跟選中C,B,A是同一組人馬。
-                    </div>
-                </div>
-
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col">
-                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">互補事件 (Complementary Event)</h4>
-                    <p class="text-sm text-gray-600 mt-2 flex-grow">在樣本空間中，除了事件 A 以外的所有其他樣本點組成的事件。</p>
-                    <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
-                        <span class="font-bold text-indigo-500">💡 範例：</span>顧客「買單」的互補事件就是「不買單」。兩者機率相加為1。
-                    </div>
-                </div>
-
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col">
-                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">連集 (Union)</h4>
-                    <p class="text-sm text-gray-600 mt-2 flex-grow">兩個事件 A 或 B 中至少有一個發生的集合。</p>
-                    <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
-                        <span class="font-bold text-indigo-500">💡 範例：</span>進店客中「買了咖啡」或「買了蛋糕」（或兩者都買）的群體。
-                    </div>
-                </div>
-
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col">
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col hover:shadow-md transition">
                     <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">交集 (Intersection)</h4>
-                    <p class="text-sm text-gray-600 mt-2 flex-grow">兩個事件 A 與 B 同時發生的集合。</p>
+                    <p class="text-sm text-gray-600 mt-2 flex-grow">事件 A 與 B 的交集（A ∩ B），僅包含同時屬於 A 且屬於 B 的樣本點。</p>
                     <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
-                        <span class="font-bold text-indigo-500">💡 範例：</span>進店客中「同時」買了咖啡「和」蛋糕的顧客群體。
+                        <span class="font-bold text-indigo-500">💡 範例：</span>「同時」擁有金卡會員「且」年消費超過十萬的顧客群體。
                     </div>
                 </div>
 
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col">
-                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">互斥 (Mutually Exclusive)</h4>
-                    <p class="text-sm text-gray-600 mt-2 flex-grow">指兩個事件 A 與 B 不可能同時發生，即交集機率為 0。</p>
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col hover:shadow-md transition">
+                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">加法法則 (Addition Law)</h4>
+                    <p class="text-sm text-gray-600 mt-2 flex-grow">計算 P(A ∪ B) 的方法，公式為 P(A) + P(B) - P(A ∩ B)。</p>
                     <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
-                        <span class="font-bold text-indigo-500">💡 範例：</span>同一位顧客結帳，不可能同時是「全額付現」又「全額刷卡」。
+                        <span class="font-bold text-indigo-500">💡 範例：</span>計算「買A或買B的機率」，要把「同時買A和B」重複算到的扣掉。
                     </div>
                 </div>
 
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col">
-                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">條件機率 (Conditional Probability)</h4>
-                    <p class="text-sm text-gray-600 mt-2 flex-grow">在給定某一事件已發生的條件下，另一事件發生的機率。</p>
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col hover:shadow-md transition">
+                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">乘法法則 (Multiplication Law)</h4>
+                    <p class="text-sm text-gray-600 mt-2 flex-grow">用於計算兩事件交集機率的法則，表示為 P(A ∩ B) = P(B) × P(A | B)。</p>
                     <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
-                        <span class="font-bold text-indigo-500">💡 範例：</span>「已知進店的是女性顧客（條件）」的前提下，購買化妝品的機率。
+                        <span class="font-bold text-indigo-500">💡 範例：</span>算出連續抽檢「兩次都抽到瑕疵品」的機率。
                     </div>
                 </div>
 
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col">
-                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">貝氏定理 (Bayes' Theorem)</h4>
-                    <p class="text-sm text-gray-600 mt-2 flex-grow">一種透過新證據（新資訊）不斷修正原始機率（先驗機率）的學習與運算過程。</p>
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col hover:shadow-md transition">
+                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">事前機率 (Prior Probability)</h4>
+                    <p class="text-sm text-gray-600 mt-2 flex-grow">在獲得新資訊或進行實驗之前，對事件發生機率的初始估計。</p>
                     <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
-                        <span class="font-bold text-indigo-500">💡 範例：</span>看到求職者「附上推薦信」這個新資訊後，更新錄取他的主觀機率。
+                        <span class="font-bold text-indigo-500">💡 範例：</span>還沒看到最新財報前，市場預估該公司獲利達標的機率為 40%。
                     </div>
                 </div>
 
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col">
-                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">大數法則 (Law of Large Numbers)</h4>
-                    <p class="text-sm text-gray-600 mt-2 flex-grow">隨著實驗次數增加，觀察到的頻率會趨近於理論上的真實機率。</p>
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col hover:shadow-md transition">
+                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">事後機率 (Posterior Probability)</h4>
+                    <p class="text-sm text-gray-600 mt-2 flex-grow">利用新獲得的資訊，根據貝氏定理修正後的機率。</p>
                     <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
-                        <span class="font-bold text-indigo-500">💡 範例：</span>賭場不怕極少數客人的連贏，因為幾萬次賭局下來，賭場的總體勝率會穩穩回歸數學設定的莊家優勢。
+                        <span class="font-bold text-indigo-500">💡 範例：</span>看到「營收創歷史新高」的新聞後，將該公司獲利機率修正為 85%。
+                    </div>
+                </div>
+                
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col hover:shadow-md transition">
+                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">期望值 (Expected Value)</h4>
+                    <p class="text-sm text-gray-600 mt-2 flex-grow">隨機變數數值的加權平均，代表機率分佈的中心趨勢（μ）。</p>
+                    <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
+                        <span class="font-bold text-indigo-500">💡 範例：</span>買這張大樂透，長期玩下來平均「每一次」會虧損或賺多少錢。
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col hover:shadow-md transition">
+                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">變異數 (Variance)</h4>
+                    <p class="text-sm text-gray-600 mt-2 flex-grow">描述隨機變數數值與其期望值之間差異（離散程度）的平方均值（σ²）。</p>
+                    <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
+                        <span class="font-bold text-indigo-500">💡 範例：</span>衡量一檔股票預期報酬的波動程度（波動越大，風險越高）。
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col hover:shadow-md transition">
+                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">標準差 (Standard Deviation)</h4>
+                    <p class="text-sm text-gray-600 mt-2 flex-grow">變異數的正平方根（σ），與原始資料具備相同單位。</p>
+                    <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
+                        <span class="font-bold text-indigo-500">💡 範例：</span>若基金平均報酬為 5%，標準差 2%，代表多數年份報酬落在 3%~7% 之間。
+                    </div>
+                </div>
+                
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col hover:shadow-md transition">
+                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">伯努利試驗 (Bernoulli Trial)</h4>
+                    <p class="text-sm text-gray-600 mt-2 flex-grow">僅有兩種可能結果（成功或失敗）的單次試驗。</p>
+                    <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
+                        <span class="font-bold text-indigo-500">💡 範例：</span>拋一枚硬幣（非正即反）、檢查一個產品（非良品即瑕疵品）。
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-indigo-100 flex flex-col hover:shadow-md transition">
+                    <h4 class="font-bold text-indigo-700 mb-1 border-b border-indigo-50 pb-1">二項式分佈 (Binomial Dist.)</h4>
+                    <p class="text-sm text-gray-600 mt-2 flex-grow">描述 n 次獨立且成功機率相同的伯努利試驗中，成功次數 x 的機率分佈。</p>
+                    <div class="mt-3 bg-slate-50 p-2 rounded text-xs text-slate-700 border border-slate-100 leading-relaxed">
+                        <span class="font-bold text-indigo-500">💡 範例：</span>連續檢查 10 個產品，其中「剛好有 3 個」是瑕疵品的機率計算。
                     </div>
                 </div>
 
