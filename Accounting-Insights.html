@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台科大EMBA會計學精華：債券風暴與財報危機</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+            background-color: #f3f4f6;
+        }
+        /* Custom scrollbar for content area */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+        .tab-active {
+            background-color: #eff6ff;
+            color: #2563eb;
+            border-right: 4px solid #2563eb;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="flex flex-col h-screen overflow-hidden">
+
+    <!-- Header -->
+    <header class="bg-blue-900 text-white shadow-md z-10 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="bg-white text-blue-900 p-2 rounded-lg font-bold text-xl">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-wider">台科大 EMBA 學習網</h1>
+                    <p class="text-blue-200 text-xs">會計學精華：金融資產認列與危機處理案例</p>
+                </div>
+            </div>
+            <div class="hidden md:flex items-center gap-2 text-sm">
+                <span class="bg-blue-800 px-3 py-1 rounded-full"><i class="fa-solid fa-user-pen mr-1"></i> 負六學習助手 製作</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <div class="flex flex-1 overflow-hidden max-w-7xl mx-auto w-full bg-white shadow-xl">
+        
+        <!-- Sidebar Navigation -->
+        <nav class="w-full md:w-64 bg-gray-50 border-r border-gray-200 flex-shrink-0 overflow-y-auto hidden md:block">
+            <div class="p-4">
+                <h2 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">課程章節</h2>
+                <ul class="space-y-1" id="nav-tabs">
+                    <li>
+                        <button onclick="switchTab('chapter1')" id="btn-chapter1" class="w-full text-left px-4 py-3 rounded-l-lg transition-colors tab-active text-sm">
+                            <i class="fa-solid fa-chart-line w-5"></i> 1. 升息與債券價格
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="switchTab('chapter2')" id="btn-chapter2" class="w-full text-left px-4 py-3 rounded-l-lg transition-colors text-gray-600 hover:bg-gray-100 text-sm">
+                            <i class="fa-solid fa-book-journal-whills w-5"></i> 2. 金融資產認列方法
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="switchTab('chapter3')" id="btn-chapter3" class="w-full text-left px-4 py-3 rounded-l-lg transition-colors text-gray-600 hover:bg-gray-100 text-sm">
+                            <i class="fa-solid fa-building-shield w-5"></i> 3. 潤泰/南山下市危機
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="switchTab('chapter4')" id="btn-chapter4" class="w-full text-left px-4 py-3 rounded-l-lg transition-colors text-gray-600 hover:bg-gray-100 text-sm">
+                            <i class="fa-solid fa-toolbox w-5"></i> 4. 危機處理三部曲
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="switchTab('chapter5')" id="btn-chapter5" class="w-full text-left px-4 py-3 rounded-l-lg transition-colors text-gray-600 hover:bg-gray-100 text-sm">
+                            <i class="fa-solid fa-lightbulb w-5"></i> 5. 課後心得總結
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Mobile Menu Dropdown (Visible only on small screens) -->
+        </nav>
+
+        <div class="md:hidden w-full p-4 border-b bg-gray-50 flex-shrink-0">
+            <select id="mobile-nav" onchange="switchTab(this.value)" class="w-full p-2 border border-gray-300 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="chapter1">1. 升息與債券價格</option>
+                <option value="chapter2">2. 金融資產認列方法</option>
+                <option value="chapter3">3. 潤泰/南山下市危機</option>
+                <option value="chapter4">4. 危機處理三部曲</option>
+                <option value="chapter5">5. 課後心得總結</option>
+            </select>
+        </div>
+
+        <!-- Content Area -->
+        <main class="flex-1 overflow-y-auto custom-scrollbar p-6 md:p-10 relative">
+            
+            <!-- Chapter 1: Interest Rates & Bonds -->
+            <section id="chapter1" class="tab-content block">
+                <div class="mb-8">
+                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded uppercase">Chapter 1</span>
+                    <h2 class="text-3xl font-bold text-gray-800 mt-2 mb-4">為何債券利率上升，價格會下降？</h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        在2022年，美國聯準會 (Fed) 為了對抗通膨開始暴力升息。這對持有大量美國公債的壽險公司（如南山人壽）造成了巨大衝擊。
+                        為什麼升息會導致債券跌價？因為當市場推出<strong class="text-red-600">利率更高的新債券</strong>時，你手上<strong class="text-blue-600">利率較低的舊債券</strong>就不值錢了，投資人必須用「折價（降價）」的方式才賣得掉。
+                    </p>
+                </div>
+
+                <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm mb-8">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4"><i class="fa-solid fa-sliders text-blue-500 mr-2"></i> 互動模擬器：利率與債券價格的翹翹板</h3>
+                    
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-8 bg-gray-50 p-6 rounded-xl">
+                        <!-- Controls -->
+                        <div class="w-full md:w-1/2">
+                            <label for="rate-slider" class="block text-sm font-medium text-gray-700 mb-2">
+                                調整市場利率 (Fed 升降息): <span id="rate-display" class="text-xl font-bold text-blue-600">2.0%</span>
+                            </label>
+                            <input type="range" id="rate-slider" min="0.5" max="6.0" step="0.5" value="2.0" 
+                                class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+                            <div class="flex justify-between text-xs text-gray-500 mt-2">
+                                <span>低利率 (降息)</span>
+                                <span>高利率 (暴力升息)</span>
+                            </div>
+                        </div>
+
+                        <!-- Result -->
+                        <div class="w-full md:w-1/2 flex justify-center">
+                            <div class="bg-white border-2 border-blue-100 rounded-full w-48 h-48 flex flex-col items-center justify-center shadow-lg transition-transform duration-300 transform" id="bond-price-circle">
+                                <span class="text-gray-500 text-sm font-semibold mb-1">你持有的舊債券市值</span>
+                                <div class="flex items-center gap-2">
+                                    <i id="trend-icon" class="fa-solid fa-minus text-gray-400 text-xl"></i>
+                                    <span id="price-display" class="text-3xl font-bold text-gray-800">$1,000</span>
+                                </div>
+                                <span id="status-text" class="text-xs font-medium text-gray-500 mt-2 bg-gray-100 px-2 py-1 rounded">平價發行</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-4 text-center"><i class="fa-solid fa-circle-info mr-1"></i> 動手滑動拉桿，體驗 2022 年南山人壽面臨的債券跌價壓力。</p>
+                </div>
+            </section>
+
+            <!-- Chapter 2: Accounting Recognition Methods -->
+            <section id="chapter2" class="tab-content hidden">
+                <div class="mb-8">
+                    <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-0.5 rounded uppercase">Chapter 2</span>
+                    <h2 class="text-3xl font-bold text-gray-800 mt-2 mb-4">公司在認列時要注意：三種會計認列方法</h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        根據 IFRS 9 規定，公司購買債券或股票後，必須決定將其放在財報的哪個「分類」中。這個分類決定了<strong class="text-indigo-600">市價的波動會反映在哪張報表上</strong>，進而影響投資人看到的 EPS 或淨值。
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Method 1 -->
+                    <div class="bg-white border border-red-100 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-2 bg-red-500"></div>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">FVPL</h3>
+                        <p class="text-xs font-semibold text-red-600 mb-4">透過損益按公允價值衡量</p>
+                        <div class="space-y-3 text-sm text-gray-600">
+                            <p><i class="fa-solid fa-check text-green-500 w-5"></i> <strong>評價基礎：</strong> 市價 (公允價值)</p>
+                            <p><i class="fa-solid fa-arrow-right text-red-500 w-5"></i> <strong>跌價去哪裡？</strong> 直接進入<span class="font-bold text-gray-800">損益表 (本期淨利)</span></p>
+                            <p><i class="fa-solid fa-bolt text-yellow-500 w-5"></i> <strong>殺傷力：</strong> 劇烈！會直接導致 EPS 下降，財報帳面很難看。通常用於短線交易。</p>
+                        </div>
+                    </div>
+
+                    <!-- Method 2 -->
+                    <div class="bg-white border border-blue-100 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-2 bg-blue-500"></div>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">FVOCI</h3>
+                        <p class="text-xs font-semibold text-blue-600 mb-4">透過其他綜合損益按公允價值衡量</p>
+                        <div class="space-y-3 text-sm text-gray-600">
+                            <p><i class="fa-solid fa-check text-green-500 w-5"></i> <strong>評價基礎：</strong> 市價 (公允價值)</p>
+                            <p><i class="fa-solid fa-arrow-right text-blue-500 w-5"></i> <strong>跌價去哪裡？</strong> 進入<span class="font-bold text-gray-800">資產負債表 (其他權益)</span></p>
+                            <p><i class="fa-solid fa-shield-halved text-green-500 w-5"></i> <strong>特點：</strong> 教授稱之為「保護區」。不影響本期淨利和EPS，但會導致<strong class="text-red-500">股東權益總額下降</strong>。(南山人壽原先的作法)</p>
+                        </div>
+                    </div>
+
+                    <!-- Method 3 -->
+                    <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-2 bg-gray-500"></div>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">攤銷後成本 (AC)</h3>
+                        <p class="text-xs font-semibold text-gray-600 mb-4">Amortized Cost</p>
+                        <div class="space-y-3 text-sm text-gray-600">
+                            <p><i class="fa-solid fa-xmark text-red-500 w-5"></i> <strong>評價基礎：</strong> 歷史成本 + 攤銷 (無視市價)</p>
+                            <p><i class="fa-solid fa-arrow-right text-gray-500 w-5"></i> <strong>跌價去哪裡？</strong> <span class="font-bold text-gray-800">當作沒發生</span> (除非賣掉或減損)</p>
+                            <p><i class="fa-solid fa-eye-slash text-purple-500 w-5"></i> <strong>特點：</strong> 只要持有到期，中間利率怎麼升、市價怎麼跌，帳面上都看不出來。公司最愛用的「眼不見為淨」法。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chapter 3: The Crisis -->
+            <section id="chapter3" class="tab-content hidden">
+                <div class="mb-8">
+                    <span class="bg-red-100 text-red-800 text-xs font-semibold px-2.5 py-0.5 rounded uppercase">Chapter 3</span>
+                    <h2 class="text-3xl font-bold text-gray-800 mt-2 mb-4">連鎖反應：當南山跌倒，為何潤泰面臨下市危機？</h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        壽險業的資本結構高度槓桿（負債高達90%，自有資金權益僅約10%）。當佔總資產高比例的「美債」因升息下跌20%時，足以把那10%的股東權益全部吃光，導致<strong class="text-red-600">淨值轉為負數</strong>。
+                    </p>
+                </div>
+
+                <!-- CSS Flowchart -->
+                <div class="bg-gray-50 rounded-2xl p-8 border border-gray-200">
+                    <h3 class="text-center font-bold text-gray-700 mb-8">連鎖風暴擴散圖</h3>
+                    
+                    <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+                        <!-- Step 1 -->
+                        <div class="bg-white p-4 rounded-lg shadow border-l-4 border-red-500 w-full md:w-48 text-center">
+                            <i class="fa-solid fa-building-columns text-3xl text-gray-400 mb-2"></i>
+                            <h4 class="font-bold text-sm">美國聯準會升息</h4>
+                            <p class="text-xs text-gray-500 mt-1">利率狂飆，舊債券市價暴跌</p>
+                        </div>
+                        
+                        <i class="fa-solid fa-arrow-right text-gray-400 hidden md:block"></i>
+                        <i class="fa-solid fa-arrow-down text-gray-400 block md:hidden"></i>
+
+                        <!-- Step 2 -->
+                        <div class="bg-white p-4 rounded-lg shadow border-l-4 border-orange-500 w-full md:w-56 text-center">
+                            <i class="fa-solid fa-file-invoice-dollar text-3xl text-blue-500 mb-2"></i>
+                            <h4 class="font-bold text-sm">南山人壽 (FVOCI)</h4>
+                            <p class="text-xs text-gray-500 mt-1">未實現損失進入 OCI<br>股東權益大幅縮水，瀕臨負數</p>
+                        </div>
+
+                        <div class="flex flex-col items-center">
+                            <i class="fa-solid fa-arrow-right text-gray-400 hidden md:block"></i>
+                            <i class="fa-solid fa-arrow-down text-gray-400 block md:hidden mt-4"></i>
+                            <span class="text-[10px] bg-yellow-100 text-yellow-800 px-2 rounded mt-1 hidden md:block">權益法認列 (持股約26%)</span>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="bg-white p-4 rounded-lg shadow border-l-4 border-purple-500 w-full md:w-56 text-center">
+                            <i class="fa-solid fa-building text-3xl text-purple-600 mb-2"></i>
+                            <h4 class="font-bold text-sm">潤泰全 / 潤泰新 (母公司)</h4>
+                            <p class="text-xs text-gray-500 mt-1">依持股比例認列南山巨額虧損<br><strong class="text-red-600">導致母公司淨值跌破票面，面臨下市危機！</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chapter 4: Crisis Management -->
+            <section id="chapter4" class="tab-content hidden">
+                <div class="mb-8">
+                    <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded uppercase">Chapter 4</span>
+                    <h2 class="text-3xl font-bold text-gray-800 mt-2 mb-4">避免下市的危機處理：公司做了哪三件事？</h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        當潤泰集團因為南山人壽的拖累，導致淨值逼近下市門檻時，經營層立刻啟動了三項重大財務操作來「搶救淨值」。
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Step 1 -->
+                    <div class="flex items-start bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+                        <div class="flex-shrink-0 bg-green-100 rounded-full w-10 h-10 flex items-center justify-center text-green-600 font-bold mr-4">
+                            1
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-800">現金增資 (引進新資金)</h3>
+                            <p class="text-sm text-gray-600 mt-1">
+                                最直接的方法。向股東要錢，發行新股籌措現金。借方增加現金，貸方增加股本與資本公積，直接且實質地把股東權益（淨值）拉升上來。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="flex items-start bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+                        <div class="flex-shrink-0 bg-green-100 rounded-full w-10 h-10 flex items-center justify-center text-green-600 font-bold mr-4">
+                            2
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-800">投資性不動產重估 (成衣換新衣)</h3>
+                            <p class="text-sm text-gray-600 mt-1">
+                                將帳上土地的會計衡量方法由「成本模式」改為「公允價值模式」。因為早年買的土地現在市價很高，一重估，資產價值暴增，產生的「重估增值」直接挹注股東權益。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="flex items-start bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+                        <div class="flex-shrink-0 bg-green-100 rounded-full w-10 h-10 flex items-center justify-center text-green-600 font-bold mr-4">
+                            3
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-800">金融資產重分類 (改變遊戲規則)</h3>
+                            <p class="text-sm text-gray-600 mt-1">
+                                這是最具爭議但也最有效的一招。向金管會申請改變商業模式，將原先放在 <strong class="text-blue-600">FVOCI</strong> (隨市價波動) 的美債，重分類到 <strong class="text-gray-600">攤銷後成本(AC)</strong>。如此一來，過去因跌價吃掉的淨值瞬間回沖，假裝這些跌價沒發生過。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chapter 5: Conclusion / Reflection -->
+            <section id="chapter5" class="tab-content hidden">
+                <div class="mb-8">
+                    <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded uppercase">Chapter 5</span>
+                    <h2 class="text-3xl font-bold text-gray-800 mt-2 mb-4">課後心得總結</h2>
+                </div>
+
+                <div class="bg-gradient-to-br from-blue-900 to-indigo-900 rounded-2xl p-8 text-white shadow-xl relative overflow-hidden">
+                    <!-- Decor element -->
+                    <i class="fa-solid fa-quote-right absolute top-4 right-4 text-6xl text-white opacity-10"></i>
+                    
+                    <div class="relative z-10 flex items-start gap-4">
+                        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-blue-900 font-bold text-xl flex-shrink-0">
+                            <i class="fa-solid fa-user-graduate"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold mb-3 text-blue-200">EMBA 學習反思</h3>
+                            <p class="text-lg leading-relaxed font-light tracking-wide text-gray-100">
+                                在此堂會計學課程當中，我深刻學習到<strong class="text-yellow-300 font-bold">為何債券利率上升，價格會下降</strong>的市場連動原理。<br><br>
+                                更重要的是，了解到公司在認列金融資產時，必須嚴格注意<strong class="text-yellow-300 font-bold">認列方法的選擇（如 FVOCI 與 攤銷後成本）</strong>，因為這不僅會直接影響到投資方的財務報表呈現，當未實現損失過大時，甚至會透過權益法一路向上延燒，對母公司產生致命影響。<br><br>
+                                透過潤泰集團與南山人壽的真實案例，我學習到了當受影響到母公司、淨值大幅縮水的情況發生時，經營階層的<strong class="text-yellow-300 font-bold">危機處理方式（包含現金增資、資產重估、資產重分類）</strong>，以此避免發生公司下市的終極危機。這對未來在管理決策與閱讀財報上，有了更宏觀的警覺性！
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        // Tab switching logic
+        function switchTab(tabId) {
+            // Hide all contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => {
+                content.classList.remove('block');
+                content.classList.add('hidden');
+            });
+
+            // Show selected content
+            document.getElementById(tabId).classList.remove('hidden');
+            document.getElementById(tabId).classList.add('block');
+
+            // Reset Desktop Tab Styles
+            const btns = document.querySelectorAll('#nav-tabs button');
+            btns.forEach(btn => {
+                btn.classList.remove('tab-active', 'text-blue-600');
+                btn.classList.add('text-gray-600');
+            });
+
+            // Set Active Desktop Tab Style
+            const activeBtn = document.getElementById('btn-' + tabId);
+            if(activeBtn) {
+                activeBtn.classList.remove('text-gray-600');
+                activeBtn.classList.add('tab-active');
+            }
+
+            // Sync Mobile Select
+            const mobileSelect = document.getElementById('mobile-nav');
+            if(mobileSelect.value !== tabId) {
+                mobileSelect.value = tabId;
+            }
+        }
+
+        // Bond Pricing Simulator Logic
+        const rateSlider = document.getElementById('rate-slider');
+        const rateDisplay = document.getElementById('rate-display');
+        const priceDisplay = document.getElementById('price-display');
+        const bondCircle = document.getElementById('bond-price-circle');
+        const trendIcon = document.getElementById('trend-icon');
+        const statusText = document.getElementById('status-text');
+
+        // Base rate is 2.0%, base price is $1000.
+        // Simplified formula: For every 1% increase in rate, price drops by $150 (just for dramatic illustration).
+        rateSlider.addEventListener('input', function() {
+            const currentRate = parseFloat(this.value);
+            rateDisplay.textContent = currentRate.toFixed(1) + '%';
+
+            // Calculate mock price
+            const baseRate = 2.0;
+            const basePrice = 1000;
+            const priceChangePerPercent = 150; 
+            
+            let newPrice = basePrice - ((currentRate - baseRate) * priceChangePerPercent);
+            
+            // UI Updates based on price
+            priceDisplay.textContent = '$' + newPrice.toFixed(0);
+
+            if (currentRate > 2.0) {
+                // Rate up, Price down (Discount)
+                bondCircle.className = "bg-white border-4 border-red-400 rounded-full w-48 h-48 flex flex-col items-center justify-center shadow-lg transition-all duration-300 transform scale-95";
+                priceDisplay.className = "text-3xl font-bold text-red-600";
+                trendIcon.className = "fa-solid fa-arrow-trend-down text-red-500 text-xl";
+                statusText.textContent = "折價跌價 (虧損)";
+                statusText.className = "text-xs font-medium text-red-700 mt-2 bg-red-100 px-2 py-1 rounded";
+            } else if (currentRate < 2.0) {
+                // Rate down, Price up (Premium)
+                bondCircle.className = "bg-white border-4 border-green-400 rounded-full w-48 h-48 flex flex-col items-center justify-center shadow-lg transition-all duration-300 transform scale-105";
+                priceDisplay.className = "text-3xl font-bold text-green-600";
+                trendIcon.className = "fa-solid fa-arrow-trend-up text-green-500 text-xl";
+                statusText.textContent = "溢價上漲 (未實現利益)";
+                statusText.className = "text-xs font-medium text-green-700 mt-2 bg-green-100 px-2 py-1 rounded";
+            } else {
+                // Base
+                bondCircle.className = "bg-white border-2 border-blue-100 rounded-full w-48 h-48 flex flex-col items-center justify-center shadow-lg transition-all duration-300 transform scale-100";
+                priceDisplay.className = "text-3xl font-bold text-gray-800";
+                trendIcon.className = "fa-solid fa-minus text-gray-400 text-xl";
+                statusText.textContent = "平價發行";
+                statusText.className = "text-xs font-medium text-gray-500 mt-2 bg-gray-100 px-2 py-1 rounded";
+            }
+        });
+    </script>
+</body>
+</html>
