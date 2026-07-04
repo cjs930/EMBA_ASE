@@ -311,16 +311,56 @@
                     <i class="fa-solid fa-quote-right absolute top-4 right-4 text-6xl text-white opacity-10"></i>
                     
                     <div class="relative z-10 flex items-start gap-4">
-                        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-blue-900 font-bold text-xl flex-shrink-0">
+                        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-blue-900 font-bold text-xl flex-shrink-0 mt-1">
                             <i class="fa-solid fa-user-graduate"></i>
                         </div>
-                        <div>
-                            <h3 class="text-lg font-bold mb-3 text-blue-200">EMBA 學習反思</h3>
-                            <p class="text-lg leading-relaxed font-light tracking-wide text-gray-100">
-                                在此堂會計學課程當中，我深刻學習到<strong class="text-yellow-300 font-bold">為何債券利率上升，價格會下降</strong>的市場連動原理。<br><br>
-                                更重要的是，了解到公司在認列金融資產時，必須嚴格注意<strong class="text-yellow-300 font-bold">認列方法的選擇（如 FVOCI 與 攤銷後成本）</strong>，因為這不僅會直接影響到投資方的財務報表呈現，當未實現損失過大時，甚至會透過權益法一路向上延燒，對母公司產生致命影響。<br><br>
-                                透過潤泰集團與南山人壽的真實案例，我學習到了當受影響到母公司、淨值大幅縮水的情況發生時，經營階層的<strong class="text-yellow-300 font-bold">危機處理方式（包含現金增資、資產重估、資產重分類）</strong>，以此避免發生公司下市的終極危機。這對未來在管理決策與閱讀財報上，有了更宏觀的警覺性！
-                            </p>
+                        <div class="w-full">
+                            <h3 class="text-xl font-bold mb-5 text-blue-200 border-b border-blue-700 pb-3">EMBA 學習反思與實務啟發</h3>
+                            
+                            <div class="space-y-6 text-gray-100 font-light tracking-wide text-sm md:text-base">
+                                <!-- Point 1 -->
+                                <div>
+                                    <h4 class="text-yellow-300 font-bold mb-2 flex items-center gap-2 text-lg"><i class="fa-solid fa-arrow-trend-down w-5"></i> 1. 升息與債券跌價的市場連動原理</h4>
+                                    <p class="leading-relaxed">
+                                        在此堂課中，我釐清了為何聯準會升息會導致保險公司滿手美債慘跌的底層邏輯：<strong class="text-white">當市場推出利率更高的新債券時，投資人自然不願意持有手中利率較低的舊債券。</strong>因此，舊債券必須透過「降價（折價）」才能在市場上賣出，這完美解釋了龐大債券部位市值暴跌的原因。
+                                    </p>
+                                </div>
+
+                                <!-- Point 2 -->
+                                <div>
+                                    <h4 class="text-yellow-300 font-bold mb-2 flex items-center gap-2 text-lg"><i class="fa-solid fa-scale-balanced w-5"></i> 2. 金融資產認列方法的巨大影響</h4>
+                                    <p class="mb-3 leading-relaxed">會計準則的選擇，決定了這些帳面虧損會反映在哪張報表上，更直接牽動投資人的神經：</p>
+                                    <ul class="list-none space-y-3 bg-blue-950 bg-opacity-50 p-4 rounded-lg border border-blue-800">
+                                        <li class="flex items-start">
+                                            <i class="fa-solid fa-caret-right text-yellow-400 mt-1 mr-2"></i>
+                                            <div><strong class="text-white">FVPL (透過損益按公允價值衡量)：</strong> 市價波動直接進入損益表，會嚴重吃掉「本期淨利」，重創 EPS，財報會非常難看。</div>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fa-solid fa-caret-right text-yellow-400 mt-1 mr-2"></i>
+                                            <div><strong class="text-white">FVOCI (透過其他綜合損益按公允價值衡量)：</strong> 跌價不進損益表（EPS不受影響），但會直接扣減資產負債表的「股東權益（淨值）」。這正是南山人壽淨值暴跌，並透過權益法拖累母公司潤泰集團面臨下市危機的關鍵痛點。</div>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fa-solid fa-caret-right text-yellow-400 mt-1 mr-2"></i>
+                                            <div><strong class="text-white">攤銷後成本 (AC)：</strong> 無視市場價格波動，只要持有至到期，帳面數字就不受影響，是穩定財報數字的避風港。</div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- Point 3 -->
+                                <div>
+                                    <h4 class="text-yellow-300 font-bold mb-2 flex items-center gap-2 text-lg"><i class="fa-solid fa-briefcase-medical w-5"></i> 3. 企業瀕臨下市的危機處理操作</h4>
+                                    <p class="mb-3 leading-relaxed">透過潤泰與南山的真實案例，我見識到經營階層在淨值保衛戰中，如何運用財管與會計工具進行危機處理的三部曲戰略：</p>
+                                    <ul class="list-decimal list-inside space-y-2 text-gray-200">
+                                        <li><strong class="text-white">現金增資 (引進活水)：</strong> 最直接的作法，向市場與股東籌措資金，實質且立即地灌注並拉升淨值。</li>
+                                        <li><strong class="text-white">投資性不動產重估 (成衣換新衣)：</strong> 將老牌企業早期低價取得的土地由「成本模式」改為「公允價值模式」，利用重估產生的增值瞬間放大資產與股東權益。</li>
+                                        <li><strong class="text-white">金融資產重分類 (改變遊戲規則)：</strong> 最關鍵也最具爭議的自救招式。向金管會申請改變商業模式，將慘跌的美債由 FVOCI 大舉轉入「攤銷後成本 (AC)」，把過去吃掉淨值的未實現跌價瞬間回沖，粉飾太平。</li>
+                                    </ul>
+                                </div>
+
+                                <p class="mt-6 pt-5 border-t border-blue-700 text-yellow-100 font-semibold italic text-lg text-center">
+                                    「這次案例讓我深刻體會，會計不僅是冷冰冰的記帳數字，更是高階經理人進行資源配置、應對市場風險及搶救企業生存的最高戰略工具！」
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
